@@ -50,3 +50,5 @@ out/
 .settings
 .classpath
 
+# Gradle files
+.gradle
