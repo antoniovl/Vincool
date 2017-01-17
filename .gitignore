@@ -31,3 +31,22 @@
 
 # "temporary" build files
 /target
+
+# build files
+build/
+classes/
+out/
+
+# MacOS files
+.DS_Store
+._*
+
+# IDEA files
+.idea
+*.iml
+*.ipr
+*.iws
+.project
+.settings
+.classpath
+
