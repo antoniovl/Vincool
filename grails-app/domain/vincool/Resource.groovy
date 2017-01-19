@@ -2,12 +2,12 @@ package vincool
 
 class Resource {
 
-    String slides
-    String repo
+    String url
+    String description
 
     static constraints = {
-        slides url: true, blank: false
-        repo url: true, blank: false
+        url url: true, blank: false
+        description blank: false
     }
 
     static mapping = {
