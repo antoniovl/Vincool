@@ -1,6 +1,6 @@
 package vincool
 
-class Resources {
+class Resource {
 
     String slides
     String repo
