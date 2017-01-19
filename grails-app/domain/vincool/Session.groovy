@@ -11,7 +11,6 @@ class Session {
     Lesson lesson
     Instructor instructor
     Office office
-    Resources resources
 
     static constraints = {
     }

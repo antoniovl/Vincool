@@ -5,6 +5,8 @@ class Lesson {
     String topic
     String description
 
+    static hasMany = [resources: Resource]
+
     static belongsTo = [syllabus: Syllabus]
 
     static constraints = {
