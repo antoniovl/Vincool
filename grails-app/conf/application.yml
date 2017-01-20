@@ -81,6 +81,11 @@ endpoints:
         unique-names: true
 
 ---
+jodatime:
+  format:
+    html5: true
+
+---
 hibernate:
     cache:
         queries: false
