@@ -96,19 +96,24 @@ hibernate:
 dataSource:
     pooled: true
     jmxExport: true
-    driverClassName: org.postgresql.Driver
-    username: postgres
-    password: password
 
 environments:
     development:
         dataSource:
-            dbCreate: update
-            url: jdbc:postgresql://localhost:5432/vincool
+            dbCreate: create-drop
+            url: jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+            driverClassName: org.h2.Driver
+            username: sa
+            password:
+
     test:
         dataSource:
             dbCreate: update
             url: jdbc:postgresql://localhost:5432/vincool
+            driverClassName: org.postgresql.Driver
+            username: postgres
+            password: password
+
     production:
         dataSource:
             dbCreate: none

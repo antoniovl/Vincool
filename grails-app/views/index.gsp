@@ -7,9 +7,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Add Your favicon here -->
-    <!--<asset:link rel="icon" href="img/favicon.ico"/>-->
+    <asset:link rel="icon" href="favicon.ico"/>
 
-    <title>INSPINIA - Landing Page</title>
+    <title>Nearsoft Apprentice</title>
 
     <!-- Bootstrap core CSS -->
     <asset:link href="css/bootstrap.min.css" rel="stylesheet"/>
