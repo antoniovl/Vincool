@@ -12,12 +12,12 @@
     <title>Nearsoft Apprentice</title>
 
     <!-- Bootstrap core CSS -->
-    <asset:link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <asset:link href="landing_page/css/bootstrap.min.css" rel="stylesheet"/>
 
     <!-- Animation CSS -->
-    <asset:link href="css/animate.min.css" rel="stylesheet"/>
+    <asset:link href="landing_page/css/animate.min.css" rel="stylesheet"/>
 
-    <asset:link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"/>
+    <asset:link href="landing_page/font-awesome/css/font-awesome.min.css" rel="stylesheet"/>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -26,7 +26,7 @@
     <![endif]-->
 
     <!-- Custom styles for this template -->
-    <asset:link href="css/style.css" rel="stylesheet"/>
+    <asset:link href="landing_page/css/style.css" rel="stylesheet"/>
 </head>
 <body id="page-top">
 <div class="navbar-wrapper">
@@ -70,7 +70,7 @@
                     </p>
                 </div>
                 <div class="carousel-image wow zoomIn">
-                    <asset:image src="img/laptop.png" alt="laptop"/>
+                    <asset:image src="landing_page/img/laptop.png" alt="laptop"/>
                 </div>
             </div>
             <!-- Set background for slide in css -->
@@ -147,7 +147,7 @@
             </div>
         </div>
         <div class="col-md-6 text-center  wow zoomIn">
-            <asset:image src="img/perspective.png" alt="dashboard" class="img-responsive"/>
+            <asset:image src="landing_page/img/perspective.png" alt="dashboard" class="img-responsive"/>
         </div>
         <div class="col-md-3 text-center wow fadeInRight">
             <div>
@@ -177,7 +177,7 @@
             <a href="" class="btn btn-primary">Learn more</a>
         </div>
         <div class="col-lg-6 text-right wow fadeInRight">
-            <asset:image src="img/dashboard.png" alt="dashboard" class="img-responsive pull-right"/>
+            <asset:image src="landing_page/img/dashboard.png" alt="dashboard" class="img-responsive pull-right"/>
         </div>
     </div>
 </section>
@@ -263,7 +263,7 @@
                 <a href="" class="btn btn-primary">Learn more</a>
             </div>
             <div class="col-lg-6 text-right m-t-n-lg wow zoomIn">
-                <asset:image src="img/iphone.jpg" class="img-responsive" alt="dashboard"/>
+                <asset:image src="landing_page/img/iphone.jpg" class="img-responsive" alt="dashboard"/>
             </div>
             <div class="col-lg-3 features-text text-right wow fadeInRight">
                 <small>INSPINIA</small>
@@ -372,7 +372,7 @@
                 </div>
                 <div class="comments-avatar">
                     <a href="" class="pull-left">
-                        <asset:image alt="image" src="img/avatar3.jpg"/>
+                        <asset:image alt="image" src="landing_page/img/avatar3.jpg"/>
                     </a>
                     <div class="media-body">
                         <div class="commens-name">
@@ -389,7 +389,7 @@
                 </div>
                 <div class="comments-avatar">
                     <a href="" class="pull-left">
-                        <asset:image alt="image" src="img/avatar1.jpg"/>
+                        <asset:image alt="image" src="landing_page/img/avatar1.jpg"/>
                     </a>
                     <div class="media-body">
                         <div class="commens-name">
@@ -406,7 +406,7 @@
                 </div>
                 <div class="comments-avatar">
                     <a href="" class="pull-left">
-                        <asset:image alt="image" src="img/avatar2.jpg"/>
+                        <asset:image alt="image" src="landing_page/img/avatar2.jpg"/>
                     </a>
                     <div class="media-body">
                         <div class="commens-name">
@@ -646,12 +646,12 @@
     </div>
 </section>
 
-<asset:javascript src="js/jquery-2.1.1.js"/>
-<asset:javascript src="js/pace.min.js"/>
-<asset:javascript src="js/bootstrap.min.js"/>
-<asset:javascript src="js/classie.js"/>
-<asset:javascript src="js/cbpAnimatedHeader.js"/>
-<asset:javascript src="js/wow.min.js"/>
-<asset:javascript src="js/inspinia.js"/>
+<asset:javascript src="landing_page/js/jquery-2.1.1.js"/>
+<asset:javascript src="landing_page/js/pace.min.js"/>
+<asset:javascript src="landing_page/js/bootstrap.min.js"/>
+<asset:javascript src="landing_page/js/classie.js"/>
+<asset:javascript src="landing_page/js/cbpAnimatedHeader.js"/>
+<asset:javascript src="landing_page/js/wow.min.js"/>
+<asset:javascript src="landing_page/js/inspinia.js"/>
 </body>
 </html>
