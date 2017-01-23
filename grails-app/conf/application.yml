@@ -81,6 +81,11 @@ endpoints:
         unique-names: true
 
 ---
+jodatime:
+  format:
+    html5: true
+
+---
 hibernate:
     cache:
         queries: false
@@ -91,23 +96,23 @@ hibernate:
 dataSource:
     pooled: true
     jmxExport: true
-    driverClassName: org.h2.Driver
-    username: sa
-    password:
+    driverClassName: org.postgresql.Driver
+    username: postgres
+    password: password
 
 environments:
     development:
         dataSource:
-            dbCreate: create-drop
-            url: jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+            dbCreate: update
+            url: jdbc:postgresql://localhost:5432/vincool
     test:
         dataSource:
             dbCreate: update
-            url: jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+            url: jdbc:postgresql://localhost:5432/vincool
     production:
         dataSource:
             dbCreate: none
-            url: jdbc:h2:./prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+            url: jdbc:postgresql://localhost:5432/vincool
             properties:
                 jmxEnabled: true
                 initialSize: 5

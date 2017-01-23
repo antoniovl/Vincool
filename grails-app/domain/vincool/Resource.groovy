@@ -1,16 +1,14 @@
 package vincool
 
-class Lesson {
+class Resource {
 
-    String topic
+    String url
     String description
 
-    static hasMany = [resources: Resource]
-
-    static belongsTo = [syllabus: Syllabus]
+    static belongsTo = [lesson: Lesson]
 
     static constraints = {
-        topic blank: false
+        url url: true, blank: false
         description blank: false
     }
 

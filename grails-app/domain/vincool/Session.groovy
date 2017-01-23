@@ -1,5 +1,8 @@
 package vincool
 
+import org.joda.time.LocalDate
+import org.joda.time.LocalTime
+
 class Session {
 
     enum Type {
@@ -7,11 +10,11 @@ class Session {
     }
 
     Type type
-    Date date
+    LocalDate date
+    LocalTime time
     Lesson lesson
     Instructor instructor
     Office office
-    Resources resources
 
     static constraints = {
     }
