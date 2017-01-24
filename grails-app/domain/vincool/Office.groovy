@@ -11,7 +11,7 @@ class Office {
     String city
     String street
     Integer number
-    Integer zipCode
+    String zipCode
     String phoneNumber
 
     static constraints = {
@@ -20,7 +20,7 @@ class Office {
         city blank: false
         street blank: false
         number blank: false, min: 0
-        zipCode blank: false, min: 0
+        zipCode blank: false
         phoneNumber blank: false
     }
 
