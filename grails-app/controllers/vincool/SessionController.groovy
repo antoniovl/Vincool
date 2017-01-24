@@ -1,73 +1,39 @@
 package vincool
 
 import grails.converters.JSON
+import grails.web.mapping.LinkGenerator
 
 class SessionController {
 
     static scaffold = Session
 
-    def showCalendar() {
+    static transient LinkGenerator grailsLinkGenerator
 
-        def allSessions = Session.all
+    def showCalendar() {
 
         def events = [].withDefault{ [:] }
 
-        allSessions.eachWithIndex{ session, index ->
+        Session.all.eachWithIndex{ session, index ->
             events[index]["id"] = session.id
             events[index]["title"] = session.lesson.topic
             events[index]["start"] = session.date
+            events[index]["url"] = grailsLinkGenerator.link(controller: "session", action: "showDetail", id: session.id, absolute: true)
             events[index]["allDay"] = false
         }
 
         render(view: "calendar", model: [events: events as JSON])
     }
 
+    def showDetail(Long id) {
+        def session = Session.get(id)
+        if (!session) {
+            //flash.message = message(code: 'default.not.found.message', args: [message(code: 'session.label', default: 'Person'), id])
+            redirect(action: "list")
+            return
+        }
+        render(view: "detail", model: [sessionInstance: session])
+
+    }
+
 }
 
-
-/*[
-        {
-            title: 'All Day Event',
-            start: new Date(y, m, 1)
-        },
-        {
-            title: 'Long Event',
-            start: new Date(y, m, d-5),
-            end: new Date(y, m, d-2)
-        },
-        {
-            id: 999,
-            title: 'Repeating Event',
-            start: new Date(y, m, d-3, 16, 0),
-            allDay: false
-        },
-        {
-            id: 999,
-            title: 'Repeating Event',
-            start: new Date(y, m, d+4, 16, 0),
-            allDay: false
-        },
-        {
-            title: 'Meeting',
-            start: new Date(y, m, d, 10, 30),
-            allDay: false
-        },
-        {
-            title: 'Lunch',
-            start: new Date(y, m, d, 12, 0),
-            end: new Date(y, m, d, 14, 0),
-            allDay: false
-        },
-        {
-            title: 'Birthday Party',
-            start: new Date(y, m, d+1, 19, 0),
-            end: new Date(y, m, d+1, 22, 30),
-            allDay: false
-        },
-        {
-            title: 'Click for Google',
-            start: new Date(y, m, 28),
-            end: new Date(y, m, 29),
-            url: 'http://google.com/'
-        }
-]*/
