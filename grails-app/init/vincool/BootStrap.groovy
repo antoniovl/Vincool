@@ -10,8 +10,7 @@ class BootStrap {
         new Student(name: "Luis Daniel", age: 22, school: "ESCOM", currentCompany: "Nearsoft", email: "lalducin@nearsoft.com").save()
         new Student(name: "Erick Reyna", age: 23, school: "UPVT", currentCompany: "Nearsoft", email: "ereyna@nearsoft.com").save()
 
-        new Office(officeCode: Office.OfficeCode.CDMX, state: "Ciudad de México", city: "Ciudad de México", street: "San Luis Potosí",
-                number: 196, zipCode: "06700", phoneNumber:  "+52 (55) 6388-6650").save()
+        new Office(officeCode: "CDMX", location: "San Luis Potosí 196 int. 401 Col. Roma Norte Del. Cuauhtémoc Ciudad de México 06700", phoneNumber:  "+52 (55) 6388-6650").save()
 
         new Batch(edition: "Apprentice 2017 A", isActive: true).save()
 
