@@ -13,11 +13,11 @@ class BootStrap {
         new Office(officeCode: Office.OfficeCode.CDMX, state: "Ciudad de México", city: "Ciudad de México", street: "San Luis Potosí",
                 number: 196, zipCode: "06700", phoneNumber:  "+52 (55) 6388-6650").save()
 
-        new Syllabus(edition: "Apprentice 2017 A").save()
+        new Batch(edition: "Apprentice 2017 A").save()
 
-        new Lesson(topic: "Introductory Topics", description: "VCS and Python, Java, Javascript", syllabus: Syllabus.first()).save()
-        new Lesson(topic: "Data Structures and Big O Notation I", description: "Arrays and Lists", syllabus: Syllabus.first()).save()
-        new Lesson(topic: "Data Structures and Big O Notation II", description: "Sets and Hash Tables", syllabus: Syllabus.first()).save()
+        new Lesson(topic: "Introductory Topics", description: "VCS and Python, Java, Javascript", syllabus: Batch.first()).save()
+        new Lesson(topic: "Data Structures and Big O Notation I", description: "Arrays and Lists", syllabus: Batch.first()).save()
+        new Lesson(topic: "Data Structures and Big O Notation II", description: "Sets and Hash Tables", syllabus: Batch.first()).save()
 
         new Resource(url: "http://www.slides.com", description: "Slides about Arrays and Lists", lesson: Lesson.first()).save()
         new Resource(url: "http://www.repo.com", description: "Repo with exercises about Arrays and Lists", lesson: Lesson.first()).save()
