@@ -14,8 +14,7 @@ class Session {
     LocalTime time
     Instructor instructor
     Office office
-
-    static hasMany = [lessons: Lesson]
+    Lesson lesson
 
     static belongsTo = [batch: Batch]
 
