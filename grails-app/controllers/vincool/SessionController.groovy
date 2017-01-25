@@ -9,7 +9,7 @@ class SessionController {
 
     static transient LinkGenerator grailsLinkGenerator
 
-    def showCalendar() {
+    def calendar() {
         def events = [].withDefault{ [:] }
 
         Session.all.eachWithIndex{ session, index ->
@@ -22,7 +22,7 @@ class SessionController {
         render(view: "calendar", model: [events: events as JSON, offices: Office.all])
     }
 
-    def showDetail(Long id) {
+    def detail(Long id) {
         def session = Session.get(id)
         if (!session) {
             redirect(action: "showCalendar")
