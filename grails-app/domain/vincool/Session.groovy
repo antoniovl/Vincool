@@ -12,9 +12,12 @@ class Session {
     Type type
     LocalDate date
     LocalTime time
-    Lesson lesson
     Instructor instructor
     Office office
+
+    static hasMany = [lessons: Lesson]
+
+    static belongsTo = [batch: Batch]
 
     static constraints = {
     }
