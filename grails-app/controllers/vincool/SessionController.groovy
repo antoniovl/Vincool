@@ -16,18 +16,21 @@ class SessionController {
             events[index]["id"] = session.id
             events[index]["title"] = session.lesson.topic
             events[index]["start"] = session.date
-            events[index]["url"] = grailsLinkGenerator.link(controller: "session", action: "showDetail", id: session.id, absolute: true)
+            events[index]["url"] = grailsLinkGenerator.link(controller: "session", action: "detail", id: session.id, absolute: true)
             events[index]["allDay"] = false
         }
-        render(view: "calendar", model: [events: events as JSON, offices: Office.all])
+
+        [events: events as JSON, offices: Office.all]
     }
 
     def detail(Long id) {
         def session = Session.get(id)
-        if (!session) {
+
+        if (session == null) {
             redirect(action: "showCalendar")
         }
-        render(view: "detail", model: [sessionInstance: session])
+
+        [sessionDetails: session]
     }
 
 }
