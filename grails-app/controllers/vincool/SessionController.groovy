@@ -10,7 +10,6 @@ class SessionController {
     static transient LinkGenerator grailsLinkGenerator
 
     def showCalendar() {
-
         def events = [].withDefault{ [:] }
 
         Session.all.eachWithIndex{ session, index ->
@@ -20,19 +19,15 @@ class SessionController {
             events[index]["url"] = grailsLinkGenerator.link(controller: "session", action: "showDetail", id: session.id, absolute: true)
             events[index]["allDay"] = false
         }
-
-        render(view: "calendar", model: [events: events as JSON])
+        render(view: "calendar", model: [events: events as JSON, offices: Office.all])
     }
 
     def showDetail(Long id) {
         def session = Session.get(id)
         if (!session) {
-            //flash.message = message(code: 'default.not.found.message', args: [message(code: 'session.label', default: 'Person'), id])
-            redirect(action: "list")
-            return
+            redirect(action: "showCalendar")
         }
         render(view: "detail", model: [sessionInstance: session])
-
     }
 
 }
