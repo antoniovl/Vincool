@@ -9,7 +9,7 @@ import vincool.auth.SecUserSecRole
 @Transactional
 class VincoolOAuthService {
 
-    def createUser(String socialID, providerName) {
+    def createUser(String socialID, providerName, password) {
 
         def user
         def secRole
@@ -21,20 +21,21 @@ class VincoolOAuthService {
             secRole = SecRole.findByAuthority("ROLE_STUDENT")
             user = new Student()
         }
-        user.setEmail(socialID)
+        user.email = socialID
+        user.username = socialID
+        user.password= password
 
         def oAuthID = new OAuthID()
         oAuthID.provider = providerName
         oAuthID.accessToken = socialID
         oAuthID.save(flush: true)
 
-        def secUser = new SecUser( socialID, socialID )
-        secUser.addTooAuthIDs(oAuthID)
-        secUser.save(flush: true)
+        user.addTooAuthIDs(oAuthID)
+        user.save(flush: true)
 
-        def secUserSecRole = new SecUserSecRole( secUser, secRole)
+        def secUserSecRole = new SecUserSecRole( user, secRole)
         secUserSecRole.save(flush: true)
 
-        return secUser
+        return user
     }
 }

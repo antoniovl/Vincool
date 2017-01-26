@@ -8,7 +8,7 @@ class Instructor extends SecUser{
     String email
 
     static constraints = {
-        name blank: true
+        name blank: true, nullable: true
     }
 
     static mapping = {
