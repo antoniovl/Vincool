@@ -12,9 +12,11 @@ class Session {
     Type type
     LocalDate date
     LocalTime time
-    Lesson lesson
     Instructor instructor
     Office office
+    Lesson lesson
+
+    static belongsTo = [batch: Batch]
 
     static constraints = {
     }

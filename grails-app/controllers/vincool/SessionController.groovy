@@ -1,14 +1,46 @@
 package vincool
 
-import grails.plugin.springsecurity.annotation.Secured
+import grails.converters.JSON
+import grails.web.mapping.LinkGenerator
 
 class SessionController {
 
     static scaffold = Session
 
-    @Secured(['ROLE_ADMIN', 'ROLE_STUDENT', 'ROLE_INSTRUCTOR'])
-    def showCalendar() {
-        render(view: "calendar")
+    static transient LinkGenerator grailsLinkGenerator
+
+    def calendar() {
+
+        def sessions = Session.findAllByBatchInList(Batch.findAllByIsActive(true))
+        def offices = Office.all
+
+        def source = [:]
+        offices.each { office ->
+            source[office.officeCode] = [].withDefault{ [:] }
+        }
+
+        sessions.each{ session ->
+            source[session.office.officeCode]
+                .add([id: session.id,
+                      title: session.lesson.topic,
+                      start: session.date,
+                      allDay: false,
+                      url: grailsLinkGenerator.link(controller: "session", action: "detail", id: session.id, absolute: true)])
+
+        }
+
+        [source: source as JSON, offices: offices]
+    }
+
+    def detail(Long id) {
+        def session = Session.get(id)
+
+        if (session == null) {
+            redirect(action: "calendar")
+        }
+
+        [sessionDetails: session]
     }
 
 }
+

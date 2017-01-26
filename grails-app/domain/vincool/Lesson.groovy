@@ -7,8 +7,6 @@ class Lesson {
 
     static hasMany = [resources: Resource]
 
-    static belongsTo = [syllabus: Syllabus]
-
     static constraints = {
         topic blank: false
         description blank: false
