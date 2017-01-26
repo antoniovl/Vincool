@@ -15,13 +15,13 @@ class BootStrap {
         def secUser = new SecUser("PedroAdmin", "12345abcd" ).save(flush: true)
         SecUserSecRole.create (secUser, secRole)
 
-        new Student(name: "Luis Daniel", age: 22, school: "ESCOM", currentCompany: "Nearsoft", email: "lalducin@nearsoft.com").save(flush: true)
-        new Student(name: "Erick Reyna", age: 23, school: "UPVT", currentCompany: "Nearsoft", email: "ereyna@nearsoft.com").save(flush: true)
+        new Student(username: "luisdaniel", password: "pass", email: "lalducin@nearsoft.com", name: "Luis Daniel", age: 22, school: "ESCOM", currentCompany: "Nearsoft").save(flush: true)
+        new Student(username: "erikueen", password: "pass", email: "ereyna@nearsoft.com", name: "Erick Reyna", age: 23, school: "UPVT", currentCompany: "Nearsoft").save(flush: true)
 
         new Office(officeCode: "CDMX", location: "San Luis Potosí 196 int. 401 Col. Roma Norte Del. Cuauhtémoc Ciudad de México 06700", phoneNumber:  "+52 (55) 6388-6650").save(flush: true)
         new Office(officeCode: "HMO", location: "Blvd. Antonio Quiroga 21 Col. El Llano Hermosillo, Sonora, México 83210", phoneNumber:  "+52 (662) 216-7401").save(flush: true)
 
-        new Instructor(name: "Israel Gómez").save(flush: true)
+        new Instructor(username: "igomez", password: "pass", email: "igomez@nearsoft.com", name: "Israel Gómez").save(flush: true)
 
         new Batch(edition: "Apprentice CDMX 2016 B", isActive: false).save(flush: true)
         new Lesson(topic: "Introductory Topics", description: "VCS and C, C++, Java").save(flush: true)
