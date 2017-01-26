@@ -375,7 +375,7 @@
 
                             <li>
                                 <a href="login.html">
-                                    <i class="fa fa-sign-out"></i> Log out
+                                    <g:link controller="logout" class="fa fa-sign-out" >Logout</g:link>
                                 </a>
                             </li>
                         </ul>

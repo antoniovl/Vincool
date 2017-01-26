@@ -4,4 +4,6 @@ class StudentController {
 
     static scaffold = Student
 
+
+
 }

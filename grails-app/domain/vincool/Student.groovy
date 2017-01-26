@@ -1,6 +1,8 @@
 package vincool
 
-class Student {
+import vincool.auth.SecUser
+
+class Student extends SecUser{
 
     String name
     Integer age

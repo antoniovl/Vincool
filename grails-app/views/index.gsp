@@ -47,7 +47,7 @@
                     <li><a class="page-scroll" href="#team">Team</a></li>
                     <li><a class="page-scroll" href="#testimonials">Testimonials</a></li>
                     <li><a class="page-scroll" href="#pricing">Pricing</a></li>
-                    <li><a class="page-scroll" href="#contact">Contact</a></li>
+                    <sec:ifNotLoggedIn><li><a class="page-scroll" href="/login">Login</a></li></sec:ifNotLoggedIn>
                 </ul>
             </div>
         </div>

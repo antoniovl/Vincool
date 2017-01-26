@@ -1,11 +1,14 @@
 package vincool
 
-class Instructor {
+import vincool.auth.SecUser
+
+class Instructor extends SecUser{
 
     String name
+    String email
 
     static constraints = {
-        name blank: false
+        name blank: true
     }
 
     static mapping = {
