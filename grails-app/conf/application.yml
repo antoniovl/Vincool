@@ -136,3 +136,20 @@ environments:
                 testOnReturn: false
                 jdbcInterceptors: ConnectionState
                 defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
+
+grails:
+    plugin:
+        springsecurity:
+            auth:
+              loginFormUrl: '/login'
+            oauth2:
+                active: true
+                registration:
+                    askToLinkOrCreateAccountUri: '/login/signin'
+                    roleNames: ['ROLE_STUDENT','ROLE_ADMIN','ROLE_INSTRUCTOR']
+                providers:
+                    google:
+                        failureUri: '/notFound'
+                        api_key: '314421498739-r0pbci40botjh0pmgb3pob5q0obr37r0.apps.googleusercontent.com'
+                        api_secret: 'eOc-t2xZoN19OoZono0K1uLc'
+                        scope: 'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email'

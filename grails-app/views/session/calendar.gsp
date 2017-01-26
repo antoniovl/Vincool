@@ -38,7 +38,6 @@
         </div>
 
         <script>
-
             $(document).ready(function() {
 
                 var calendar = $('#calendar');
@@ -53,9 +52,6 @@
                     calendar.fullCalendar('addEventSource', source[officeSelector.val()]);
                 });
 
-                /* initialize the calendar
-                -----------------------------------------------------------------*/
-
                 calendar.fullCalendar({
 
                     header: {
@@ -67,12 +63,8 @@
                     droppable: false,
                     events: source[officeSelector.val()]
 
+                });
             });
-
-            });
-
         </script>
-
     </body>
-
 </html>
