@@ -1,5 +1,6 @@
 package vincool
 
+
 class LogoutController {
 
     def index(){

@@ -24,6 +24,6 @@ class LoginController {
         session.removeAttribute SPRING_SECURITY_OAUTH_TOKEN
         SecurityContextHolder.context.authentication = token
 
-        redirect(controller: "session", action: "showCalendar")
+        redirect(controller: "session", action: "calendar")
     }
 }
