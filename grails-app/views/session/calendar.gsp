@@ -22,18 +22,9 @@
             <div class="col-lg-3">
                 <div class="ibox float-e-margins">
                     <div class="ibox-content">
-                        <h2>Our Calendar</h2> Select the office location you are insterested in and click in each class event to see details and enroll.
-                    </div>
-                </div>
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <h5>Available Apprentice locations</h5>
-                    </div>
-                    <div class="ibox-content">
-                        <div id='external-events'>
-                            <p>Select an office.</p>
-                            <g:select name="office_selector" from="${offices}" optionKey="id" optionValue="officeCode"/>
-                        </div>
+                        <h2>Our Calendar</h2> Select the office location you are insterested in: <br/>
+                        <br/><g:select name="office_selector" from="${offices}" optionKey="officeCode" optionValue="officeCode"/>
+                        <br/><br/> Click in each class event to see details and enroll.
                     </div>
                 </div>
             </div>
@@ -50,10 +41,23 @@
 
             $(document).ready(function() {
 
+                var calendar = $('#calendar');
+                var officeSelector = $("#office_selector");
+
+                <g:applyCodec encodeAs="none">
+                    var source = ${source};
+                </g:applyCodec>
+
+                officeSelector.change(function () {
+                    calendar.fullCalendar('removeEvents');
+                    calendar.fullCalendar('addEventSource', source[officeSelector.val()]);
+                });
+
                 /* initialize the calendar
                 -----------------------------------------------------------------*/
 
-                $('#calendar').fullCalendar({
+                calendar.fullCalendar({
+
                     header: {
                         left: 'prev,next today',
                         center: 'title',
@@ -61,11 +65,9 @@
                     },
                     editable: false,
                     droppable: false,
-                    <g:applyCodec encodeAs="none">
-                        events: ${events},
-                    </g:applyCodec>
+                    events: source[officeSelector.val()]
 
-                });
+            });
 
             });
 

@@ -10,24 +10,33 @@ class SessionController {
     static transient LinkGenerator grailsLinkGenerator
 
     def calendar() {
-        def events = [].withDefault{ [:] }
 
-        Session.all.eachWithIndex{ session, index ->
-            events[index]["id"] = session.id
-            events[index]["title"] = session.lesson.topic
-            events[index]["start"] = session.date
-            events[index]["url"] = grailsLinkGenerator.link(controller: "session", action: "detail", id: session.id, absolute: true)
-            events[index]["allDay"] = false
+        def sessions = Session.findAllByBatchInList(Batch.findAllByIsActive(true))
+        def offices = Office.all
+
+        def source = [:]
+        offices.each { office ->
+            source[office.officeCode] = [].withDefault{ [:] }
         }
 
-        [events: events as JSON, offices: Office.all]
+        sessions.each{ session ->
+            source[session.office.officeCode]
+                .add([id: session.id,
+                      title: session.lesson.topic,
+                      start: session.date,
+                      allDay: false,
+                      url: grailsLinkGenerator.link(controller: "session", action: "detail", id: session.id, absolute: true)])
+
+        }
+
+        [source: source as JSON, offices: offices]
     }
 
     def detail(Long id) {
         def session = Session.get(id)
 
         if (session == null) {
-            redirect(action: "showCalendar")
+            redirect(action: "calendar")
         }
 
         [sessionDetails: session]
