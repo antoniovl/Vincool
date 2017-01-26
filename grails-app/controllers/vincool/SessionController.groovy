@@ -2,7 +2,9 @@ package vincool
 
 import grails.converters.JSON
 import grails.web.mapping.LinkGenerator
+import grails.plugin.springsecurity.annotation.Secured
 
+@Secured(['ROLE_ADMIN'])
 class SessionController {
 
     static scaffold = Session

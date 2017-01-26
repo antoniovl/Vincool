@@ -24,7 +24,6 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 	[pattern: '/**/css/**',      filters: 'none'],
 	[pattern: '/**/images/**',   filters: 'none'],
 	[pattern: '/**/favicon.ico', filters: 'none'],
-	[pattern: '/session/showCalendar', filters: 'none'],
 	[pattern: '/**',             filters: 'JOINED_FILTERS']
 ]
 
