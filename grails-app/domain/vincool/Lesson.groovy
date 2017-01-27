@@ -15,4 +15,7 @@ class Lesson {
     static mapping = {
         version false
     }
+    String toString(){
+        topic
+    }
 }
