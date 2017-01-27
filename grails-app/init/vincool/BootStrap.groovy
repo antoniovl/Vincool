@@ -56,8 +56,8 @@ class BootStrap {
         new Session(type: Session.Type.THEORETICAL, date: LocalDate.parse("2017-01-19"), time: LocalTime.now(), instructor: Instructor.first(),
                 office: Office.findByOfficeCode("HMO"), lesson: Lesson.get(9), batch: Batch.findByEdition("Apprentice HMO 2017 A")).save(flush: true)
 
-        new Resource(url: "http://www.slides.com", description: "Slides about Arrays and Lists", lesson: Lesson.first()).save(flush: true)
-        new Resource(url: "http://www.repo.com", description: "Repo with exercises about Arrays and Lists", lesson: Lesson.first()).save(flush: true)
+        new Resource(name:"Slides", url: "http://www.slides.com", description: "Slides about Arrays and Lists", lesson: Lesson.first()).save(flush: true)
+        new Resource(name: "Repo", url: "http://www.repo.com", description: "Repo with exercises about Arrays and Lists", lesson: Lesson.first()).save(flush: true)
 
         new Enrollment(session: Session.findById(1), student: Student.findById(1), attendance: true).save(flush: true)
         new Enrollment(session: Session.findById(1), student: Student.findById(2), attendance: false).save(flush: true)

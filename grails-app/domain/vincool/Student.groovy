@@ -21,4 +21,7 @@ class Student extends SecUser{
     static mapping = {
         version false
     }
+    String toString(){
+        name
+    }
 }

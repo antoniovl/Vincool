@@ -19,9 +19,18 @@ class Session {
     static belongsTo = [batch: Batch]
 
     static constraints = {
+        lesson()
+        instructor()
+        date()
+        time()
+        type()
+        office()
     }
 
     static mapping = {
         version false
+    }
+    String toString(){
+        type
     }
 }

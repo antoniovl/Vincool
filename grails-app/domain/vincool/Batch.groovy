@@ -9,9 +9,14 @@ class Batch {
 
     static constraints = {
         edition blank: false, unique: true
+        isActive()
     }
 
     static mapping = {
         version false
+    }
+
+    String toString(){
+        edition
     }
 }
