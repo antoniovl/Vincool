@@ -11,9 +11,9 @@ class Student extends SecUser{
     String email
 
     static constraints = {
-        name blank: false
-        age blank: false, min: 0
-        school blank: false
+        name blank: true, nullable: true
+        age blank: true, min: 0, nullable: true
+        school blank: true, nullable: true
         currentCompany blank: true, nullable: true
         email email: true, blank: false
     }
