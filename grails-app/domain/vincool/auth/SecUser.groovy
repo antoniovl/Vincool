@@ -47,7 +47,7 @@ class SecUser implements Serializable {
 
 	static constraints = {
 		username blank: false, unique: true
-		password blank: true
+		password blank: false
 	}
 
 	static mapping = {
