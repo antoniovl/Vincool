@@ -8,11 +8,15 @@ class Office {
 
     static constraints = {
         officeCode blank: false, unique: true
-        location blank: false
         phoneNumber blank: false
+        location blank: false
     }
 
     static mapping = {
         version false
+    }
+
+    String toString(){
+        officeCode
     }
 }

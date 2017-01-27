@@ -9,9 +9,14 @@ class Instructor extends SecUser{
 
     static constraints = {
         name blank: true
+        email()
     }
 
     static mapping = {
         version false
+    }
+
+    String toString(){
+        name
     }
 }

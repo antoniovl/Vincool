@@ -8,9 +8,15 @@ class Enrollment {
 
     static constraints = {
         student unique: 'session'
+        session()
+        attendance()
     }
 
     static mapping = {
         version false
+    }
+
+    String toString(){
+        "" + student + " : "+session +" : "+session?.lesson
     }
 }
