@@ -128,9 +128,7 @@
 
 
                 <li>
-                    <a href="login.html">
-                        <g:link controller="logout" class="fa fa-sign-out">Logout</g:link>
-                    </a>
+                        <g:link controller="logout"><i class="fa fa-sign-out"></i>Logout</g:link>
                 </li>
             </ul>
 
