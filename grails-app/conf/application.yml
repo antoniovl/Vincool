@@ -24,6 +24,8 @@ endpoints:
     jmx:
         enabled: true
 
+vincool:
+  instructorDomain: "@nearsoft.com"
 ---
 grails:
     mime:

@@ -9,12 +9,14 @@ import vincool.auth.SecUserSecRole
 @Transactional
 class VincoolOAuthService {
 
+    def grailsApplication
+
     def createUser(String socialID, providerName, password) {
 
         def user
         def secRole
 
-        if (socialID.endsWith("@nearsoft.com")) {
+        if (socialID.endsWith(grailsApplication.config.vincool.instructorDomain)) {
             secRole = SecRole.findByAuthority("ROLE_INSTRUCTOR")
             user =  new Instructor()
         }else{
@@ -28,13 +30,12 @@ class VincoolOAuthService {
         def oAuthID = new OAuthID()
         oAuthID.provider = providerName
         oAuthID.accessToken = socialID
-        oAuthID.save(flush: true)
 
         user.addTooAuthIDs(oAuthID)
-        user.save(flush: true)
+        user.save(flush: true, failOnError: true)
 
         def secUserSecRole = new SecUserSecRole( user, secRole)
-        secUserSecRole.save(flush: true)
+        secUserSecRole.save(flush: true, failOnError: true)
 
         return user
     }
