@@ -59,8 +59,8 @@ class BootStrap {
         new Resource(name:"Slides", url: "http://www.slides.com", description: "Slides about Arrays and Lists", lesson: Lesson.first()).save(flush: true)
         new Resource(name: "Repo", url: "http://www.repo.com", description: "Repo with exercises about Arrays and Lists", lesson: Lesson.first()).save(flush: true)
 
-        new Enrollment(session: Session.findById(1), student: Student.findById(1), attendance: true).save(flush: true)
-        new Enrollment(session: Session.findById(1), student: Student.findById(2), attendance: false).save(flush: true)
+        new Enrollment(session: Session.findById(1), student: Student.findByEmail("lalducin@nearsoft.com"), attendance: true).save(flush: true)
+        new Enrollment(session: Session.findById(1), student: Student.findByEmail("ereyna@nearsoft.com"), attendance: false).save(flush: true)
 
     }
     def destroy = {
