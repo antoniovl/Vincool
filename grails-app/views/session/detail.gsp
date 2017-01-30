@@ -9,7 +9,22 @@
                     <h1 class="font-bold m-b-xs"> ${sessionDetails.lesson.topic} - (${sessionDetails.type} CLASS)</h1>
 
                     <div>
-                        <button class="btn btn-primary pull-right"><g:message code="default.enroll.session.label" default="Enroll in this session"/></button>
+
+                        <g:if test="${isEnrolled == true}">
+                            <g:set var="enrollButtonMessage" value="${message(code: "default.disenroll.button.label", default: "Cancel enrollment")}"/>
+                            <g:set var="enrollButtonClass" value="${"btn pull-right btn-danger"}"/>
+                            <g:set var="enrollFormAction" value="${"disenroll"}"/>
+                        </g:if>
+                        <g:else>
+                            <g:set var="enrollButtonMessage" value="${message(code: "default.enroll.button.label", default: "Enroll in this session")}"/>
+                            <g:set var="enrollButtonClass" value="${"btn pull-right btn-primary"}"/>
+                            <g:set var="enrollFormAction" value="${"enroll"}"/>
+                        </g:else>
+
+                        <g:form name="enrollForm" controller="student" action="${enrollFormAction}" id="${sessionDetails.id}" method="POST" >
+                            <g:submitButton class="${enrollButtonClass}" name="enrollButton" id="enrollButton" value="${enrollButtonMessage}"/>
+                        </g:form>
+
                         <h1 class="product-main-price">${sessionDetails.date} at ${sessionDetails.time} </h1>
                     </div>
 
@@ -39,7 +54,8 @@
                 </div>
             </div>
         </div>
-        </content>
+
+    </content>
     <content tag="breadcrumbs">
     </content>
 </g:applyLayout>
