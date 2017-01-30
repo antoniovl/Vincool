@@ -47,12 +47,12 @@ class SessionController {
 
         if(springSecurityService.isLoggedIn()) {
             def roles = springSecurityService.getPrincipal().getAuthorities()
-            for (def role in roles) {
-                if(role.getAuthority() == "ROLE_STUDENT") {
-                    if(Enrollment.findByStudentAndSession(springSecurityService.getCurrentUser(), session) != null) {
-                        isEnrolled = true
-                        break;
-                    }
+
+            def rolesNames = roles.collect { it.getAuthority() }
+
+            if(rolesNames.contains("ROLE_STUDENT")) {
+                if(Enrollment.findByStudentAndSession(springSecurityService.getCurrentUser(), session) != null) {
+                    isEnrolled = true
                 }
             }
         }
