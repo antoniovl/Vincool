@@ -1,25 +1,25 @@
 <g:applyLayout name="simple">
     <content tag="boxTitle">
 
-        <h5>Registered students</h5>
+        <h5>Registered attendees</h5>
 
     </content>
     <content tag="boxContent">
-        <g:if test="${students.size > 0}">
+        <g:if test="${attendees.size > 0}">
             <div class="table-responsive">
                 <table class="table table-striped table-bordered table-hover dataTables-example">
                     <thead>
                     <tr>
-                        <th>Students name</th>
+                        <th>Attendees name</th>
                         <th>Email</th>
                         <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
 
-                    <g:each in="${students}">
+                    <g:each in="${attendees}">
                         <tr class="gradeX">
-                            <g:form action="enrollStudent" id="${sessionId}" method="POST">
+                            <g:form action="enrollAttendee" id="${eventId}" method="POST">
                                 <td>${it.name}</td>
                                 <td>${it.email}</td>
                                 <td><button class="btn btn-primary" type="submit" href="">Enroll</button>
@@ -36,14 +36,14 @@
         </g:if>
         <g:else>
             <div class="alert alert-info">
-                All the registered students have been enrolled to ${sessionName}
+                All the registered attendees have been enrolled to ${eventname}
             </div>
         </g:else>
 
         <div class="row">
             <div class="col-sm-offset-9">
-                <a href="<g:createLink action="get" id="${sessionId}"/>"
-                   class="btn btn-primary btn">Go back to session</a>
+                <a href="<g:createLink action="get" id="${eventId}"/>"
+                   class="btn btn-primary btn">Go back to event</a>
             </div>
         </div>
 

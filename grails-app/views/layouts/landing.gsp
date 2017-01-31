@@ -52,7 +52,7 @@
                     <li><a href="/#team">Team</a></li>
                     <li><a  href="/#testimonials">Testimonials</a></li>
                     <li><a href="/#pricing">Pricing</a></li>
-                    <li><g:link controller="session" action="calendar" >Calendar</g:link></li>
+                    <li><g:link controller="event" action="calendar" >Calendar</g:link></li>
                     <sec:ifNotLoggedIn><li><a class="page-scroll" href="/login">Login</a></li></sec:ifNotLoggedIn>
                 </ul>
             </div>

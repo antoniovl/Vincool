@@ -5,29 +5,29 @@ import grails.web.mapping.LinkGenerator
 import grails.plugin.springsecurity.annotation.Secured
 
 @Secured(['ROLE_ADMIN', 'ROLE_INSTRUCTOR'])
-class SessionController {
+class EventController {
 
-    static scaffold = Session
+    static scaffold = Event
 
     static transient LinkGenerator grailsLinkGenerator
 
     def springSecurityService
 
     def calendar() {
-        def sessions = Session.findAllByBatchInList(Batch.findAllByIsActive(true))
+        def events = Event.findAllByBatchInList(Batch.findAllByIsActive(true))
         def offices = Office.all
 
         def source = [:]
         offices.each { office ->
             source[office.officeCode] = [].withDefault{ [:] }
         }
-        sessions.each{ session ->
-            source[session.office.officeCode]
-                .add([id: session.id,
-                      title: session.lesson.topic,
-                      start: session.date,
+        events.each{ event ->
+            source[event.office.officeCode]
+                .add([id: event.id,
+                      title: event.eventCategory.subCategory,
+                      start: event.date,
                       allDay: false,
-                      url: grailsLinkGenerator.link(controller: "session", action: "detail", id: session.id, absolute: true)])
+                      url: grailsLinkGenerator.link(controller: "event", action: "detail", id: event.id, absolute: true)])
 
         }
 
@@ -36,8 +36,8 @@ class SessionController {
 
     def detail(Long id) {
 
-        def session = Session.get(id)
-        if (session == null) {
+        def event = Event.get(id)
+        if (event == null) {
             redirect(action: "calendar")
         }
 
@@ -49,11 +49,11 @@ class SessionController {
             def rolesNames = roles.collect { it.getAuthority() }
 
             if(rolesNames.contains("ROLE_STUDENT")) {
-                isEnrolled = Enrollment.findByStudentAndSession(springSecurityService.getCurrentUser(), session) != null
+                isEnrolled = Enrollment.findByAttendeeAndEvent(springSecurityService.getCurrentUser(), event) != null
             }
         }
 
-        [sessionDetails: session, isEnrolled: isEnrolled]
+        [eventDetails: event, isEnrolled: isEnrolled]
     }
 
 }

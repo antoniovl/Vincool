@@ -2,13 +2,13 @@ package vincool
 
 class Enrollment {
 
-    Student student
-    Session session
+    Attendee attendee
+    Event event
     boolean attendance
 
     static constraints = {
-        student unique: 'session'
-        session()
+        attendee unique: 'event'
+        event()
         attendance()
     }
 
@@ -17,6 +17,6 @@ class Enrollment {
     }
 
     String toString(){
-        "" + student + " : "+session +" : "+session?.lesson
+        "" + attendee + " : "+event +" : "+event?.eventCategory
     }
 }

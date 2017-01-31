@@ -6,7 +6,7 @@
         <div class="ibox product-detail">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="font-bold m-b-xs">${sessionDetails.lesson.topic} - (${sessionDetails.type} CLASS)</h1>
+                    <h1 class="font-bold m-b-xs">${eventDetails.eventCategory.subCategory} - (${eventDetails.type} class)</h1>
                     <hr/>
 
                     <div>
@@ -19,13 +19,13 @@
                             </g:if>
                             <g:else>
                                 <g:set var="enrollButtonMessage"
-                                       value="${message(code: "default.enroll.button.label", default: "Enroll in this session")}"/>
+                                       value="${message(code: "default.enroll.button.label", default: "Enroll in this event")}"/>
                                 <g:set var="enrollButtonClass" value="${"btn pull-right btn-primary"}"/>
                                 <g:set var="enrollFormAction" value="${"enroll"}"/>
                             </g:else>
 
-                            <g:form name="enrollForm" controller="student" action="${enrollFormAction}"
-                                    id="${sessionDetails.id}" method="POST">
+                            <g:form name="enrollForm" controller="attendee" action="${enrollFormAction}"
+                                    id="${eventDetails.id}" method="POST">
                                 <g:submitButton class="${enrollButtonClass}" name="enrollButton" id="enrollButton"
                                                 value="${enrollButtonMessage}"/>
                             </g:form>
@@ -33,16 +33,16 @@
 
                         <sec:ifNotLoggedIn>
                             <g:set var="enrollButtonMessage"
-                                   value="${message(code: "default.enroll.button.label", default: "Enroll in this session")}"/>
+                                   value="${message(code: "default.enroll.button.label", default: "Enroll in this event")}"/>
                             <g:set var="enrollButtonClass" value="${"btn pull-right btn-primary"}"/>
                             <g:set var="enrollFormAction" value="${"enroll"}"/>
-                            <g:form name="enrollForm" controller="student" action="${enrollFormAction}"
-                                    id="${sessionDetails.id}" method="POST">
+                            <g:form name="enrollForm" controller="attendee" action="${enrollFormAction}"
+                                    id="${eventDetails.id}" method="POST">
                                 <g:submitButton class="${enrollButtonClass}" name="enrollButton" id="enrollButton"
                                                 value="${enrollButtonMessage}"/>
                             </g:form>
                         </sec:ifNotLoggedIn>
-                        <h1 class="product-main-price">${sessionDetails.date} at ${sessionDetails.time}</h1>
+                        <h1 class="product-main-price">${eventDetails.date} at ${eventDetails.time}</h1>
                     </div>
 
                     <hr>
@@ -50,19 +50,19 @@
                     <h3><g:message code="default.session.description.label" default="Session description"/></h3>
 
                     <div class="text-muted">
-                        ${sessionDetails.lesson.description}
+                        ${eventDetails.description}
                     </div>
 
                     <h3><g:message code="default.instructor.label" default="Instructor"/></h3>
 
                     <div class="text-muted">
-                        ${sessionDetails.instructor.name}
+                        ${eventDetails.instructor.name}
                     </div>
 
                     <h3><g:message code="default.office.location.label" default="Location"/></h3>
 
                     <div class="text-muted">
-                        ${sessionDetails.office.location}
+                        ${eventDetails.office.location}
                     </div>
 
                     <div class="text-right">
