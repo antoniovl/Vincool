@@ -7,8 +7,9 @@ grails.plugin.springsecurity.authority.className = 'vincool.auth.SecRole'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	[pattern: '/',               access: ['permitAll']],
 	[pattern: '/error',          access: ['permitAll']],
-	[pattern: '/index',          access: ['permitAll']],
-	[pattern: '/index.gsp',      access: ['permitAll']],
+	[pattern: '/home',          access: ['permitAll']],
+	[pattern: '/landing',          access: ['permitAll']],
+	[pattern: '/home/index',          access: ['permitAll']],
 	[pattern: '/shutdown',       access: ['permitAll']],
 	[pattern: '/assets/**',      access: ['permitAll']],
 	[pattern: '/**/js/**',       access: ['permitAll']],
