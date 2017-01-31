@@ -15,8 +15,8 @@
                     <div class="ibox-content">
                         <h2>Our Calendar</h2> Select the office location you are insterested in: <br/>
                         <br/><g:select name="office_selector" from="${offices}" optionKey="officeCode"
-                                       optionValue="name"/>
-                        <br/><br/> Click on each event to see details and enroll.
+                                       optionValue="officeCode"/>
+                        <br/><br/> Click in each class event to see details and enroll.
                     </div>
                 </div>
             </div>

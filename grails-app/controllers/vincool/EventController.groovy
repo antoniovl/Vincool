@@ -1,14 +1,13 @@
 package vincool
 
 import grails.converters.JSON
-import grails.web.mapping.LinkGenerator
 import grails.plugin.springsecurity.annotation.Secured
+import grails.web.mapping.LinkGenerator
 
 @Secured(['ROLE_ADMIN', 'ROLE_INSTRUCTOR'])
 class EventController {
 
     static scaffold = Event
-
     static transient LinkGenerator grailsLinkGenerator
 
     def springSecurityService
@@ -70,6 +69,5 @@ class EventController {
         }
         return false
     }
-
 }
 
