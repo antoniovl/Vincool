@@ -58,7 +58,6 @@
             });
         });
     </script>
-    </body>
     </content>
     <content tag="breadcrumbs">
     </content>
