@@ -12,6 +12,8 @@ class EventCategory {
     String subCategory
     String color
 
+    static hasMany = [events: Event]
+
     static constraints = {
         subCategory blank: false
         color blank: false

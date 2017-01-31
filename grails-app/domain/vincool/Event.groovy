@@ -10,11 +10,10 @@ class Event {
     LocalTime time
     Instructor instructor
     Office office
-    EventCategory eventCategory
     String description
 
     static hasMany = [resources: Resource]
-    static belongsTo = [batch: Batch]
+    static belongsTo = [batch: Batch, eventCategory: EventCategory]
 
     static constraints = {
         eventCategory()
