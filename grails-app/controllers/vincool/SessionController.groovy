@@ -11,6 +11,8 @@ class SessionController {
 
     static transient LinkGenerator grailsLinkGenerator
 
+    def springSecurityService
+
     def calendar() {
 
         def sessions = Session.findAllByBatchInList(Batch.findAllByIsActive(true))
@@ -35,13 +37,25 @@ class SessionController {
     }
 
     def detail(Long id) {
-        def session = Session.get(id)
 
+        def session = Session.get(id)
         if (session == null) {
             redirect(action: "calendar")
         }
 
-        [sessionDetails: session]
+        def isEnrolled = false
+
+        if(springSecurityService.isLoggedIn()) {
+            def roles = springSecurityService.getPrincipal().getAuthorities()
+
+            def rolesNames = roles.collect { it.getAuthority() }
+
+            if(rolesNames.contains("ROLE_STUDENT")) {
+                isEnrolled = Enrollment.findByStudentAndSession(springSecurityService.getCurrentUser(), session) != null
+            }
+        }
+
+        [sessionDetails: session, isEnrolled: isEnrolled]
     }
 
 }
