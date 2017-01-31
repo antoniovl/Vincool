@@ -3,6 +3,8 @@ package vincool
 import grails.plugin.springsecurity.oauth2.token.OAuth2SpringToken
 import groovy.json.JsonSlurper
 import org.springframework.security.core.context.SecurityContextHolder
+import org.springframework.social.google.api.Google
+import org.springframework.social.google.api.impl.GoogleTemplate
 import vincool.auth.SecUser
 
 class LoginController {
@@ -22,13 +24,16 @@ class LoginController {
 
         def jsonSlurper = new JsonSlurper()
         Map<String, String> parts = jsonSlurper.parseText(token.credentials )
-        String password = parts.get("access_token")
+        String accesToken = parts.get("access_token")
 
-        def user = vincoolOAuthService.createUser( token.socialId, token.providerName, password )
+        Google google = new GoogleTemplate(accesToken);
+        def userInfo =  google.userOperations().userInfo
+
+        def user = vincoolOAuthService.createUser( userInfo, token.providerName, accesToken )
         springSecurityOauth2BaseService.updateOAuthToken(token, user)
         session.removeAttribute SPRING_SECURITY_OAUTH_TOKEN
         SecurityContextHolder.context.authentication = token
 
-        redirect(controller: "session", action: "calendar")
+        redirect(uri:'/')
     }
 }
