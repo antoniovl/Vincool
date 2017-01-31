@@ -3,6 +3,7 @@ package vincool
 class Office {
 
     String officeCode
+    String name
     String location
     String phoneNumber
 
@@ -10,6 +11,7 @@ class Office {
         officeCode blank: false, unique: true
         phoneNumber blank: false
         location blank: false
+        name blank: false
     }
 
     static mapping = {

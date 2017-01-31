@@ -5,22 +5,22 @@ import grails.transaction.Transactional
 @Transactional
 class EnrollmentService {
 
-    def enroll(Long studentId, Long sessionId, boolean attendance) {
+    def enroll(Long attendeeId, Long eventId, boolean attendance) {
 
-        def student = Student.findById(studentId)
-        def session = Session.findById(sessionId)
+        def attendee = Attendee.findById(attendeeId)
+        def event = Event.findById(eventId)
 
-        if(Enrollment.findByStudentAndSession(student, session) == null) {
-            new Enrollment(student: student, session: session, attendance: attendance).save(flush: true, failOnError: true)
+        if(Enrollment.findByAttendeeAndEvent(attendee, event) == null) {
+            new Enrollment(attendee: attendee, event: event, attendance: attendance).save(flush: true, failOnError: true)
         }
     }
 
-    def disenroll(Long studentId, Long sessionId) {
+    def disenroll(Long attendeeId, Long eventId) {
 
-        def student = Student.findById(studentId)
-        def session = Session.findById(sessionId)
+        def attendee = Attendee.findById(attendeeId)
+        def event = Event.findById(eventId)
 
-        def enrollment = Enrollment.findByStudentAndSession(student, session)
+        def enrollment = Enrollment.findByAttendeeAndEvent(attendee, event)
         if(enrollment != null) {
             enrollment.delete(flush: true, failOnError: true)
         }

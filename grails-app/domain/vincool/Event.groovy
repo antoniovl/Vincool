@@ -3,23 +3,20 @@ package vincool
 import org.joda.time.LocalDate
 import org.joda.time.LocalTime
 
-class Session {
+class Event {
 
-    enum Type {
-        PRACTICAL, THEORETICAL
-    }
-
-    Type type
+    String type
     LocalDate date
     LocalTime time
     Instructor instructor
     Office office
-    Lesson lesson
+    String description
 
-    static belongsTo = [batch: Batch]
+    static hasMany = [resources: Resource]
+    static belongsTo = [batch: Batch, eventCategory: EventCategory]
 
     static constraints = {
-        lesson()
+        eventCategory()
         instructor()
         date()
         time()
@@ -30,7 +27,8 @@ class Session {
     static mapping = {
         version false
     }
+
     String toString(){
-        type
+        description
     }
 }

@@ -3,7 +3,6 @@ package vincool
 import grails.transaction.Transactional
 import vincool.auth.OAuthID
 import vincool.auth.SecRole
-import vincool.auth.SecUser
 import vincool.auth.SecUserSecRole
 
 @Transactional
@@ -21,7 +20,7 @@ class VincoolOAuthService {
             user =  new Instructor()
         }else{
             secRole = SecRole.findByAuthority("ROLE_STUDENT")
-            user = new Student()
+            user = new Attendee()
         }
         user.email = socialID
         user.username = socialID
