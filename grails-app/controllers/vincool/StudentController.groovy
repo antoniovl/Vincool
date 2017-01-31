@@ -13,7 +13,7 @@ class StudentController {
     @Secured(['ROLE_STUDENT'])
     def enroll(Long id) {
         def student = (Student) springSecurityService.currentUser
-        enrollmentService.enroll(student.id, id)
+        enrollmentService.enroll(student.id, id, false)
         redirect(controller: "session", action: "detail", id: id)
     }
 
