@@ -4,7 +4,7 @@ import grails.converters.JSON
 import grails.web.mapping.LinkGenerator
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured(['ROLE_ADMIN'])
+@Secured(['ROLE_ADMIN', 'ROLE_INSTRUCTOR'])
 class SessionController {
 
     static scaffold = Session
@@ -14,7 +14,6 @@ class SessionController {
     def springSecurityService
 
     def calendar() {
-
         def sessions = Session.findAllByBatchInList(Batch.findAllByIsActive(true))
         def offices = Office.all
 
@@ -22,7 +21,6 @@ class SessionController {
         offices.each { office ->
             source[office.officeCode] = [].withDefault{ [:] }
         }
-
         sessions.each{ session ->
             source[session.office.officeCode]
                 .add([id: session.id,

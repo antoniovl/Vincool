@@ -26,16 +26,28 @@
         <div class="middle-box text-center loginscreen animated fadeInDown">
             <div>
                 <div>
-                    <h1 class="logo-name">NS</h1>
+                    <asset:image src="nearsoft.png" alt="laptop"/>
                 </div>
                 <h3>Welcome to Nearsoft Apprentice</h3>
                 <p>Learn the basics of software development from some of the best engineers of Nearsoft.</p>
                 <p>Singin to start learning.</p>
                 <form class="m-t" role="form">
                     <div class="">
-                        <oauth2:connect provider="google" id="google-connect-link" class="fa fa-google btn btn-block btn-social btn-google" >Sign in with Google</oauth2:connect>
+                        <oauth2:connect provider="google" id="google-connect-link" class="btn btn-block btn-social btn-google" ><span class="fa fa-google"></span>Sign in with Google</oauth2:connect>
                     </div>
                 </form>
+                <br/>
+                <a class="btn btn-block btn-social btn-facebook">
+                    <span class="fa fa-facebook"></span> Sign in with Facebook
+                </a>
+                <br/>
+                <a class="btn btn-block btn-social btn-github">
+                    <span class="fa fa-github"></span> Sign in with GitHub
+                </a>
+                <br/>
+                <a class="btn btn-block btn-social btn-twitter">
+                    <span class="fa fa-twitter"></span> Sign in with Twitter
+                </a>
                 <p class="m-t"><small>Nearsoft were the magic begins &copy; 2014</small></p>
             </div>
         </div>
