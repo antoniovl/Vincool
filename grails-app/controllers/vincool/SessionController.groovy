@@ -51,9 +51,7 @@ class SessionController {
             def rolesNames = roles.collect { it.getAuthority() }
 
             if(rolesNames.contains("ROLE_STUDENT")) {
-                if(Enrollment.findByStudentAndSession(springSecurityService.getCurrentUser(), session) != null) {
-                    isEnrolled = true
-                }
+                isEnrolled = Enrollment.findByStudentAndSession(springSecurityService.getCurrentUser(), session) != null
             }
         }
 
