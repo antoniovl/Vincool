@@ -6,7 +6,7 @@ class HomeController {
     def index() {
         if (springSecurityService.isLoggedIn()) {
             render(view: "index")
-        } else{
+        } else {
             render(view: "/landing")
         }
     }
