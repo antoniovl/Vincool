@@ -14,7 +14,7 @@ class CalendarController {
     def springSecurityService
 
     def index() {
-        def sessions = Session.findAllByBatchInList(Batch.findAllByIsActive(true))
+        def events = Event.findAllByBatchInList(Batch.findAllByIsActive(true))
         def offices = Office.all
 
         def source = [:]
@@ -22,25 +22,25 @@ class CalendarController {
             source[office.officeCode] = [].withDefault{ [:] }
         }
 
-        def sessionsEnrolledMap = [:]
+        def eventsEnrolledMap = [:]
         if(isCurrentUserAStudent()) {
-            def sessionsEnrolled = Enrollment.findAllByStudent(springSecurityService.getCurrentUser())
-            sessionsEnrolled.each { session ->
-                sessionsEnrolledMap[session.session] = session.student;
+            def eventsEnrolled = Enrollment.findAllByAttendee(springSecurityService.getCurrentUser())
+            eventsEnrolled.each { enrollment ->
+                eventsEnrolledMap[enrollment.event] = enrollment.attendee;
             }
         }
 
         def color
-        sessions.each{ session ->
-            color = "orange"
-            if(sessionsEnrolledMap[session] != null) { color = "gray" }
-            source[session.office.officeCode]
-                    .add([id: session.id,
-                          title: session.lesson.topic,
-                          start: session.date,
+        events.each{ event ->
+            color = event.eventCategory.color
+            if(eventsEnrolledMap[event] != null) { color = "gray" }
+            source[event.office.officeCode]
+                    .add([id: event.id,
+                          title: event.eventCategory.subCategory,
+                          start: event.date,
                           allDay: false,
                           color: color,
-                          url: grailsLinkGenerator.link(controller: "calendar", action: "detail", id: session.id, absolute: true)])
+                          url: grailsLinkGenerator.link(controller: "calendar", action: "detail", id: event.id, absolute: true)])
         }
 
         [source: source as JSON, offices: offices]
@@ -48,18 +48,18 @@ class CalendarController {
 
     def detail(Long id) {
 
-        def session = Session.get(id)
-        if (session == null) {
-            redirect(action: "calendar")
+        def event = Event.get(id)
+        if (event == null) {
+            redirect(action: "index")
         }
 
         def isEnrolled = false
 
         if(isCurrentUserAStudent()) {
-            isEnrolled = Enrollment.findByStudentAndSession(springSecurityService.getCurrentUser(), session) != null
+            isEnrolled = Enrollment.findByAttendeeAndEvent(springSecurityService.getCurrentUser(), event) != null
         }
 
-        [sessionDetails: session, isEnrolled: isEnrolled]
+        [eventDetails: event, isEnrolled: isEnrolled]
     }
 
     private boolean isCurrentUserAStudent() {
