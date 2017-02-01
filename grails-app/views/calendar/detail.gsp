@@ -36,7 +36,7 @@
                                    value="${message(code: "default.enroll.button.label", default: "Enroll in this event")}"/>
                             <g:set var="enrollButtonClass" value="${"btn pull-right btn-primary"}"/>
                             <g:set var="enrollFormAction" value="${"enroll"}"/>
-                            <g:form name="enrollForm" controller="student" action="${enrollFormAction}"
+                            <g:form name="enrollForm" controller="attendee" action="${enrollFormAction}"
                                     id="${eventDetails.id}" method="POST">
                                 <g:submitButton class="${enrollButtonClass}" name="enrollButton" id="enrollButton"
                                                 value="${enrollButtonMessage}"/>
