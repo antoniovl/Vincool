@@ -6,6 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <!--Social -->
+    <meta property="og:title" content="Nearsoft Appretince">
+    <meta property="og:description" content="Learn the basics of software development.">
+    <meta property="og:url" content="https://d43419fa.ngrok.io/">
+    <meta property="og:image" content="https://nearsoft.com/admin/wp-content/themes/Nearsoftv1/img/nearsoft-symbol.png"/>
+    <meta property="og:type" content="website"/>
+    <meta name="twitter:title" content="Nearsoft Appretince">
+    <meta name="twitter:description" content="Learn the basics of software development.">
+    <meta name="twitter:image" content="https://nearsoft.com/admin/wp-content/themes/Nearsoftv1/img/nearsoft-symbol.png">
+    <meta name="twitter:card" content="photo">
+
     <!-- Add Your favicon here -->
     <asset:link rel="icon" href="favicon.ico"/>
 
