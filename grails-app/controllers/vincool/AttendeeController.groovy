@@ -14,14 +14,14 @@ class AttendeeController {
     def enroll(Long id) {
         def student = (Attendee) springSecurityService.currentUser
         enrollmentService.enroll(student.id, id, false)
-        redirect(controller: "event", action: "detail", id: id)
+        redirect(controller: "calendar", action: "detail", id: id)
     }
 
     @Secured(['ROLE_STUDENT'])
     def disenroll(Long id) {
         def student = (Attendee) springSecurityService.currentUser
         enrollmentService.disenroll(student.id, id)
-        redirect(controller: "event", action: "detail", id: id)
+        redirect(controller: "calendar", action: "detail", id: id)
     }
 
 }

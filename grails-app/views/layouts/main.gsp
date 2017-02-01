@@ -79,7 +79,7 @@
                 </sec:ifAllGranted>
                 <sec:ifAllGranted roles='ROLE_INSTRUCTOR'>
                     <li class="controller">
-                        <g:link controller="event" action="calendar"><i class="fa fa-calendar-o"></i><span
+                        <g:link controller="calendar" action="index"><i class="fa fa-calendar-o"></i><span
                                 class="nav-label">Calendar</span></g:link>
                     </li>
 
@@ -91,7 +91,7 @@
                 </sec:ifAllGranted>
                 <sec:ifAllGranted roles='ROLE_STUDENT'>
                     <li class="controller">
-                        <g:link controller="event" action="calendar"><i class="fa fa-calendar-o"></i><span
+                        <g:link controller="calendar" action="index"><i class="fa fa-calendar-o"></i><span
                                 class="nav-label">Calendar</span></g:link>
                     </li>
                     <li class="controller">
