@@ -35,7 +35,7 @@ class AttendanceController {
         def event = Event.findById(id)
 
         def notEnrolled = Attendee.createCriteria().list {
-            sqlRestriction(" not exists(select 1 from enrollment e where e.attendee_id = this_.id)")
+            sqlRestriction(" not exists(select 1 from enrollment e where e.attendee_id = this_.id and e.event_id = " + event.id + ")")
         }
 
         render(view: "enroll-new", model: [attendees: notEnrolled, eventName: event.eventCategory.subCategory, eventId: event.id])
