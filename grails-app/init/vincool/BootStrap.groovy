@@ -15,62 +15,44 @@ class BootStrap {
         def secUser = new SecUser("PedroAdmin", "12345abcd" ).save()
         SecUserSecRole.create (secUser, secRole)
 
-        def luisDaniel = new Student(username: "luisdaniel", password: "pass", email: "lalducin@nearsoft.com", name: "Luis Daniel", age: 22, school: "ESCOM", currentCompany: "Nearsoft").save()
-        def erickReyna = new Student(username: "erikueen", password: "pass", email: "ereyna@nearsoft.com", name: "Erick Reyna", age: 23, school: "UPVT", currentCompany: "Nearsoft").save()
-        new Student(username: "jlozano", password: "pass",  email: "jlozano@nearsoft.com", name: "Javier Lozano", age: 21, school: "UPIITA", currentCompany: "Nearsoft").save()
-        new Student(username: "aibarra", password: "pass", email: "aibarra@nearsoft.com", name: "Antonio Ibarra", age: 19, school: "ESCOM", currentCompany: "Nearsoft").save()
+        def attendee1 = new Attendee(username: "luisdaniel", password: "pass", email: "lalducin@nearsoft.com", name: "Luis Daniel", age: 22, school: "ESCOM", currentCompany: "Nearsoft").save()
+        def attendee2 = new Attendee(username: "erikueen", password: "pass", email: "ereyna@nearsoft.com", name: "Erick Reyna", age: 23, school: "UPVT", currentCompany: "Nearsoft").save()
+        new Attendee(username: "jlozano", password: "pass",  email: "jlozano@nearsoft.com", name: "Javier Lozano", age: 21, school: "UPIITA", currentCompany: "Nearsoft").save()
+        new Attendee(username: "aibarra", password: "pass", email: "aibarra@nearsoft.com", name: "Antonio Ibarra", age: 19, school: "ESCOM", currentCompany: "Nearsoft").save()
 
-        new Office(officeCode: "CDMX", location: "San Luis Potosí 196 int. 401 Col. Roma Norte Del. Cuauhtémoc Ciudad de México 06700", phoneNumber:  "+52 (55) 6388-6650").save()
-        new Office(officeCode: "HMO", location: "Blvd. Antonio Quiroga 21 Col. El Llano Hermosillo, Sonora, México 83210", phoneNumber:  "+52 (662) 216-7401").save()
+        def cdmx = new Office(officeCode: "CDMX", name: "Ciudad de México", location: "San Luis Potosí 196 int. 401 Col. Roma Norte Del. Cuauhtémoc Ciudad de México 06700", phoneNumber:  "+52 (55) 6388-6650").save()
+        def hmo = new Office(officeCode: "HMO", name: "Hermosillo, Sonora", location: "Blvd. Antonio Quiroga 21 Col. El Llano Hermosillo, Sonora, México 83210", phoneNumber:  "+52 (662) 216-7401").save()
 
-        new Instructor(username: "igomez", password: "pass", email: "igomez@nearsoft.com", name: "Israel Gómez").save()
+        def instructor1 = new Instructor(username: "igomez", password: "pass", email: "igomez@nearsoft.com", name: "Israel Gómez").save()
 
-        new Batch(edition: "Apprentice CDMX 2016 B", isActive: false).save()
+        def eventCategory1 = new EventCategory(category: EventCategory.Category.APPRENTICE, subCategory: "Introductory Topics", color: "orange").save()
+        def eventCategory2 = new EventCategory(category: EventCategory.Category.APPRENTICE, subCategory: "Data Structures and Big O Notation I", color: "orange").save()
+        def eventCategory3 = new EventCategory(category: EventCategory.Category.APPRENTICE, subCategory: "SOLID I", color: "orange").save()
+        def eventCategory4 = new EventCategory(category: EventCategory.Category.APPRENTICE, subCategory: "Data Structures and Big O Notation II", color: "orange").save()
 
-        new Lesson(topic: "Introductory Topics", description: "VCS and C, C++, Java").save()
-        new Lesson(topic: "Data Structures and Big O Notation ", description: "Arrays, lists and sets").save()
-        new Lesson(topic: "SOLID I", description: "Single Responsibility Principle").save()
+        def apprenticeCDMX_2016B = new Batch(edition: "Apprentice CDMX 2016 B", isActive: false).save()
+        def event1 = new Event(type: "Practical", date: LocalDate.parse("2016-11-10"), time: LocalTime.now(), instructor: instructor1, office: cdmx, eventCategory: eventCategory1,  description: "VCS and C, C++, Java", batch: apprenticeCDMX_2016B).save()
+        new Event(type: "Practical", date: LocalDate.parse("2016-11-17"), time: LocalTime.now(), instructor: instructor1, office: cdmx, eventCategory: eventCategory2, description: "Arrays, lists and sets", batch: apprenticeCDMX_2016B).save()
+        new Event(type: "Theoretical", date: LocalDate.parse("2016-11-24"), time: LocalTime.now(), instructor: instructor1, office: cdmx, eventCategory: eventCategory3, description: "Single Responsibility Principle", batch: apprenticeCDMX_2016B).save()
 
-        new Session(type: Session.Type.PRACTICAL, date: LocalDate.parse("2016-11-10"), time: LocalTime.now(), instructor: Instructor.first(),
-                office: Office.findByOfficeCode("CDMX"), lesson: Lesson.get(1), batch: Batch.findByEdition("Apprentice CDMX 2016 B")).save()
-        new Session(type: Session.Type.PRACTICAL, date: LocalDate.parse("2016-11-17"), time: LocalTime.now(), instructor: Instructor.first(),
-                office: Office.findByOfficeCode("CDMX"), lesson: Lesson.get(2), batch: Batch.findByEdition("Apprentice CDMX 2016 B")).save()
-        new Session(type: Session.Type.THEORETICAL, date: LocalDate.parse("2016-11-24"), time: LocalTime.now(), instructor: Instructor.first(),
-                office: Office.findByOfficeCode("CDMX"), lesson: Lesson.get(3), batch: Batch.findByEdition("Apprentice CDMX 2016 B")).save()
+        def apprenticeCDMX_2017A = new Batch(edition: "Apprentice CDMX 2017 A", isActive: true).save()
+        new Event(type: "Practical", date: LocalDate.parse("2017-01-7"), time: LocalTime.now(), instructor: instructor1, office: cdmx, eventCategory: eventCategory1, description: "VCS and Python, Java, Javascript", batch: apprenticeCDMX_2017A).save()
+        new Event(type: "Practical", date: LocalDate.parse("2017-01-14"), time: LocalTime.now(), instructor: instructor1, office: cdmx, eventCategory: eventCategory2, description: "Arrays and Lists", batch: apprenticeCDMX_2017A).save()
+        new Event(type: "Theoretical", date: LocalDate.parse("2017-01-21"), time: LocalTime.now(), instructor: instructor1, office: cdmx, eventCategory: eventCategory4, description: "Sets and Hash Tables", batch: apprenticeCDMX_2017A).save()
 
-        new Batch(edition: "Apprentice CDMX 2017 A", isActive: true).save()
+        def apprenticeHMO_2017A = new Batch(edition: "Apprentice HMO 2017 A", isActive: true).save()
+        new Event(type: "Practical", date: LocalDate.parse("2017-01-5"), time: LocalTime.now(), instructor: instructor1, office: hmo, eventCategory: eventCategory1, description: "VCS and Python, Java, Javascript", batch: apprenticeHMO_2017A).save()
+        new Event(type: "Practical", date: LocalDate.parse("2017-01-12"), time: LocalTime.now(), instructor: instructor1, office: hmo, eventCategory: eventCategory2, description: "Arrays and Lists", batch: apprenticeHMO_2017A).save()
+        new Event(type: "Theoretical", date: LocalDate.parse("2017-01-19"), time: LocalTime.now(), instructor: instructor1, office: hmo, eventCategory: eventCategory4, description: "Sets and Hash Tables", batch: apprenticeHMO_2017A).save()
 
-        new Lesson(topic: "Introductory Topics", description: "VCS and Python, Java, Javascript").save()
-        new Lesson(topic: "Data Structures and Big O Notation I", description: "Arrays and Lists").save()
-        new Lesson(topic: "Data Structures and Big O Notation II", description: "Sets and Hash Tables").save()
+        new Resource(name:"Slides", url: "http://www.slides.com", description: "Slides about Arrays and Lists", event: event1).save()
+        new Resource(name: "Repo", url: "http://www.repo.com", description: "Repo with exercises about Arrays and Lists", event: event1).save()
 
-        new Session(type: Session.Type.PRACTICAL, date: LocalDate.parse("2017-01-7"), time: LocalTime.now(), instructor: Instructor.first(),
-                office: Office.findByOfficeCode("CDMX"), lesson: Lesson.get(4), batch: Batch.findByEdition("Apprentice CDMX 2017 A")).save()
-        new Session(type: Session.Type.PRACTICAL, date: LocalDate.parse("2017-01-14"), time: LocalTime.now(), instructor: Instructor.first(),
-                office: Office.findByOfficeCode("CDMX"), lesson: Lesson.get(5), batch: Batch.findByEdition("Apprentice CDMX 2017 A")).save()
-        new Session(type: Session.Type.THEORETICAL, date: LocalDate.parse("2017-01-21"), time: LocalTime.now(), instructor: Instructor.first(),
-                office: Office.findByOfficeCode("CDMX"), lesson: Lesson.get(6), batch: Batch.findByEdition("Apprentice CDMX 2017 A")).save()
-
-        new Batch(edition: "Apprentice HMO 2017 A", isActive: true).save()
-
-        def introductoryTopics = new Lesson(topic: "Introductory Topics", description: "VCS and Python, Java, Javascript").save()
-        def dataStructures1 = new Lesson(topic: "Data Structures and Big O Notation I", description: "Arrays and Lists").save()
-        def dataStructures2 =  new Lesson(topic: "Data Structures and Big O Notation II", description: "Sets and Hash Tables").save()
-
-        new Session(type: Session.Type.PRACTICAL, date: LocalDate.parse("2017-01-5"), time: LocalTime.now(), instructor: Instructor.first(),
-                office: Office.findByOfficeCode("HMO"), lesson: introductoryTopics, batch: Batch.findByEdition("Apprentice HMO 2017 A")).save()
-        new Session(type: Session.Type.PRACTICAL, date: LocalDate.parse("2017-01-12"), time: LocalTime.now(), instructor: Instructor.first(),
-                office: Office.findByOfficeCode("HMO"), lesson: dataStructures1, batch: Batch.findByEdition("Apprentice HMO 2017 A")).save()
-        new Session(type: Session.Type.THEORETICAL, date: LocalDate.parse("2017-01-19"), time: LocalTime.now(), instructor: Instructor.first(),
-                office: Office.findByOfficeCode("HMO"), lesson: dataStructures2, batch: Batch.findByEdition("Apprentice HMO 2017 A")).save()
-
-        new Resource(name:"Slides", url: "http://www.slides.com", description: "Slides about Arrays and Lists", lesson: Lesson.first()).save()
-        new Resource(name: "Repo", url: "http://www.repo.com", description: "Repo with exercises about Arrays and Lists", lesson: Lesson.first()).save()
-
-        new Enrollment(session: Session.findById(1), student: luisDaniel, attendance: true).save()
-        new Enrollment(session: Session.findById(1), student: erickReyna, attendance: false).save()
+        new Enrollment(event: event1, attendee: attendee1, attendance: false).save()
+        new Enrollment(event: event1, attendee: attendee2, attendance: false).save()
 
     }
+
     def destroy = {
     }
 }

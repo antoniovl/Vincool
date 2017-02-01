@@ -3,8 +3,8 @@ package vincool
 import grails.plugin.springsecurity.annotation.Secured
 
 @Secured(['ROLE_ADMIN'])
-class LessonController {
+class EventCategoryController {
 
-    static scaffold = Lesson
+    static scaffold = EventCategory
 
 }

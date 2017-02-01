@@ -6,24 +6,24 @@ import grails.plugin.springsecurity.annotation.Secured
 class AttendanceController {
 
     static scaffold = Enrollment
-    static allowedMethods = [get: "GET", save: "POST", enrollStudent: "POST", enroll: "GET"]
+    static allowedMethods = [get: "GET", save: "POST", enrollAttendee: "POST", enroll: "GET"]
     def enrollmentService
 
     def get(Long id) {
 
-        def session = Session.findById(id)
-        def enrollments = Enrollment.findAllBySession(session)
+        def event = Event.findById(id)
+        def enrollments = Enrollment.findAllByEvent(event)
 
-        render(view: "attendance", model: [enrollments: enrollments, sessionName: session.lesson.topic, sessionId: session.id])
+        render(view: "attendance", model: [enrollments: enrollments, eventName: event.eventCategory.subCategory, eventId: event.id])
     }
 
     def save(Long id) {
 
-        def session = Session.findById(id)
-        def enrollments = Enrollment.findAllBySession(session)
+        def event = Event.findById(id)
+        def enrollments = Enrollment.findAllByEvent(event)
 
         for (enrollment in enrollments) {
-            enrollment.attendance = params["attendance_${enrollment.student.id}"] == 'on'
+            enrollment.attendance = params["attendance_${enrollment.attendee.id}"] == 'on'
             enrollment.save(flush: true)
         }
 
@@ -32,17 +32,17 @@ class AttendanceController {
     }
 
     def enroll(Long id) {
-        def session = Session.findById(id)
+        def event = Event.findById(id)
 
-        def notEnrolled = Student.createCriteria().list {
-            sqlRestriction(" not exists(select 1 from enrollment e where e.student_id = this_.id)")
+        def notEnrolled = Attendee.createCriteria().list {
+            sqlRestriction(" not exists(select 1 from enrollment e where e.attendee_id = this_.id and e.event_id = " + event.id + ")")
         }
 
-        render(view: "enroll-new", model: [students: notEnrolled, sessionName: session.lesson.topic, sessionId: session.id])
+        render(view: "enroll-new", model: [attendees: notEnrolled, eventName: event.eventCategory.subCategory, eventId: event.id])
 
     }
 
-    def enrollStudent(Long id) {
+    def enrollAttendee(Long id) {
         def studentId = Long.parseLong(params["studentId"])
 
         enrollmentService.enroll(studentId, id, true)

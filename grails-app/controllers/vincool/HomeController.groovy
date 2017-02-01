@@ -9,5 +9,3 @@ class HomeController {
         } else{
             render(view: "/landing")
         }
-    }
-}
