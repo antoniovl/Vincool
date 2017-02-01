@@ -46,11 +46,11 @@
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element"><span>
-                        <asset:image src="profile_small.jpg" class="img-circle"/>
+                        <img height="48px" width="48px" src="${session.profilePictureUrl}" class="img-circle"/>
                     </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"><span class="block m-t-xs"><strong
-                                    class="font-bold"><sec:username/></strong>
+                                    class="font-bold">${session.name}</strong>
                             </span>
                                 <!--span class="text-muted text-xs block">Art Director <b class="caret"></b></span-->
                             </span></a>

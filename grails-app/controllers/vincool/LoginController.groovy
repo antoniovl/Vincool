@@ -33,7 +33,9 @@ class LoginController {
         springSecurityOauth2BaseService.updateOAuthToken(token, user)
         session.removeAttribute SPRING_SECURITY_OAUTH_TOKEN
         SecurityContextHolder.context.authentication = token
-
+        session["userDetail"] = user
+        println(user)
+        println(session)
         redirect(controller: "calendar", action: "index")
     }
 }
