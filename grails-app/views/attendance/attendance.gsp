@@ -5,8 +5,8 @@
     </content>
     <content tag="boxContent">
         <g:form action="save" id="${eventId}">
-            <div class="row">
-                <table class="table table-hover">
+            <div class="row table-responsive">
+                <table class="table table-striped table-hover ">
                     <thead>
                     <tr>
                         <th>Attendee's name</th>

@@ -7,7 +7,7 @@
     <content tag="boxContent">
         <g:if test="${attendees.size > 0}">
             <div class="table-responsive">
-                <table class="table table-striped table-bordered table-hover dataTables-example">
+                <table class="table table-striped table-hover dataTables-example">
                     <thead>
                     <tr>
                         <th>Attendees name</th>
