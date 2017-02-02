@@ -19,6 +19,6 @@ class Office {
     }
 
     String toString(){
-        officeCode
+        name
     }
 }

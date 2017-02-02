@@ -33,8 +33,8 @@
 
             <div class="form-group">
                 <div class="col-sm-4 col-sm-offset-2">
-                    <button class="btn btn-white" type="submit">Cancel</button>
-                    <input class="btn btn-primary" type="submit" value="\${message(code: 'default.button.update.label', default: 'Update')}" />
+                    <button class="btn btn-white btn-outline" type="submit"></i>Cancel</button>
+                    <input class="btn btn-primary btn-outline" type="submit" value="\${message(code: 'default.button.update.label', default: 'Update')}" />
                 </div>
 
             </div>

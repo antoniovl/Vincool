@@ -6,6 +6,10 @@ class EventCategory {
         APPRENTICE,
         MEETUP,
         WORKSHOP
+
+        String toString(){
+            this.name().toLowerCase().capitalize()
+        }
     }
 
     Category category
