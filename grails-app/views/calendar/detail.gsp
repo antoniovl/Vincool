@@ -2,6 +2,16 @@
     <content tag="head">
         <asset:link rel="stylesheet" type="text/css" href="jssocials/jssocials.css" />
         <asset:link rel="stylesheet" type="text/css" href="jssocials/jssocials-theme-classic.css" />
+        <meta property="og:title" content="Nearsoft Apprentice ${eventDetails.office} '${eventDetails.eventCategory.subCategory}'">
+        <meta property="og:description" content="Join us this ${eventDetails.date} at ${eventDetails.time.toString('HH:mm')} for the ${eventDetails.type} class '${eventDetails.eventCategory.subCategory}' : ${eventDetails.description} ">
+        <meta property="og:url" content="https://d43419fa.ngrok.io/">
+        <meta property="og:image" content="https://nearsoft.com/admin/wp-content/themes/Nearsoftv1/img/nearsoft-symbol.png"/>
+        <meta property="og:type" content="website"/>
+        <meta name="twitter:title" content="Nearsoft Apprentice">
+        <meta name="twitter:description" content="Learn the basics of software development.">
+        <meta name="twitter:image" content="https://nearsoft.com/admin/wp-content/themes/Nearsoftv1/img/nearsoft-symbol.png">
+        <meta name="twitter:card" content="photo">
+
     </content>
     <content tag="boxTitle">
         <h3>Session Detail</h3>
