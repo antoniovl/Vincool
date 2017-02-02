@@ -121,6 +121,9 @@ environments:
             dbCreate: update
             dialect: org.hibernate.dialect.PostgreSQLDialect
             driverClassName: org.postgresql.Driver
+            url: jdbc:postgresql://localhost:5432/vincool?sslmode=require
+            username: postgres
+            password: postgres
 
             properties:
                 jmxEnabled: true
