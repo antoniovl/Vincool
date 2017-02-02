@@ -72,5 +72,8 @@ assets {
     minifyCss = true
 }
 
+ext {
+    set "tomcat.version", "8.5.5"
+}
 task stage(dependsOn: ['build', 'clean'])
 build.mustRunAfter clean
