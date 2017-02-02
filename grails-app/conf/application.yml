@@ -125,6 +125,7 @@ environments:
             password:
 
 grails:
+    serverURL: 'https://vincool.cfapps.io'
     plugin:
         springsecurity:
             auth:
