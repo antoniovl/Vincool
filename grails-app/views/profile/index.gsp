@@ -19,20 +19,22 @@
 
                     <div class="col-md-9">
 
-                        <br>
-                        <label id="nameLabel">
-                            <g:if test="${session.name == null}">
-                                <h3 id="nameValue"><strong>Click to add your name</strong></h3>
-                            </g:if>
-                            <g:else>
-                                <h3 id="nameValue"><strong>${session.name}</strong></h3>
-                            </g:else>
-                        </label>
-                        <input id="nameInput" type="text" class="form-control">
-                        <br>
+                        <g:form controller="profile" action="update" method="PATCH">
 
-                        <sec:ifAllGranted roles='ROLE_STUDENT'>
-                            <p>
+                            <br>
+                            <label id="nameLabel">
+                                <g:if test="${session.name == null}">
+                                    <h3 id="nameValue"><strong>Click to add your name</strong></h3>
+                                </g:if>
+                                <g:else>
+                                    <h3 id="nameValue"><strong>${session.name}</strong></h3>
+                                </g:else>
+                            </label>
+                            <g:textField id="nameInput" name="name" class="form-control"/>
+                            <br>
+
+                            <sec:ifAllGranted roles='ROLE_STUDENT'>
+                                <p>
                                 <h5><i class="fa fa-briefcase"></i> Work</h5>
                                 <label id="workLabel">
                                     <g:if test="${user.currentCompany == null}">
@@ -42,10 +44,10 @@
                                         <h5 id="workValue">${user.currentCompany}</h5>
                                     </g:else>
                                 </label>
-                            </p>
-                            <input id="workInput" type="text" class="form-control">
+                                </p>
+                                <g:textField id="workInput" name="currentCompany" class="form-control"/>
 
-                            <p>
+                                <p>
                                 <h5><i class="fa fa-graduation-cap"></i> School</h5>
                                 <label id="schoolLabel">
                                     <g:if test="${user.school == null}">
@@ -55,10 +57,10 @@
                                         <h5 id="schoolValue">${user.school}</h5>
                                     </g:else>
                                 </label>
-                            </p>
-                            <input id="schoolInput" type="text" class="form-control"/>
+                                </p>
+                                <g:textField id="schoolInput" name="school" class="form-control"/>
 
-                            <p>
+                                <p>
                                 <h5><i class="fa fa-user"></i> About me</h5>
                                 <label id="aboutMeLabel">
                                     <g:if test="${user.description == null}">
@@ -68,18 +70,22 @@
                                         <h5 id="aboutMeValue">${user.description}</h5>
                                     </g:else>
                                 </label>
-                            </p>
-                            <textarea id="aboutMeInput" cols="80" rows="8" class="form-control"></textarea>
-                        </sec:ifAllGranted>
+                                </p>
+                                <g:textArea id="aboutMeInput" name="description" cols="80" rows="8" class="form-control"/>
+                            </sec:ifAllGranted>
 
-                        <br>
-                        <div class="user-button">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <button type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-user"></i> Update info</button>
+                            <br>
+                            <div class="user-button">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <g:submitButton name="submit" value="Update info" class="btn btn-primary btn-sm btn-block">
+                                            <i class="fa fa-user"></i> Update info
+                                        </g:submitButton>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+
+                        </g:form>
 
                     </div>
                 </div>
