@@ -1,4 +1,8 @@
 <g:applyLayout name="simple">
+    <content tag="head">
+        <asset:link rel="stylesheet" type="text/css" href="jssocials/jssocials.css" />
+        <asset:link rel="stylesheet" type="text/css" href="jssocials/jssocials-theme-classic.css" />
+    </content>
     <content tag="boxTitle">
         <h3>Session Detail</h3>
     </content>
@@ -71,6 +75,17 @@
                             <button class="btn btn-white btn-sm"><i class="fa fa-envelope"></i> Contact with author
                             </button>
                         </div>
+                    </div>
+                    <div id="share">
+                        <asset:javascript src="plugins/jssocials/jssocials.min.js"/>
+                        <script>
+                            $("#share").jsSocials({
+                                shares: [ "facebook", "twitter", "linkedin", "googleplus"],
+                                text: "Nearsoft Apprentice: ${eventDetails.eventCategory.subCategory} ${eventDetails.description} ${eventDetails.time}",
+                                showCount: true,
+                                showLabel: false
+                            });
+                        </script>
                     </div>
                 </div>
             </div>

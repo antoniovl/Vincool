@@ -4,6 +4,16 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <!--Social -->
+    <meta property="og:title" content="Nearsoft Appretince">
+    <meta property="og:description" content="Learn the basics of software development.">
+    <meta property="og:url" content="https://d43419fa.ngrok.io/">
+    <meta property="og:image" content="https://nearsoft.com/admin/wp-content/themes/Nearsoftv1/img/nearsoft-symbol.png"/>
+    <meta property="og:type" content="website"/>
+    <meta name="twitter:title" content="Nearsoft Appretince">
+    <meta name="twitter:description" content="Learn the basics of software development.">
+    <meta name="twitter:image" content="https://nearsoft.com/admin/wp-content/themes/Nearsoftv1/img/nearsoft-symbol.png">
+    <meta name="twitter:card" content="photo">
     <asset:link rel="icon" href="favicon.ico"/>
 
     <title><g:layoutTitle default="Vincool"/></title>
