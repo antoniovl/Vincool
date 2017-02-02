@@ -8,15 +8,16 @@ class ProfileController {
 
     static allowedMethods = [update: "PATCH", index: "GET"]
     def springSecurityService
+    def roleUserService
 
     def index() {
 
         def user
         def userId = springSecurityService.getCurrentUserId()
 
-        if(isCurrentUserAStudent()) {
+        if(roleUserService.isCurrentUserAStudent()) {
             user = Attendee.findById(userId)
-        } else if (isCurrentUserAInstructor()) {
+        } else if (roleUserService.isCurrentUserAInstructor()) {
             user = Instructor.findById(userId)
         } else {
             user = SecUser.findById(userId)
@@ -29,7 +30,7 @@ class ProfileController {
         def user
         def userId = springSecurityService.getCurrentUserId()
 
-        if(isCurrentUserAStudent()) {
+        if(roleUserService.isCurrentUserAStudent()) {
 
             user = Attendee.findById(userId)
 
@@ -38,7 +39,7 @@ class ProfileController {
             if(params.currentCompany != ""){ user.setName((String)params.currentCompany) }
             if(params.description != ""){ user.setName((String)params.description) }
 
-        } else if (isCurrentUserAInstructor()) {
+        } else if (roleUserService.isCurrentUserAInstructor()) {
 
             user = Instructor.findById(userId)
             if(params.name != ""){ user.setName((String)params.name) }
@@ -50,25 +51,6 @@ class ProfileController {
 
         user.save(flush: true)
         redirect(action: "index")
-    }
-
-    private String getRoles() {
-        if (springSecurityService.isLoggedIn()) {
-            def roles = springSecurityService.getPrincipal().getAuthorities()
-            return roles.collect { it.getAuthority() }
-        }
-    }
-
-    private boolean isCurrentUserAStudent() {
-        return getRoles().contains("ROLE_STUDENT")
-    }
-
-    private boolean isCurrentUserAnAdmin() {
-        return getRoles().contains("ROLE_ADMIN")
-    }
-
-    private boolean isCurrentUserAInstructor() {
-        return getRoles().contains("ROLE_INSTRUCTOR")
     }
 
 }
