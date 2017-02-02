@@ -118,7 +118,8 @@ environments:
 
     production:
         dataSource:
-            dbCreate: none
+            dbCreate: update
+            uri = new URI(System.env.DATABASE_URL?:"postgres://test:test@localhost/vincool")
             url: jdbc:postgresql://localhost:5432/vincool
             properties:
                 jmxEnabled: true
