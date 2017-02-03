@@ -1,13 +1,18 @@
 package vincool
 
 class HomeController {
-    def springSecurityService
+    def roleUserService
 
     def index() {
-        if (springSecurityService.isLoggedIn()) {
+        if (roleUserService.isCurrentUserAStudent()) {
+            forward controller: "event"
+        } else if (roleUserService.isCurrentUserAInstructor()) {
+            forward controller: "event"
+        } else if (roleUserService.isCurrentUserAnAdmin()) {
             render(view: "index")
         } else {
             render(view: "/landing")
         }
+
     }
 }

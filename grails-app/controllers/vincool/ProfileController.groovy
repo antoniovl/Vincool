@@ -15,7 +15,7 @@ class ProfileController {
         def user
         def userId = springSecurityService.getCurrentUserId()
 
-        if(roleUserService.isCurrentUserAStudent()) {
+        if (roleUserService.isCurrentUserAStudent()) {
             user = Attendee.findById(userId)
         } else if (roleUserService.isCurrentUserAInstructor()) {
             user = Instructor.findById(userId)
@@ -30,19 +30,29 @@ class ProfileController {
         def user
         def userId = springSecurityService.getCurrentUserId()
 
-        if(roleUserService.isCurrentUserAStudent()) {
+        if (roleUserService.isCurrentUserAStudent()) {
 
             user = Attendee.findById(userId)
 
-            if(params.name != ""){ user.setName((String)params.name) }
-            if(params.school != ""){ user.setName((String)params.school) }
-            if(params.currentCompany != ""){ user.setName((String)params.currentCompany) }
-            if(params.description != ""){ user.setName((String)params.description) }
+            if (params.name) {
+                user.name = params.name as String
+            }
+            if (params.school) {
+                user.school = params.school as String
+            }
+            if (params.currentCompany) {
+                user.currentCompany = params.currentCompany as String
+            }
+            if (params.description) {
+                user.description = params.description as String
+            }
 
         } else if (roleUserService.isCurrentUserAInstructor()) {
 
             user = Instructor.findById(userId)
-            if(params.name != ""){ user.setName((String)params.name) }
+            if (params.name) {
+                user.name = params.name as String
+            }
 
         } else {
 

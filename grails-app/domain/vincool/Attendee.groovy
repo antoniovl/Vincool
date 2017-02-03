@@ -15,6 +15,8 @@ class Attendee extends SecUser{
     String lastName
     String profilePictureUrl
 
+    static hasMany = [hijitos: Enrollment]
+
 
     static constraints = {
         name blank: true, nullable: true
