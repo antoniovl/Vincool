@@ -12,7 +12,7 @@ class Event {
     Office office
     String description
 
-    static hasMany = [resources: Resource]
+    static hasMany = [resources: Resource, enrollments: Enrollment]
     static belongsTo = [batch: Batch, eventCategory: EventCategory]
 
     static constraints = {

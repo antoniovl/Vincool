@@ -77,10 +77,13 @@
                             <br>
                             <div class="user-button">
                                 <div class="row">
-                                    <div class="col-md-2">
-                                        <g:submitButton name="submit" value="Update info" class="btn btn-primary btn-sm btn-block">
+                                    <div class="col-md-12">
+                                        <g:link controller="home" class="btn btn-white btn-outline">
+                                            Cancel
+                                        </g:link>
+                                        <button type="submit" name="submit" value="Update info" class="btn btn-primary btn-outline">
                                             <i class="fa fa-user"></i> Update info
-                                        </g:submitButton>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
