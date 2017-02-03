@@ -145,6 +145,7 @@ environments:
                 defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
 
 grails:
+    serverURL: 'https://nsapprentice.herokuapp.com'
     plugin:
         springsecurity:
             auth:
