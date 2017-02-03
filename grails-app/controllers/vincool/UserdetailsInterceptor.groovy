@@ -21,6 +21,7 @@ class UserdetailsInterceptor {
             } else {
                 session.name = 'Admin'
             }
+            session.userDetails = currentUser
         }
         true
     }

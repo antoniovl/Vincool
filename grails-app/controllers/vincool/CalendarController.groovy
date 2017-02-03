@@ -12,6 +12,7 @@ class CalendarController {
 
     private LinkGenerator grailsLinkGenerator
     def springSecurityService
+    def roleUserService
 
     def index() {
         def events = Event.findAllByBatchInList(Batch.findAllByIsActive(true))
@@ -23,7 +24,7 @@ class CalendarController {
         }
 
         def eventsEnrolledMap = [:]
-        if(isCurrentUserAStudent()) {
+        if(roleUserService.isCurrentUserAStudent()) {
             def eventsEnrolled = Enrollment.findAllByAttendee(springSecurityService.getCurrentUser())
             eventsEnrolled.each { enrollment ->
                 eventsEnrolledMap[enrollment.event] = enrollment.attendee;
@@ -55,20 +56,11 @@ class CalendarController {
 
         def isEnrolled = false
 
-        if(isCurrentUserAStudent()) {
+        if(roleUserService.isCurrentUserAStudent()) {
             isEnrolled = Enrollment.findByAttendeeAndEvent(springSecurityService.getCurrentUser(), event) != null
         }
 
         [eventDetails: event, isEnrolled: isEnrolled]
-    }
-
-    private boolean isCurrentUserAStudent() {
-        if (springSecurityService.isLoggedIn()) {
-            def roles = springSecurityService.getPrincipal().getAuthorities()
-            def rolesNames = roles.collect { it.getAuthority() }
-            if (rolesNames.contains("ROLE_STUDENT")) { return true }
-        }
-        return false
     }
 
 }
