@@ -5,8 +5,8 @@
     </content>
     <content tag="boxContent">
         <g:form action="save" id="${eventId}">
-            <div class="row">
-                <table class="table table-hover">
+            <div class="row table-responsive">
+                <table class="table table-striped table-hover ">
                     <thead>
                     <tr>
                         <th>Attendee's name</th>
@@ -40,12 +40,13 @@
 
             <div class="row">
                 <div class="col-sm-offset-9">
-                    <button class="btn btn-white" type="button">Cancel</button>
-                    <button class="btn btn-primary" type="submit">Save changes</button>
+                    <a href="<g:createLink controller="event" />" class="btn btn-outline btn-white">Cancel</a>
+                    <button class="btn btn-outline btn-primary" type="submit">Save changes</button>
                 </div>
             </div>
         </g:form>
     </content>
     <content tag="breadcrumbs">
+        <li><a href="<g:createLink controller="event" />">Events</a></li>
     </content>
 </g:applyLayout>

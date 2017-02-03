@@ -2,9 +2,10 @@ package vincool
 
 class Enrollment {
 
-    Attendee attendee
-    Event event
+
     boolean attendance
+
+    static belongsTo = [attendee: Attendee, event: Event]
 
     static constraints = {
         attendee unique: 'event'

@@ -74,8 +74,12 @@
                     </div>
 
                     <div class="logo-element">
-                        IN+
+                        NS
                     </div>
+                </li>
+                <li class="controller">
+                    <g:link controller="profile"><i class="fa fa-user"></i><span
+                            class="nav-label">Profile</span></g:link>
                 </li>
                 <sec:ifAllGranted roles='ROLE_ADMIN'>
                     <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName }}">
@@ -105,7 +109,7 @@
                                 class="nav-label">Calendar</span></g:link>
                     </li>
                     <li class="controller">
-                        <g:link controller="enrollment" action="index"><i class="fa fa-book"></i><span
+                        <g:link controller="event" action="index"><i class="fa fa-book"></i><span
                                 class="nav-label">Enrollments</span></g:link>
                     </li>
                 </sec:ifAllGranted>

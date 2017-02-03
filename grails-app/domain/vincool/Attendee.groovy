@@ -4,15 +4,18 @@ import vincool.auth.SecUser
 
 class Attendee extends SecUser{
 
-    String name
     Integer age
+    String name
+    String gender
     String school
     String currentCompany
+    String description
     String email
-    String gender
     String firstName
     String lastName
     String profilePictureUrl
+
+    static hasMany = [hijitos: Enrollment]
 
 
     static constraints = {
@@ -25,6 +28,7 @@ class Attendee extends SecUser{
         firstName nullable: true
         lastName nullable: true
         profilePictureUrl nullable: true
+        description blank: true, nullable: true
     }
 
     static mapping = {
