@@ -3,8 +3,10 @@
         <thead>
         <tr>
             <g:each in="${domainProperties}" var="p" status="i">
-                <g:set var="propTitle">${domainClass.propertyName}.${p.name}.label</g:set>
-                <g:sortableColumn property="${p.name}" title="${message(code: propTitle, default: p.naturalName)}"/>
+                <g:if test="${collection.first().getClass().constrainedProperties[p.name].isDisplay()}">
+                    <g:set var="propTitle">${domainClass.propertyName}.${p.name}.label</g:set>
+                    <g:sortableColumn property="${p.name}" title="${message(code: propTitle, default: p.naturalName)}"/>
+                </g:if>
             </g:each>
             <th><g:message code="defaul.table.actions.label" default="Actions"/></th>
         </tr>
@@ -13,7 +15,9 @@
         <g:each in="${collection}" var="bean" status="i">
             <tr>
                 <g:each in="${domainProperties}" var="p" status="j">
-                    <td>${bean[p.name]}</td>
+                    <g:if test="${collection.first().getClass().constrainedProperties[p.name].isDisplay()}">
+                        <td>${bean[p.name]}</td>
+                    </g:if>
                 </g:each>
                 <td>
                     <sec:ifAnyGranted roles='ROLE_ADMIN,ROLE_INSTRUCTOR'>

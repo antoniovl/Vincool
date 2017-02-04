@@ -8,7 +8,7 @@ class Batch {
     static hasMany = [sessions : Event]
 
     static constraints = {
-        edition blank: false, unique: true
+        edition blank: false, unique: true, display: true
         isActive()
     }
 

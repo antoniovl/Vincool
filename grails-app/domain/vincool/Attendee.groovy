@@ -15,7 +15,7 @@ class Attendee extends SecUser{
     String lastName
     String profilePictureUrl
 
-    static hasMany = [hijitos: Enrollment]
+    static hasMany = [enrollments: Enrollment]
 
 
     static constraints = {
