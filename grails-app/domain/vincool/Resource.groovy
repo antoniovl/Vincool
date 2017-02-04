@@ -6,7 +6,7 @@ class Resource {
     String url
     String description
 
-    static belongsTo = [lesson: Event]
+    static belongsTo = [event: Event]
 
     static constraints = {
         name(blank: false)
