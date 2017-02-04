@@ -4,7 +4,6 @@ import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
 
 @EqualsAndHashCode(includes='authority')
-@ToString(includes='authority', includeNames=true, includePackage=false)
 class SecRole implements Serializable {
 
 	private static final long serialVersionUID = 1
@@ -22,5 +21,9 @@ class SecRole implements Serializable {
 
 	static mapping = {
 		cache true
+	}
+
+	String toString(){
+		authority
 	}
 }
