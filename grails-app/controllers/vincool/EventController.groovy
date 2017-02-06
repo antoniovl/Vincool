@@ -7,6 +7,7 @@ import vincool.auth.SecUser
 class EventController {
 
     def springSecurityService
+    def roleUserService
     static scaffold = Event
 
     @Secured(['ROLE_ADMIN', 'ROLE_INSTRUCTOR', 'ROLE_STUDENT'])
@@ -36,6 +37,37 @@ class EventController {
             eventCount = Event.count()
         }
         respond events, model: [eventCount: eventCount]
+    }
+
+    @Secured(['permitAll'])
+    def show(Long id) {
+
+        def event = Event.get(id)
+        def isEnrolled = false
+
+        if (!springSecurityService.loggedIn) {
+
+            if (event == null) {
+                redirect(controller: "calendar", action: "index")
+            }
+
+        } else if (roleUserService.currentUserAnAttendee) {
+
+            if (event == null) {
+                redirect(controller: "calendar", action: "index")
+            }
+
+            isEnrolled = Enrollment.findByAttendeeAndEvent(springSecurityService.currentUser, event) != null
+
+        } else {
+
+            if (event == null) {
+                redirect(action: "index")
+            }
+
+        }
+
+        [eventDetails: event, isEnrolled: isEnrolled]
     }
 
 }

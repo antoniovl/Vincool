@@ -24,7 +24,7 @@ class CalendarController {
         }
 
         def eventsEnrolledMap = [:]
-        if(roleUserService.isCurrentUserAStudent()) {
+        if(roleUserService.isCurrentUserAnAttendee()) {
             def eventsEnrolled = Enrollment.findAllByAttendee(springSecurityService.getCurrentUser())
             eventsEnrolled.each { enrollment ->
                 eventsEnrolledMap[enrollment.event] = enrollment.attendee;
@@ -41,26 +41,10 @@ class CalendarController {
                           start: event.date,
                           allDay: false,
                           color: color,
-                          url: grailsLinkGenerator.link(controller: "calendar", action: "detail", id: event.id, absolute: true)])
+                          url: grailsLinkGenerator.link(controller: "event", action: "show", id: event.id, absolute: true)])
         }
 
         [source: source as JSON, offices: offices]
-    }
-
-    def detail(Long id) {
-
-        def event = Event.get(id)
-        if (event == null) {
-            redirect(action: "index")
-        }
-
-        def isEnrolled = false
-
-        if(roleUserService.isCurrentUserAStudent()) {
-            isEnrolled = Enrollment.findByAttendeeAndEvent(springSecurityService.getCurrentUser(), event) != null
-        }
-
-        [eventDetails: event, isEnrolled: isEnrolled]
     }
 
 }
