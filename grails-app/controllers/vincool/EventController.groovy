@@ -6,14 +6,22 @@ import vincool.auth.SecUser
 @Secured(['ROLE_ADMIN', 'ROLE_INSTRUCTOR'])
 class EventController {
 
-    def springSecurityService
+    def roleUserService
     static scaffold = Event
 
     @Secured(['ROLE_ADMIN', 'ROLE_INSTRUCTOR', 'ROLE_STUDENT'])
     def index() {
         def userDetails = session.userDetails
         def events, eventCount
-        if (userDetails instanceof Attendee) {
+
+        if (roleUserService.isCurrentUserAnAdmin()) {
+            events = Event.list(params)
+            eventCount = Event.count()
+        } else if (roleUserService.isCurrentUserAInstructor()) {
+            events = Event.findAllByInstructor(userDetails, params)
+            eventCount = Event.countByInstructor(userDetails, params)
+        } else if (roleUserService.isCurrentUserAStudent()) {
+
             events = Event.createCriteria().list(params) {
                 enrollments {
                     attendee {
@@ -28,12 +36,6 @@ class EventController {
                     }
                 }
             }
-        } else if (userDetails instanceof Instructor) {
-            events = Event.findAllByInstructor(userDetails, params)
-            eventCount = Event.countByInstructor(userDetails, params)
-        } else if (userDetails instanceof SecUser) {
-            events = Event.list(params)
-            eventCount = Event.count()
         }
         respond events, model: [eventCount: eventCount]
     }

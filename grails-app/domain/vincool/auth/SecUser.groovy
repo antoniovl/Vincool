@@ -4,7 +4,6 @@ import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
 
 @EqualsAndHashCode(includes='username')
-@ToString(includes='username', includeNames=true, includePackage=false)
 class SecUser implements Serializable {
 
 	private static final long serialVersionUID = 1
@@ -13,12 +12,11 @@ class SecUser implements Serializable {
 
 	String username
 	String password
-	static hasMany = [oAuthIDs: OAuthID]
+	static hasMany = [oAuthIDs: OAuthID, roles: SecUserSecRole]
 	boolean enabled = true
 	boolean accountExpired
 	boolean accountLocked
 	boolean passwordExpired
-
 	SecUser(String username, String password) {
 		this()
 		this.username = username
@@ -46,11 +44,15 @@ class SecUser implements Serializable {
 	static transients = ['springSecurityService']
 
 	static constraints = {
-		username blank: false, unique: true, display: false
+		username blank: false, unique: true
 		password blank: false, display: false
 	}
 
 	static mapping = {
 		password column: '`password`'
+	}
+
+	String toString(){
+		username
 	}
 }

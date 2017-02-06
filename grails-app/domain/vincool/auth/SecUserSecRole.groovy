@@ -5,13 +5,12 @@ import groovy.transform.ToString
 
 import org.apache.commons.lang.builder.HashCodeBuilder
 
-@ToString(cache=true, includeNames=true, includePackage=false)
 class SecUserSecRole implements Serializable {
 
 	private static final long serialVersionUID = 1
 
-	SecUser secUser
 	SecRole secRole
+	static belongsTo = [secUser: SecUser]
 
 	SecUserSecRole(SecUser u, SecRole r) {
 		this()
@@ -97,7 +96,11 @@ class SecUserSecRole implements Serializable {
 	}
 
 	static mapping = {
-		id composite: ['secUser', 'secRole']
+		secUser unique: 'secRole'
 		version false
+	}
+
+	String toString(){
+		secRole
 	}
 }

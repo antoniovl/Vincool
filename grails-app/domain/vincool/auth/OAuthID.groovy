@@ -38,4 +38,7 @@ class OAuthID implements Serializable {
         accessToken index: "identity_idx"
     }
 
+    String toString(){
+        provider
+    }
 }
