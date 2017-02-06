@@ -19,7 +19,7 @@
 
                     <div class="col-md-9">
 
-                        <g:form controller="profile" action="update" method="PATCH">
+                        <g:form controller="profile" action="update" method="PUT">
 
                             <br>
                             <label id="nameLabel">

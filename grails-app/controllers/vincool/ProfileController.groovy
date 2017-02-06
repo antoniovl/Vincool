@@ -6,7 +6,7 @@ import vincool.auth.SecUser
 @Secured(['ROLE_ADMIN', 'ROLE_INSTRUCTOR', 'ROLE_STUDENT'])
 class ProfileController {
 
-    static allowedMethods = [update: "PATCH", index: "GET"]
+    static allowedMethods = [index: "GET", update: "PUT"]
     def springSecurityService
     def roleUserService
 
