@@ -13,7 +13,16 @@ class SecUser implements Serializable {
 
 	String username
 	String password
+	String email
+	String name
+	String firstName
+	String lastName
+	String gender
+	String profilePictureUrl
+	String description
+
 	static hasMany = [oAuthIDs: OAuthID]
+
 	boolean enabled = true
 	boolean accountExpired
 	boolean accountLocked
@@ -48,6 +57,13 @@ class SecUser implements Serializable {
 	static constraints = {
 		username blank: false, unique: true, display: false
 		password blank: false, display: false
+		email email: true, blank: false
+		name blank: true, nullable: true
+		firstName nullable: true
+		lastName nullable: true
+		description blank: true, nullable: true
+		gender nullable: true
+		profilePictureUrl nullable: true
 	}
 
 	static mapping = {

@@ -12,18 +12,18 @@ class BootStrap {
         new SecRole("ROLE_STUDENT").save()
         new SecRole("ROLE_INSTRUCTOR").save()
         def secRole = new SecRole("ROLE_ADMIN").save()
-        def secUser = new SecUser("PedroAdmin", "12345abcd" ).save()
+        def secUser = new SecUser(username:  "PedroAdmin", password: "12345abcd", email: "eladmin@gmail.com").save()
         SecUserSecRole.create (secUser, secRole)
 
-        def attendee1 = new Attendee(username: "luisdaniel", password: "pass", email: "lalducin@nearsoft.com", name: "Luis Daniel", age: 22, school: "ESCOM", currentCompany: "Nearsoft").save()
-        def attendee2 = new Attendee(username: "erikueen", password: "pass", email: "ereyna@nearsoft.com", name: "Erick Reyna", age: 23, school: "UPVT", currentCompany: "Nearsoft").save()
-        new Attendee(username: "jlozano", password: "pass",  email: "jlozano@nearsoft.com", name: "Javier Lozano", age: 21, school: "UPIITA", currentCompany: "Nearsoft").save()
-        new Attendee(username: "aibarra", password: "pass", email: "aibarra@nearsoft.com", name: "Antonio Ibarra", age: 19, school: "ESCOM", currentCompany: "Nearsoft").save()
+        def attendee1 = new Attendee(username: "luisdaniel", password: "pass", email: "lalducin@nearsoft.com", firstName: "Luis Daniel", lastName: "Alducin", age: 22, school: "ESCOM", currentCompany: "Nearsoft").save()
+        def attendee2 = new Attendee(username: "erikueen", password: "pass", email: "ereyna@nearsoft.com", firstName: "Erick", lastName: "Reyna", age: 23, school: "UPVT", currentCompany: "Nearsoft").save()
+        new Attendee(username: "jlozano", password: "pass",  email: "jlozano@nearsoft.com", firstName: "Javier", lastName: "Lozano", age: 21, school: "UPIITA", currentCompany: "Nearsoft").save()
+        new Attendee(username: "aibarra", password: "pass", email: "aibarra@nearsoft.com", firstName: "Antonio", lastName:  "Ibarra", age: 19, school: "ESCOM", currentCompany: "Nearsoft").save()
 
         def cdmx = new Office(officeCode: "CDMX", name: "Ciudad de México", location: "San Luis Potosí 196 int. 401 Col. Roma Norte Del. Cuauhtémoc Ciudad de México 06700", phoneNumber:  "+52 (55) 6388-6650").save()
         def hmo = new Office(officeCode: "HMO", name: "Hermosillo, Sonora", location: "Blvd. Antonio Quiroga 21 Col. El Llano Hermosillo, Sonora, México 83210", phoneNumber:  "+52 (662) 216-7401").save()
 
-        def instructor1 = new Instructor(username: "igomez", password: "pass", email: "igomez@nearsoft.com", name: "Israel Gómez").save()
+        def instructor1 = new Instructor(username: "igomez", password: "pass", email: "igomez@nearsoft.com", firstName: "Israel", lastName: "Gómez").save()
 
         def eventCategory1 = new EventCategory(category: EventCategory.Category.APPRENTICE, subCategory: "Introductory Topics", color: "orange").save()
         def eventCategory2 = new EventCategory(category: EventCategory.Category.APPRENTICE, subCategory: "Data Structures and Big O Notation I", color: "orange").save()
