@@ -21,7 +21,7 @@ class EventController {
         } else if (roleUserService.isCurrentUserAInstructor()) {
             events = Event.findAllByInstructor(userDetails, params)
             eventCount = Event.countByInstructor(userDetails, params)
-        } else if (roleUserService.isCurrentUserAStudent()) {
+        } else if (roleUserService.isCurrentUserAnAttendee()) {
 
             events = Event.createCriteria().list(params) {
                 enrollments {

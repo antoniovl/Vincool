@@ -11,7 +11,7 @@ class HomeController {
         } else if (roleUserService.isCurrentUserAnAdmin()) {
             forward controller: "event"
         } else {
-            render(view: "/landing")
+            render(view: "landing_esp", model: [instructors: Instructor.findAllByNameIsNotNull(),nextClasses: Event.findAll("from Event ",[max: 2])])
         }
 
     }
