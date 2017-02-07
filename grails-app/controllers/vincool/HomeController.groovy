@@ -9,7 +9,7 @@ class HomeController {
         } else if (roleUserService.isCurrentUserAInstructor()) {
             forward controller: "event"
         } else if (roleUserService.isCurrentUserAnAdmin()) {
-            render(view: "index")
+            forward controller: "event"
         } else {
             render(view: "/landing")
         }

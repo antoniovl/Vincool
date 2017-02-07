@@ -7,7 +7,16 @@
         <g:if test="\${flash.message}">
             <div class="message" role="status">\${flash.message}</div>
         </g:if>
-        <f:display bean="${propertyName}" />
+        <dl class="dl-horizontal">
+            <g:each in="\${${propertyName}.getClass().constrainedProperties}">
+                <g:if test="\${it.value.isDisplay()}">
+                    <dt><g:message code="${propertyName}.\${it.key}.label"
+                                   default="\${grails.util.GrailsNameUtils.getNaturalName(it.key)}"/> :</dt>
+                    <dd>\${${propertyName}[it.key]}</dd>
+                </g:if>
+            </g:each>
+        </dl>
+
         <g:form resource="\${this.${propertyName}}" method="DELETE">
             <fieldset class="buttons">
                 <g:link class="btn btn-default btn-outline" action="edit" resource="\${this.${propertyName}}"><g:message code="default.button.edit.label" default="Edit" /></g:link>

@@ -9,7 +9,7 @@
         Our Calendar
     </content>
     <content tag="boxContent">
-        <div class="row animated fadeInDown">
+        <div class="row animated fadeIn">
             <div class="col-lg-3">
                 <div class="ibox float-e-margins">
                     <div class="ibox-content">

@@ -27,6 +27,6 @@ class EventCategory {
         version false
     }
     String toString(){
-        category
+        subCategory
     }
 }

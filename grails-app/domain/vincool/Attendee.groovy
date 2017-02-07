@@ -8,7 +8,7 @@ class Attendee extends SecUser{
     String school
     String currentCompany
 
-    static hasMany = [hijitos: Enrollment]
+    static hasMany = [enrollments: Enrollment]
 
     static constraints = {
         age blank: true, min: 0, nullable: true
