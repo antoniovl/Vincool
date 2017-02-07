@@ -5,7 +5,7 @@ class Batch {
     String edition
     Boolean isActive
 
-    static hasMany = [sessions : Event]
+    static hasMany = [events : Event]
 
     static constraints = {
         edition blank: false, unique: true, display: true
