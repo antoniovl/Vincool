@@ -11,7 +11,6 @@
         <meta name="twitter:description" content="Learn the basics of software development.">
         <meta name="twitter:image" content="https://nearsoft.com/admin/wp-content/themes/Nearsoftv1/img/nearsoft-symbol.png">
         <meta name="twitter:card" content="photo">
-
     </content>
     <content tag="boxTitle">
         <h3>Session Detail</h3>
@@ -78,6 +77,20 @@
                     <div class="text-muted">
                         ${eventDetails.office.location}
                     </div>
+
+                    <sec:ifAnyGranted roles='ROLE_INSTRUCTOR,ROLE_ADMIN'>
+
+                        <h3><g:message code="default.eventCategory.label" default="Event Category"/></h3>
+                        <div class="text-muted">
+                            ${eventDetails.eventCategory.category}
+                        </div>
+
+                        <h3><g:message code="default.batch.label" default="Batch"/></h3>
+                        <div class="text-muted">
+                            ${eventDetails.batch}
+                        </div>
+
+                    </sec:ifAnyGranted>
 
                     <div class="text-right">
                         <div class="btn-group">
