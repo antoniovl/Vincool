@@ -23,7 +23,7 @@ class BootStrap {
         def cdmx = new Office(officeCode: "CDMX", name: "Ciudad de México", location: "San Luis Potosí 196 int. 401 Col. Roma Norte Del. Cuauhtémoc Ciudad de México 06700", phoneNumber:  "+52 (55) 6388-6650").save()
         def hmo = new Office(officeCode: "HMO", name: "Hermosillo, Sonora", location: "Blvd. Antonio Quiroga 21 Col. El Llano Hermosillo, Sonora, México 83210", phoneNumber:  "+52 (662) 216-7401").save()
 
-        def instructor1 = new Instructor(username: "igomez", password: "pass", email: "igomez@nearsoft.com", firstName: "Israel", lastName: "Gómez").save()
+        def instructor1 = new Instructor(username: "igomez", password: "pass", email: "igomez@nearsoft.com",name: "Israel Gómez", firstName: "Israel", lastName: "Gómez").save()
 
         def eventCategory1 = new EventCategory(category: EventCategory.Category.APPRENTICE, subCategory: "Introductory Topics", color: "orange").save()
         def eventCategory2 = new EventCategory(category: EventCategory.Category.APPRENTICE, subCategory: "Data Structures and Big O Notation I", color: "orange").save()
