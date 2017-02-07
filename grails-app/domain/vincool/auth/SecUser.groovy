@@ -21,6 +21,10 @@ class SecUser implements Serializable {
 	String profilePictureUrl
 	String description
 
+	String twitter
+	String github
+	String linkedin
+
 	static hasMany = [oAuthIDs: OAuthID]
 
 	boolean enabled = true
@@ -64,6 +68,9 @@ class SecUser implements Serializable {
 		description blank: true, nullable: true
 		gender nullable: true
 		profilePictureUrl nullable: true
+		twitter blank: true, nullable: true
+		github blank: true, nullable: true
+		linkedin blank: true, nullable: true
 	}
 
 	static mapping = {
