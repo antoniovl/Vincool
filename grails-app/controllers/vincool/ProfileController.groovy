@@ -27,23 +27,8 @@ class ProfileController {
     }
 
     def update() {
-        def user
-        def userId = springSecurityService.getCurrentUserId()
 
-
-        if (roleUserService.isCurrentUserAnAttendee()) {
-
-            user = Attendee.findById(userId)
-
-            if (params.school) {
-                user.school = params.school as String
-            }
-
-            if (params.currentCompany) {
-                user.currentCompany = params.currentCompany as String
-            }
-
-        }
+        def user = springSecurityService.getCurrentUser()
 
         if (params.name) {
             user.name = params.name as String
@@ -63,6 +48,18 @@ class ProfileController {
 
         if (params.description) {
             user.description = params.description as String
+        }
+
+        if (roleUserService.isCurrentUserAnAttendee()) {
+
+            if (params.school) {
+                user.school = params.school as String
+            }
+
+            if (params.currentCompany) {
+                user.currentCompany = params.currentCompany as String
+            }
+
         }
 
         user.save(flush: true)
