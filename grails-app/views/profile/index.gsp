@@ -19,7 +19,7 @@
 
                     <div class="col-md-9">
 
-                        <g:form controller="profile" action="update" method="PATCH">
+                        <g:form controller="profile" action="update" method="PUT">
 
                             <br>
                             <label id="nameLabel">
@@ -60,19 +60,59 @@
                                 </p>
                                 <g:textField id="schoolInput" name="school" class="form-control"/>
 
-                                <p>
-                                <h5><i class="fa fa-user"></i> About me</h5>
-                                <label id="aboutMeLabel">
-                                    <g:if test="${user.description == null}">
-                                        <h5 id="aboutMeValue">Click to tell us about you</h5>
-                                    </g:if>
-                                    <g:else>
-                                        <h5 id="aboutMeValue">${user.description}</h5>
-                                    </g:else>
-                                </label>
-                                </p>
-                                <g:textArea id="aboutMeInput" name="description" cols="80" rows="8" class="form-control"/>
                             </sec:ifAllGranted>
+
+                            <p>
+                            <h5><i class="fa fa-twitter"></i> Twitter</h5>
+                            <label id="twitterLabel">
+                                <g:if test="${user.twitter == null}">
+                                    <h5 id="twitterValue">Click to add your twitter profile</h5>
+                                </g:if>
+                                <g:else>
+                                    <h5 id="twitterValue">${user.twitter}</h5>
+                                </g:else>
+                            </label>
+                            </p>
+                            <g:textField id="twitterInput" name="twitter" class="form-control"/>
+
+                            <p>
+                            <h5><i class="fa fa-linkedin-square"></i> Linkedin</h5>
+                            <label id="linkedinLabel">
+                                <g:if test="${user.linkedin == null}">
+                                    <h5 id="linkedinValue">Click to add your linkedin profile</h5>
+                                </g:if>
+                                <g:else>
+                                    <h5 id="linkedinValue">${user.linkedin}</h5>
+                                </g:else>
+                            </label>
+                            </p>
+                            <g:textField id="linkedinInput" name="linkedin" class="form-control"/>
+
+                            <p>
+                            <h5><i class="fa fa-github"></i> Github</h5>
+                            <label id="githubLabel">
+                                <g:if test="${user.github == null}">
+                                    <h5 id="githubValue">Click to add your github profile</h5>
+                                </g:if>
+                                <g:else>
+                                    <h5 id="githubValue">${user.github}</h5>
+                                </g:else>
+                            </label>
+                            </p>
+                            <g:textField id="githubInput" name="github" class="form-control"/>
+
+                            <p>
+                            <h5><i class="fa fa-user"></i> About me</h5>
+                            <label id="aboutMeLabel">
+                                <g:if test="${user.description == null}">
+                                    <h5 id="aboutMeValue">Click to tell us about you</h5>
+                                </g:if>
+                                <g:else>
+                                    <h5 id="aboutMeValue">${user.description}</h5>
+                                </g:else>
+                            </label>
+                            </p>
+                            <g:textArea id="aboutMeInput" name="description" cols="80" rows="8" class="form-control"/>
 
                             <br>
                             <div class="user-button">
@@ -150,6 +190,48 @@
 
                 schoolInput.focusout(function() {
                     inputFocusOut(schoolLabel, schoolValue, schoolInput);
+                });
+
+                var twitterInput = $('#twitterInput');
+                var twitterLabel = $('#twitterLabel');
+                var twitterValue = $('#twitterValue');
+
+                twitterInput.hide();
+
+                twitterLabel.click(function () {
+                    labelClick(twitterLabel, twitterValue, twitterInput);
+                });
+
+                twitterInput.focusout(function() {
+                    inputFocusOut(twitterLabel, twitterValue, twitterInput);
+                });
+
+                var linkedinInput = $('#linkedinInput');
+                var linkedinLabel = $('#linkedinLabel');
+                var linkedinValue = $('#linkedinValue');
+
+                linkedinInput.hide();
+
+                linkedinLabel.click(function () {
+                    labelClick(linkedinLabel, linkedinValue, linkedinInput);
+                });
+
+                linkedinInput.focusout(function() {
+                    inputFocusOut(linkedinLabel, linkedinValue, linkedinInput);
+                });
+
+                var githubInput = $('#githubInput');
+                var githubLabel = $('#githubLabel');
+                var githubValue = $('#githubValue');
+
+                githubInput.hide();
+
+                githubLabel.click(function () {
+                    labelClick(githubLabel, githubValue, githubInput);
+                });
+
+                githubInput.focusout(function() {
+                    inputFocusOut(githubLabel, githubValue, githubInput);
                 });
 
                 var aboutMeInput = $('#aboutMeInput');

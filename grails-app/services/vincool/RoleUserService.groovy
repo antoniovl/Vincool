@@ -16,7 +16,7 @@ class RoleUserService {
         }
     }
 
-    boolean isCurrentUserAStudent() {
+    boolean isCurrentUserAnAttendee() {
         return getRoles().contains("ROLE_STUDENT")
     }
 
