@@ -30,33 +30,39 @@ class ProfileController {
         def user
         def userId = springSecurityService.getCurrentUserId()
 
+
         if (roleUserService.isCurrentUserAnAttendee()) {
 
             user = Attendee.findById(userId)
 
-            if (params.name) {
-                user.name = params.name as String
-            }
             if (params.school) {
                 user.school = params.school as String
             }
+
             if (params.currentCompany) {
                 user.currentCompany = params.currentCompany as String
             }
-            if (params.description) {
-                user.description = params.description as String
-            }
 
-        } else if (roleUserService.isCurrentUserAInstructor()) {
+        }
 
-            user = Instructor.findById(userId)
-            if (params.name) {
-                user.name = params.name as String
-            }
+        if (params.name) {
+            user.name = params.name as String
+        }
 
-        } else {
+        if (params.twitter) {
+            user.twitter = params.twitter as String
+        }
 
-            user = SecUser.findById(userId)
+        if (params.linkedin) {
+            user.linkedin = params.linkedin as String
+        }
+
+        if (params.github) {
+            user.github = params.github as String
+        }
+
+        if (params.description) {
+            user.description = params.description as String
         }
 
         user.save(flush: true)
