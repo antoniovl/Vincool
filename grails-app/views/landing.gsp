@@ -5,85 +5,103 @@
 </head>
 <body id="page-top">
 
-
-<section id="features" class="container services">
-    <div class="row">
-        <div class="col-sm-3">
-            <h2>Full responsive</h2>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
-            <p><a class="navy-link" href="#" role="button">Details &raquo;</a></p>
+<section class="features" id="program">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="navy-line"></div>
+                <h1>El <span class="navy"> Programa</span></h1>
+            </div>
         </div>
-        <div class="col-sm-3">
-            <h2>LESS/SASS Files</h2>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
-            <p><a class="navy-link" href="#" role="button">Details &raquo;</a></p>
+        <div class="row">
+            <div class="col-lg-5 col-lg-offset-1 features-text">
+                <small>NS Apprentice</small>
+                <h2>Quien?</h2>
+                <i class="fa fa-user big-icon pull-right"></i>
+                <p>Nearsoft Apprentice es un programa dirigido a cualquier persona que tenga deseos de aprender desde estudiantes hasta profesionistas de otras areas que deseen adentrarse en el mundo del desarrollo de software.</p>
+            </div>
+            <div class="col-lg-5 features-text">
+                <small>NS Apprentice</small>
+                <h2>Requisitos </h2>
+                <i class="fa fa-laptop big-icon pull-right"></i>
+                <p>Debes de registrarte en nuestra plataforma a las clases que desees asistir, necesitaras una computadora para las sesiones practicas. Te recomendamos ampliamente asistir a ambas clases teoricas y practicas.</p>
+            </div>
         </div>
-        <div class="col-sm-3">
-            <h2>6 Charts Library</h2>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
-            <p><a class="navy-link" href="#" role="button">Details &raquo;</a></p>
-        </div>
-        <div class="col-sm-3">
-            <h2>Advanced Forms</h2>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
-            <p><a class="navy-link" href="#" role="button">Details &raquo;</a></p>
+        <div class="row">
+            <div class="col-lg-5 col-lg-offset-1 features-text">
+                <small>NS Apprentice</small>
+                <h2>Clase Abierta</h2>
+                <i class="fa fa-dollar big-icon pull-right"></i>
+                <p>Las clases no tienen ningun costo, puedes asistir a todas las que quieras. Estaran dividias en teoricas y practicas.</p>
+            </div>
+            <div class="col-lg-5 features-text">
+                <small>NS Apprentice</small>
+                <h2>Cuando?</h2>
+                <i class="fa fa-calendar big-icon pull-right"></i>
+                <p>Habra una clase semanal de aproximadamente 3 horas, primero se revisaran los temas teoricos y la siguiente se realizara la practicar.</p>
+            </div>
         </div>
     </div>
-</section>
 
+</section>
+<section class="features">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="navy-line"></div>
+                <h1>Estructura de <span class="navy"> las Clases</span></h1>
+            </div>
+        </div>
+        <div class="row features-block">
+            <div class="col-lg-3 features-text wow fadeInLeft">
+                <small>NS Apprentice</small>
+                <h2>Clases Teoricas</h2>
+                <p>Asiste a nuestras sesiones teoricas para conocer los conceptos y definiciones usadas en las ciencias de la computacion.</p>
+
+            </div>
+            <div class="col-lg-6 text-right m-t-n-lg wow zoomIn">
+                <asset:image src="landing_page/img/brain.png" class="img-responsive" alt="dashboard"/>
+            </div>
+            <div class="col-lg-3 features-text text-right wow fadeInRight">
+                <small>NS Apprentice</small>
+                <h2>Clases Practicas </h2>
+                <p>Asiste a nuestras sesiones practicas para ver aplicados los temas teoricos en codigo y ejemplos reales.</p>
+            </div>
+        </div>
+    </div>
+
+</section>
 <section  class="container features">
     <div class="row">
         <div class="col-lg-12 text-center">
             <div class="navy-line"></div>
-            <h1>Over 40+ unique view<br/> <span class="navy"> with many custom components</span> </h1>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. </p>
+            <h1>Los <span class="navy"> Temas</span> </h1>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-3 text-center wow fadeInLeft">
+        <div class="col-md-6 text-center wow fadeInLeft">
             <div>
                 <i class="fa fa-mobile features-icon"></i>
-                <h2>Full responsive</h2>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
+                <h2>Ciencia de la Computacion</h2>
+                <p>Aprende de estructuras de datos, algoritmos y notacion Big O.</p>
             </div>
             <div class="m-t-lg">
                 <i class="fa fa-bar-chart features-icon"></i>
-                <h2>6 Charts Library</h2>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
+                <h2>Metodos Agiles</h2>
+                <p>Conoce las metodologias agiles usadas en la industria.</p>
             </div>
         </div>
-        <div class="col-md-6 text-center  wow zoomIn">
-            <asset:image src="landing_page/img/perspective.png" alt="dashboard" class="img-responsive"/>
-        </div>
-        <div class="col-md-3 text-center wow fadeInRight">
+        <div class="col-md-6 text-center wow fadeInRight">
             <div>
                 <i class="fa fa-envelope features-icon"></i>
-                <h2>Mail pages</h2>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
+                <h2>Bases de Datos</h2>
+                <p>Explora las capacidades de las bases de datos SQL y No SQL.</p>
             </div>
             <div class="m-t-lg">
                 <i class="fa fa-google features-icon"></i>
-                <h2>AngularJS version</h2>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
+                <h2>Diseño de Software</h2>
+                <p>Descubre las buenas practicas del desarrollo de software, patrones de diseño, Pruebas unitarias, SOLID</p>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-12 text-center">
-            <div class="navy-line"></div>
-            <h1>Discover great feautres</h1>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. </p>
-        </div>
-    </div>
-    <div class="row features-block">
-        <div class="col-lg-6 features-text wow fadeInLeft">
-            <small>INSPINIA</small>
-            <h2>Perfectly designed </h2>
-            <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with latest jQuery plugins.</p>
-            <a href="" class="btn btn-primary">Learn more</a>
-        </div>
-        <div class="col-lg-6 text-right wow fadeInRight">
-            <asset:image src="landing_page/img/dashboard.png" alt="dashboard" class="img-responsive pull-right"/>
         </div>
     </div>
 </section>
@@ -93,7 +111,7 @@
         <div class="row m-b-lg">
             <div class="col-lg-12 text-center">
                 <div class="navy-line"></div>
-                <h1>El Staff</h1>
+                <h1>Los Mentores</h1>
                 <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod.</p>
             </div>
         </div>
@@ -152,42 +170,15 @@
     </div>
 </section>
 
-<section class="features">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <div class="navy-line"></div>
-                <h1>Even more great feautres</h1>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. </p>
-            </div>
-        </div>
-        <div class="row features-block">
-            <div class="col-lg-3 features-text wow fadeInLeft">
-                <small>INSPINIA</small>
-                <h2>Perfectly designed </h2>
-                <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with latest jQuery plugins.</p>
-                <a href="" class="btn btn-primary">Learn more</a>
-            </div>
-            <div class="col-lg-6 text-right m-t-n-lg wow zoomIn">
-                <asset:image src="landing_page/img/iphone.jpg" class="img-responsive" alt="dashboard"/>
-            </div>
-            <div class="col-lg-3 features-text text-right wow fadeInRight">
-                <small>INSPINIA</small>
-                <h2>Perfectly designed </h2>
-                <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with latest jQuery plugins.</p>
-                <a href="" class="btn btn-primary">Learn more</a>
-            </div>
-        </div>
-    </div>
 
-</section>
-<section class="timeline gray-section">
+<section id="next" class="timeline gray-section"  style="margin-top: 0px;">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="navy-line"></div>
-                <h1>Our workflow</h1>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. </p>
+                <h1>Proximas clases</h1>
+                <p>Estas son las clases que tendremos en las proximas dos semanas. Para conocer todo el calendario visita</p>
+                <g:link controller="calendar" class="btn btn-primary">Calendario</g:link>
             </div>
         </div>
         <div class="row features-block">
@@ -200,8 +191,8 @@
                         </div>
 
                         <div class="vertical-timeline-content">
-                            <h2>Meeting</h2>
-                            <p>Conference on the sales results for the previous year. Monica please examine sales trends in marketing and products. Below please find the current status of the sale.
+                            <h2>Clase 1</h2>
+                            <p>Tema.
                             </p>
                             <a href="#" class="btn btn-xs btn-primary"> More info</a>
                             <span class="vertical-date"> Today <br/> <small>Dec 24</small> </span>
@@ -214,23 +205,10 @@
                         </div>
 
                         <div class="vertical-timeline-content">
-                            <h2>Decision</h2>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.</p>
+                            <h2>Clase 2</h2>
+                            <p>Tema
                             <a href="#" class="btn btn-xs btn-primary"> More info</a>
                             <span class="vertical-date"> Tomorrow <br/> <small>Dec 26</small> </span>
-                        </div>
-                    </div>
-
-                    <div class="vertical-timeline-block">
-                        <div class="vertical-timeline-icon navy-bg">
-                            <i class="fa fa-cogs"></i>
-                        </div>
-
-                        <div class="vertical-timeline-content">
-                            <h2>Implementation</h2>
-                            <p>Go to shop and find some products. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's. </p>
-                            <a href="#" class="btn btn-xs btn-primary"> More info</a>
-                            <span class="vertical-date"> Monday <br/> <small>Jan 02</small> </span>
                         </div>
                     </div>
 
@@ -267,8 +245,7 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="navy-line"></div>
-                <h1>What our partners say</h1>
-                <p>Donec sed odio dui. Etiam porta sem malesuada. </p>
+                <h1>Testimonios</h1>
             </div>
         </div>
         <div class="row features-block">
@@ -329,46 +306,7 @@
     </div>
 
 </section>
-<section class="features">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <div class="navy-line"></div>
-                <h1>More and more extra great feautres</h1>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-5 col-lg-offset-1 features-text">
-                <small>INSPINIA</small>
-                <h2>Perfectly designed </h2>
-                <i class="fa fa-bar-chart big-icon pull-right"></i>
-                <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with.</p>
-            </div>
-            <div class="col-lg-5 features-text">
-                <small>INSPINIA</small>
-                <h2>Perfectly designed </h2>
-                <i class="fa fa-bolt big-icon pull-right"></i>
-                <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with.</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-5 col-lg-offset-1 features-text">
-                <small>INSPINIA</small>
-                <h2>Perfectly designed </h2>
-                <i class="fa fa-clock-o big-icon pull-right"></i>
-                <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with.</p>
-            </div>
-            <div class="col-lg-5 features-text">
-                <small>INSPINIA</small>
-                <h2>Perfectly designed </h2>
-                <i class="fa fa-users big-icon pull-right"></i>
-                <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with.</p>
-            </div>
-        </div>
-    </div>
 
-</section>
 
 </body>
 </html>

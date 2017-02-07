@@ -50,11 +50,11 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="/#page-top">Home</a></li>
-                    <li><a  href="/#features">Features</a></li>
-                    <li><a href="/#team">Team</a></li>
-                    <li><a  href="/#testimonials">Testimonials</a></li>
-                    <li><a href="/#pricing">Pricing</a></li>
-                    <li><g:link controller="calendar" >Calendar</g:link></li>
+                    <li><a  href="/#program">El Programa</a></li>
+                    <li><a href="/#team">Los Mentores</a></li>
+                    <li><a  href="/#next">Proximas clases</a></li>
+                    <li><a href="/#testimonials">Testimonios</a></li>
+                    <li><g:link controller="calendar" >Calendario</g:link></li>
                     <sec:ifNotLoggedIn><li><a class="page-scroll" href="/login">Login</a></li></sec:ifNotLoggedIn>
                 </ul>
             </div>
@@ -69,14 +69,6 @@
     <div class="carousel-inner" role="listbox">
         <div class="item active">
             <div class="container">
-                <div class="carousel-caption">
-                    <h1>Strong foundations</h1>
-                    <p>Lorem Ipsum is simply dummy text of the printing.</p>
-                    <p>
-                        <a class="btn btn-lg btn-primary" href="#" role="button">READ MORE</a>
-                        <a class="caption-link" href="#" role="button">Inspinia Theme</a>
-                    </p>
-                </div>
             </div>
             <!-- Set background for slide in css -->
             <div class="header-back one"></div>
@@ -84,11 +76,6 @@
         </div>
         <div class="item">
             <div class="container">
-                <div class="carousel-caption blank">
-                    <h1>Nearsoft Apprentice</h1>
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
-                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
-                </div>
             </div>
             <!-- Set background for slide in css -->
             <div class="header-back two"></div>
@@ -109,7 +96,7 @@
 
 
 
-<section id="contact" class="gray-section contact">
+<section id="contact" class="gray-section contact" style="margin-top: 0px;">
     <div class="container">
         <div class="row m-b-lg">
             <div class="col-lg-12 text-center">
