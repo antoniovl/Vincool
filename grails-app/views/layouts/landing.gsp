@@ -65,6 +65,7 @@
     <ol class="carousel-indicators">
         <li data-target="#inSlider" data-slide-to="0" class="active"></li>
         <li data-target="#inSlider" data-slide-to="1"></li>
+        <li data-target="#inSlider" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner" role="listbox">
         <div class="item active">
@@ -80,6 +81,23 @@
             <!-- Set background for slide in css -->
             <div class="header-back two"></div>
         </div>
+        <div class="item">
+            <div class="container">
+            </div>
+            <!-- Set background for slide in css -->
+            <div class="header-back tree"></div>
+        </div>
+        <!--div class="item">
+            <div class="container">
+            </div>
+            <div class="header-back four"></div>
+        </div>
+        <div class="item">
+            <div class="container">
+            </div>
+
+            <div class="header-back five"></div>
+        </div-->
     </div>
     <a class="left carousel-control" href="#inSlider" role="button" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
