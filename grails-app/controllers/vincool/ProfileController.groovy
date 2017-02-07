@@ -6,7 +6,7 @@ import vincool.auth.SecUser
 @Secured(['ROLE_ADMIN', 'ROLE_INSTRUCTOR', 'ROLE_STUDENT'])
 class ProfileController {
 
-    static allowedMethods = [update: "PATCH", index: "GET"]
+    static allowedMethods = [index: "GET", update: "PUT"]
     def springSecurityService
     def roleUserService
 
@@ -15,7 +15,7 @@ class ProfileController {
         def user
         def userId = springSecurityService.getCurrentUserId()
 
-        if (roleUserService.isCurrentUserAStudent()) {
+        if (roleUserService.isCurrentUserAnAttendee()) {
             user = Attendee.findById(userId)
         } else if (roleUserService.isCurrentUserAInstructor()) {
             user = Instructor.findById(userId)
@@ -30,7 +30,7 @@ class ProfileController {
         def user
         def userId = springSecurityService.getCurrentUserId()
 
-        if (roleUserService.isCurrentUserAStudent()) {
+        if (roleUserService.isCurrentUserAnAttendee()) {
 
             user = Attendee.findById(userId)
 

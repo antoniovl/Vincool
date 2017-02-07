@@ -150,10 +150,22 @@ h1 {
   width: 100%;
 }
 .header-back.one {
-  background: url('../img/header_one.jpg') 50% 0 no-repeat;
+  background: url('../img/header1.png') 50% 0 no-repeat;
 }
 .header-back.two {
-  background: url('../img/header_two.jpg') 50% 0 no-repeat;
+  background: url('../img/header2.png') 50% 0 no-repeat;
+}
+.header-back.tree {
+  background: url('../img/header4.png') 50% 0 no-repeat;
+}
+.header-back.four {
+  background: url('../img/header5.png') 50% 0 no-repeat;
+}
+.header-back.five {
+  background: url('../img/header6.png') 50% 0 no-repeat;
+}
+.header-back.six {
+  background: url('../img/header9.jpg') 50% 0 no-repeat;
 }
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */

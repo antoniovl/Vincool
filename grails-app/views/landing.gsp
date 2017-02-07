@@ -227,13 +227,17 @@
             <div class="col-lg-12 text-center wow zoomIn">
                 <i class="fa fa-comment big-icon"></i>
                 <h1>
-                    What our users say
+                    Testimonios
                 </h1>
                 <div class="testimonials-text">
-                    <i>"Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."</i>
+                    <i>"NS Apprentice es un programa directo, completo y actualizado sobre el desarrollo de software y sus buenas prácticas.
+
+                    El ambiente que se genera es muy agradable pues asisten desde estudiantes hasta profesionales con varios años de experiencia y todos compartimos conocimiento.
+
+                    No son clases tipo escuela y los instructores viven día a día en el desarrollo de software por lo que la información que se da realmente te ayuda a abrirte el panorama de lo que creías que era el desarrollo de software."</i>
                 </div>
                 <small>
-                    <strong>12.02.2014 - Andy Smith</strong>
+                    <strong>Feb.07.2016 - Luis Alducin</strong>
                 </small>
             </div>
         </div>
@@ -242,12 +246,6 @@
 </section>
 <section class="comments gray-section" style="margin-top: 0">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <div class="navy-line"></div>
-                <h1>Testimonios</h1>
-            </div>
-        </div>
         <div class="row features-block">
             <div class="col-lg-4">
                 <div class="bubble">
