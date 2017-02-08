@@ -5,7 +5,7 @@
     </content>
 
     <content tag="boxTitle">
-        <h3>Edit Event</h3>
+        <h3>Event Detail</h3>
     </content>
 
     <content tag="boxContent">
@@ -37,14 +37,19 @@
                     <dt>Calendar Color:</dt> <dd>${event.eventCategory.color}</dd>
                     <dt>Attendees:</dt>
                     <dd class="project-people">
-                        <g:each in="${eventDetails.attendeesPictures}" var="url" >
-                            <g:if test="${url == null}">
-                                <asset:image src="default_user.svg" class="img-circle" />
-                            </g:if>
-                            <g:else>
-                                <img alt="image" class="img-circle" src="${url}">
-                            </g:else>
-                        </g:each>
+                        <g:if test="${eventDetails.attendeesPictures.isEmpty()}">
+                            No attendees for the moment
+                        </g:if>
+                        <g:else>
+                            <g:each in="${eventDetails.attendeesPictures}" var="url" >
+                                <g:if test="${url == null}">
+                                    <asset:image src="default_user.svg" class="img-circle" />
+                                </g:if>
+                                <g:else>
+                                    <img alt="image" class="img-circle" src="${url}">
+                                </g:else>
+                            </g:each>
+                        </g:else>
                     </dd>
                 </dl>
             </div>
@@ -81,209 +86,56 @@
                         <div class="tab-content">
                             <div class="tab-pane active" id="tab-1">
                                 <div class="feed-activity-list">
-                                    <div class="feed-element">
-                                        <a href="#" class="pull-left">
-                                            <img alt="image" class="img-circle" src="img/a2.jpg">
-                                        </a>
-                                        <div class="media-body ">
-                                            <small class="pull-right">2h ago</small>
-                                            <strong>Mark Johnson</strong> posted message on <strong>Monica Smith</strong> site. <br>
-                                            <small class="text-muted">Today 2:10 pm - 12.06.2014</small>
-                                            <div class="well">
-                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                                                Over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                                    <g:each in="${eventDetails.enrollments}" var="enrollment">
+                                        <div class="feed-element">
+                                            <a href="#" class="pull-left">
+                                                <g:if test="${enrollment.attendee.profilePictureUrl == null}">
+                                                    <asset:image src="default_user.svg" class="img-circle" />
+                                                </g:if>
+                                                <g:else>
+                                                    <img alt="image" class="img-circle" src="${enrollment.attendee.profilePictureUrl}">
+                                                </g:else>
+                                            </a>
+                                            <div class="body ">
+                                                <g:if test="${enrollment.attendance}">
+                                                    <span class="label label-primary pull-right"><i class="fa fa-check"></i> Assisted</span>
+                                                </g:if>
+                                                <g:else>
+                                                    <span class="label label pull-right"><i class="fa fa-close"></i> Not Assisted</span>
+                                                </g:else>
+                                                <strong>${enrollment.attendee.name}</strong> <br>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="feed-element">
-                                        <a href="#" class="pull-left">
-                                            <img alt="image" class="img-circle" src="img/a3.jpg">
-                                        </a>
-                                        <div class="media-body ">
-                                            <small class="pull-right">2h ago</small>
-                                            <strong>Janet Rosowski</strong> add 1 photo on <strong>Monica Smith</strong>. <br>
-                                            <small class="text-muted">2 days ago at 8:30am</small>
-                                        </div>
-                                    </div>
-                                    <div class="feed-element">
-                                        <a href="#" class="pull-left">
-                                            <img alt="image" class="img-circle" src="img/a4.jpg">
-                                        </a>
-                                        <div class="media-body ">
-                                            <small class="pull-right text-navy">5h ago</small>
-                                            <strong>Chris Johnatan Overtunk</strong> started following <strong>Monica Smith</strong>. <br>
-                                            <small class="text-muted">Yesterday 1:21 pm - 11.06.2014</small>
-                                            <div class="actions">
-                                                <a class="btn btn-xs btn-white"><i class="fa fa-thumbs-up"></i> Like </a>
-                                                <a class="btn btn-xs btn-white"><i class="fa fa-heart"></i> Love</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="feed-element">
-                                        <a href="#" class="pull-left">
-                                            <img alt="image" class="img-circle" src="img/a5.jpg">
-                                        </a>
-                                        <div class="media-body ">
-                                            <small class="pull-right">2h ago</small>
-                                            <strong>Kim Smith</strong> posted message on <strong>Monica Smith</strong> site. <br>
-                                            <small class="text-muted">Yesterday 5:20 pm - 12.06.2014</small>
-                                            <div class="well">
-                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                                                Over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="feed-element">
-                                        <a href="#" class="pull-left">
-                                            <img alt="image" class="img-circle" src="img/profile.jpg">
-                                        </a>
-                                        <div class="media-body ">
-                                            <small class="pull-right">23h ago</small>
-                                            <strong>Monica Smith</strong> love <strong>Kim Smith</strong>. <br>
-                                            <small class="text-muted">2 days ago at 2:30 am - 11.06.2014</small>
-                                        </div>
-                                    </div>
-                                    <div class="feed-element">
-                                        <a href="#" class="pull-left">
-                                            <img alt="image" class="img-circle" src="img/a7.jpg">
-                                        </a>
-                                        <div class="media-body ">
-                                            <small class="pull-right">46h ago</small>
-                                            <strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>. <br>
-                                            <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
-                                        </div>
-                                    </div>
+                                    </g:each>
                                 </div>
-
                             </div>
+
                             <div class="tab-pane" id="tab-2">
 
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
-                                        <th>Status</th>
-                                        <th>Title</th>
-                                        <th>Start Time</th>
-                                        <th>End Time</th>
-                                        <th>Comments</th>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>
+                                            Url
+                                            <g:link controller="resource" action="create" id="${event.id}" class="btn btn-sm button btn-outline btn-primary pull-right">
+                                                <i class="fa fa-check"></i> Add a new resource
+
+                                            </g:link>
+                                        </th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>
-                                            <span class="label label-primary"><i class="fa fa-check"></i> Completed</span>
-                                        </td>
-                                        <td>
-                                            Create project in webapp
-                                        </td>
-                                        <td>
-                                            12.07.2014 10:10:1
-                                        </td>
-                                        <td>
-                                            14.07.2014 10:16:36
-                                        </td>
-                                        <td>
-                                            <p class="small">
-                                                Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable.
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <span class="label label-primary"><i class="fa fa-check"></i> Accepted</span>
-                                        </td>
-                                        <td>
-                                            Various versions
-                                        </td>
-                                        <td>
-                                            12.07.2014 10:10:1
-                                        </td>
-                                        <td>
-                                            14.07.2014 10:16:36
-                                        </td>
-                                        <td>
-                                            <p class="small">
-                                                Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <span class="label label-primary"><i class="fa fa-check"></i> Sent</span>
-                                        </td>
-                                        <td>
-                                            There are many variations
-                                        </td>
-                                        <td>
-                                            12.07.2014 10:10:1
-                                        </td>
-                                        <td>
-                                            14.07.2014 10:16:36
-                                        </td>
-                                        <td>
-                                            <p class="small">
-                                                There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which
-                                            </p>
-                                        </td>
 
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <span class="label label-primary"><i class="fa fa-check"></i> Reported</span>
-                                        </td>
-                                        <td>
-                                            Latin words
-                                        </td>
-                                        <td>
-                                            12.07.2014 10:10:1
-                                        </td>
-                                        <td>
-                                            14.07.2014 10:16:36
-                                        </td>
-                                        <td>
-                                            <p class="small">
-                                                Latin words, combined with a handful of model sentence structures
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <span class="label label-primary"><i class="fa fa-check"></i> Accepted</span>
-                                        </td>
-                                        <td>
-                                            The generated Lorem
-                                        </td>
-                                        <td>
-                                            12.07.2014 10:10:1
-                                        </td>
-                                        <td>
-                                            14.07.2014 10:16:36
-                                        </td>
-                                        <td>
-                                            <p class="small">
-                                                The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <span class="label label-primary"><i class="fa fa-check"></i> Sent</span>
-                                        </td>
-                                        <td>
-                                            The first line
-                                        </td>
-                                        <td>
-                                            12.07.2014 10:10:1
-                                        </td>
-                                        <td>
-                                            14.07.2014 10:16:36
-                                        </td>
-                                        <td>
-                                            <p class="small">
-                                                The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
-                                            </p>
-                                        </td>
-                                    </tr>
+                                        <g:each in="${event.resources}" var="resource">
+                                            <tr>
+                                                <td>${resource.name}</td>
+                                                <td>${resource.description}</td>
+                                                <td>${resource.url}</td>
+                                            </tr>
+                                        </g:each>
+
                                     </tbody>
                                 </table>
                             </div>

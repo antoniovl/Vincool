@@ -11,7 +11,7 @@ class EventController {
     def assetResourceLocator
     static scaffold = Event
 
-    final MAX_ATTENDEES_PICTURES = 5
+    final MAX_ATTENDEES_PICTURES = 10
 
     @Secured(['ROLE_ADMIN', 'ROLE_INSTRUCTOR', 'ROLE_STUDENT'])
     def index() {
@@ -90,7 +90,9 @@ class EventController {
                 assistancePercentage = ((assistance / enrollments.size()) * 100).intValue()
             }
 
-            def eventDetails = [attendeesPictures: attendeesPictures, assistancePercentage: assistancePercentage]
+            def eventDetails = [enrollments: enrollments,
+                                attendeesPictures: attendeesPictures,
+                                assistancePercentage: assistancePercentage]
             render([view: "show", model: [event: event, eventDetails: eventDetails]])
         }
 
