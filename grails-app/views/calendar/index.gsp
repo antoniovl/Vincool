@@ -9,55 +9,58 @@
         Our Calendar
     </content>
     <content tag="boxContent">
-        <div class="row animated fadeIn">
-            <div class="col-lg-3">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-content">
-                        <h2>Our Calendar</h2> Select the office location you are insterested in: <br/>
-                        <br/><g:select name="office_selector" from="${offices}" optionKey="officeCode"
-                                       optionValue="name"/>
-                        <br/><br/> Click on each event to see details and enroll.
+        <section id="features" class="container services">
+            <div class="row animated fadeIn">
+                <div class="col-lg-3">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-content">
+                            <h2>Our Calendar</h2> Select the office location you are insterested in: <br/>
+                            <br/><g:select name="office_selector" from="${offices}" optionKey="officeCode"
+                                           optionValue="name"/>
+                            <br/><br/> Click on each event to see details and enroll.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-9">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-content">
+                            <div id="calendar"></div>
+                        </div>
                     </div>
                 </div>
             </div>
-    <div class="col-lg-9">
-        <div class="ibox float-e-margins">
-            <div class="ibox-content">
-                <div id="calendar"></div>
-            </div>
-        </div>
-    </div>
-    </div>
 
-    <script>
-        $(document).ready(function () {
+            <script>
+                $(document).ready(function () {
 
-            var calendar = $('#calendar');
-            var officeSelector = $("#office_selector");
+                    var calendar = $('#calendar');
+                    var officeSelector = $("#office_selector");
 
-            <g:applyCodec encodeAs="none">
-            var source = ${source};
-            </g:applyCodec>
+                    <g:applyCodec encodeAs="none">
+                    var source = ${source};
+                    </g:applyCodec>
 
-            officeSelector.change(function () {
-                calendar.fullCalendar('removeEvents');
-                calendar.fullCalendar('addEventSource', source[officeSelector.val()]);
-            });
+                    officeSelector.change(function () {
+                        calendar.fullCalendar('removeEvents');
+                        calendar.fullCalendar('addEventSource', source[officeSelector.val()]);
+                    });
 
-            calendar.fullCalendar({
+                    calendar.fullCalendar({
 
-                header: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'month,agendaWeek,agendaDay'
-                },
-                editable: false,
-                droppable: false,
-                events: source[officeSelector.val()]
+                        header: {
+                            left: 'prev,next today',
+                            center: 'title',
+                            right: 'month,agendaWeek,agendaDay'
+                        },
+                        editable: false,
+                        droppable: false,
+                        events: source[officeSelector.val()]
 
-            });
-        });
-    </script>
+                    });
+                });
+            </script>
+        </section>
     </content>
     <content tag="breadcrumbs">
     </content>

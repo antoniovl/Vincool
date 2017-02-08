@@ -93,24 +93,32 @@
                 </sec:ifAllGranted>
                 <sec:ifAllGranted roles='ROLE_INSTRUCTOR'>
                     <li class="controller">
+                        <g:link controller="program" action="index"><i class="fa fa-list"></i><span
+                                class="nav-label">Programa Completo</span></g:link>
+                    </li>
+                    <li class="controller">
                         <g:link controller="calendar" action="index"><i class="fa fa-calendar-o"></i><span
-                                class="nav-label">Calendar</span></g:link>
+                                class="nav-label">Calendario</span></g:link>
                     </li>
 
                     <li class="controller">
                         <g:link controller="event" action="index"><i class="fa fa-book"></i><span
-                                class="nav-label">My sessions</span></g:link>
+                                class="nav-label">Mis sesiones</span></g:link>
                     </li>
 
                 </sec:ifAllGranted>
                 <sec:ifAllGranted roles='ROLE_STUDENT'>
                     <li class="controller">
+                        <g:link controller="program" action="index"><i class="fa fa-list"></i><span
+                                class="nav-label">Programa Completo</span></g:link>
+                    </li>
+                    <li class="controller">
                         <g:link controller="calendar" action="index"><i class="fa fa-calendar-o"></i><span
-                                class="nav-label">Calendar</span></g:link>
+                                class="nav-label">Calendario</span></g:link>
                     </li>
                     <li class="controller">
                         <g:link controller="event" action="index"><i class="fa fa-book"></i><span
-                                class="nav-label">Enrollments</span></g:link>
+                                class="nav-label">Mis Eventos</span></g:link>
                     </li>
                 </sec:ifAllGranted>
 
