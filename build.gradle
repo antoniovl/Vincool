@@ -23,6 +23,7 @@ apply plugin:"asset-pipeline"
 repositories {
     mavenLocal()
     maven { url "https://repo.grails.org/grails/core" }
+    maven { url "http://dl.bintray.com/infinit/infinit-opensource" }
 }
 
 dependencyManagement {
@@ -59,7 +60,9 @@ dependencies {
     compile 'org.grails.plugins:spring-security-oauth2:1.+'
     compile 'org.grails.plugins:spring-security-oauth2-google:1.1.+'
     compile group: 'org.springframework.social', name: 'spring-social-google', version: '1.0.0.RC1'
-
+    // Cloudinary
+    compile 'com.cloudinary:cloudinary-http44:1.7.0'
+    compile 'com.cloudinary:cloudinary-taglib:1.7.0'
 }
 
 bootRun {

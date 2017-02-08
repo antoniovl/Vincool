@@ -155,3 +155,7 @@ grails:
                         api_key: '314421498739-r0pbci40botjh0pmgb3pob5q0obr37r0.apps.googleusercontent.com'
                         api_secret: 'eOc-t2xZoN19OoZono0K1uLc'
                         scope: 'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email'
+        cloudinary:
+            apiKey: '675626252898869'
+            apiSecret: 'GMzalj3XZ3aWsqrVuSGyQX7D8Bg'
+            cloudName: 'vincoolns'
