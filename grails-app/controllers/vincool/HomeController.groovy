@@ -11,7 +11,14 @@ class HomeController {
         } else if (roleUserService.isCurrentUserAnAdmin()) {
             forward controller: "event"
         } else {
-            render(view: "landing_esp", model: [instructors: Instructor.findAllByNameIsNotNull(),nextClasses: Event.findAll("from Event ",[max: 2])])
+            render(view: "landing_esp", model: [instructors: Instructor.findAllByNameIsNotNull(), nextClasses: Event.createCriteria().list {
+                ge('date', new Date().clearTime())
+                batch {
+                    eq('isActive', true)
+                }
+                maxResults(2)
+                order("date", "asc")
+            }])
         }
 
     }
