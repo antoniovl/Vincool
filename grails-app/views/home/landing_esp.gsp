@@ -164,15 +164,15 @@
                         <p>${it.description}</p>
                         <ul class="list-inline social-icon">
                             <g:if test="${it.twitter}">
-                                <li><a href="https://twitter.com/${it.twitter}"><i class="fa fa-twitter"></i></a>
+                                <li><a target="_blank" href="https://twitter.com/${it.twitter}"><i class="fa fa-twitter"></i></a>
                                 </li>
                             </g:if>
                             <g:if test="${it.github}">
-                                <li><a href="https://github.com/${it.github}"><i class="fa fa-github"></i></a>
+                                <li><a target="_blank" href="https://github.com/${it.github}"><i class="fa fa-github"></i></a>
                                 </li>
                             </g:if>
                             <g:if test="${it.linkedin}">
-                                <li><a href="https://www.linkedin.com/in/${it.linkedin}"><i class="fa fa-linkedin"></i></a>
+                                <li><a target="_blank" href="https://www.linkedin.com/in/${it.linkedin}"><i class="fa fa-linkedin"></i></a>
                                 </li>
                             </g:if>
                         </ul>
