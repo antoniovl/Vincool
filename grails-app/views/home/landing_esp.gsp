@@ -99,6 +99,7 @@
             <div class="navy-line"></div>
 
             <h1>Los <span class="navy">Temas</span></h1>
+            <g:link controller="program" class="btn btn-primary">Temario Completo</g:link>
         </div>
     </div>
 
@@ -211,7 +212,7 @@
                                 <p>${it.description}
                                 </p>
                                 <g:link controller="event" action="show" id="${it.id}" class="btn btn-xs btn-primary">Mas informacion</g:link>
-                                <span class="vertical-date">${it.date}</span>
+                                <span class="vertical-date"><g:formatDate date="${it.date.toDate()}"/></span>
                             </div>
                         </div>
                     </g:each>
