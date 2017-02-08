@@ -11,10 +11,10 @@ class EventController {
     static scaffold = Event
 
     @Secured(['ROLE_ADMIN', 'ROLE_INSTRUCTOR', 'ROLE_STUDENT'])
-    def index() {
+    def index(Integer max) {
         def userDetails = session.userDetails
         def events, eventCount
-
+        params.max = Math.min(max ?: 10, 100)
         if (roleUserService.isCurrentUserAnAdmin()) {
             events = Event.list(params)
             eventCount = Event.count()
