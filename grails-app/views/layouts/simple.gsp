@@ -91,10 +91,7 @@
     </div>
 </sec:ifLoggedIn>
 <sec:ifNotLoggedIn>
-    <section id="features" class="container services">
         <g:pageProperty name="page.boxContent"/>
-    </section>
-
 </sec:ifNotLoggedIn>
 </body>
 </html>
