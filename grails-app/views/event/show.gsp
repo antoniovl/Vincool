@@ -38,7 +38,12 @@
                     <dt>Attendees:</dt>
                     <dd class="project-people">
                         <g:each in="${eventDetails.attendeesPictures}" var="url" >
-                            <img alt="image" class="img-circle" src="${url}">
+                            <g:if test="${url == null}">
+                                <asset:image src="default_user.svg" class="img-circle" />
+                            </g:if>
+                            <g:else>
+                                <img alt="image" class="img-circle" src="${url}">
+                            </g:else>
                         </g:each>
                     </dd>
                 </dl>

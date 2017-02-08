@@ -8,6 +8,7 @@ class EventController {
 
     def springSecurityService
     def roleUserService
+    def assetResourceLocator
     static scaffold = Event
 
     final MAX_ATTENDEES_PICTURES = 5
@@ -75,6 +76,7 @@ class EventController {
 
             def enrollments = Enrollment.findAllByEvent(event)
             def attendeesPictures = enrollments.take(MAX_ATTENDEES_PICTURES).collect { it.attendee.profilePictureUrl }
+
             def assistance = 0
 
             for (enrollment in enrollments) {
@@ -85,7 +87,7 @@ class EventController {
 
             def assistancePercentage = 0
             if (!enrollments.isEmpty()){
-                assistancePercentage = ((assistance/enrollments.size())*100).intValue()
+                assistancePercentage = ((assistance / enrollments.size()) * 100).intValue()
             }
 
             def eventDetails = [attendeesPictures: attendeesPictures, assistancePercentage: assistancePercentage]
