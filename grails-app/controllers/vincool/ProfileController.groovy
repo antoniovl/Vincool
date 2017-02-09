@@ -39,9 +39,7 @@ class ProfileController {
             def publicId = org.apache.commons.io.FilenameUtils.removeExtension(fileName)
 
             def data = IOUtils.copyToByteArray(profilePicture.getInputStream())
-
-            cloudinaryService.delete(publicId)
-            def uploadResult = cloudinaryService.upload(data)
+            def uploadResult = cloudinaryService.update(publicId, data)
 
             user.profilePictureUrl = uploadResult.url
 

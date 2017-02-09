@@ -34,6 +34,11 @@ class CloudinaryService {
         return Singleton.getCloudinary().uploader().destroy(imageId, options << getCloudinaryOptions()).result == 'ok'
     }
 
+    def update(String imageId, byte[] content) {
+        delete(imageId, [async: true])
+        return upload(content)
+    }
+
     def fillCloudinaryUploadResult(Map<String, String> cloudinaryResult) {
         cloudinaryResult ? new CloudinaryUploadResult(
                 publicId: cloudinaryResult.'public_id',
