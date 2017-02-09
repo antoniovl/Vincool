@@ -31,9 +31,11 @@
                             <br>
                             <label id="nameLabel">
                                 <g:if test="${session.name == null}">
+                                    <g:set var="namePlaceholder" value="${true}"/>
                                     <h3 id="nameValue"><strong>Click to add your name</strong></h3>
                                 </g:if>
                                 <g:else>
+                                    <g:set var="namePlaceholder" value="${false}"/>
                                     <h3 id="nameValue"><strong>${session.name}</strong></h3>
                                 </g:else>
                             </label>
@@ -45,9 +47,11 @@
                                 <h5><i class="fa fa-briefcase"></i> Work</h5>
                                 <label id="workLabel">
                                     <g:if test="${user.currentCompany == null}">
+                                        <g:set var="workPlaceholder" value="${true}"/>
                                         <h5 id="workValue">Click to add a company</h5>
                                     </g:if>
                                     <g:else>
+                                        <g:set var="workPlaceholder" value="${false}"/>
                                         <h5 id="workValue">${user.currentCompany}</h5>
                                     </g:else>
                                 </label>
@@ -58,9 +62,11 @@
                                 <h5><i class="fa fa-graduation-cap"></i> School</h5>
                                 <label id="schoolLabel">
                                     <g:if test="${user.school == null}">
+                                        <g:set var="schoolPlaceholder" value="${true}"/>
                                         <h5 id="schoolValue">Click to add a school</h5>
                                     </g:if>
                                     <g:else>
+                                        <g:set var="schoolPlaceholder" value="${false}"/>
                                         <h5 id="schoolValue">${user.school}</h5>
                                     </g:else>
                                 </label>
@@ -73,9 +79,11 @@
                             <h5><i class="fa fa-twitter"></i> Twitter</h5>
                             <label id="twitterLabel">
                                 <g:if test="${user.twitter == null}">
+                                    <g:set var="twitterPlaceholder" value="${true}"/>
                                     <h5 id="twitterValue">Click to add your twitter profile</h5>
                                 </g:if>
                                 <g:else>
+                                    <g:set var="twitterPlaceholder" value="${false}"/>
                                     <h5 id="twitterValue">${user.twitter}</h5>
                                 </g:else>
                             </label>
@@ -86,9 +94,11 @@
                             <h5><i class="fa fa-linkedin-square"></i> Linkedin</h5>
                             <label id="linkedinLabel">
                                 <g:if test="${user.linkedin == null}">
+                                    <g:set var="linkedinPlaceholder" value="${true}"/>
                                     <h5 id="linkedinValue">Click to add your linkedin profile</h5>
                                 </g:if>
                                 <g:else>
+                                    <g:set var="linkedinPlaceholder" value="${false}"/>
                                     <h5 id="linkedinValue">${user.linkedin}</h5>
                                 </g:else>
                             </label>
@@ -99,9 +109,11 @@
                             <h5><i class="fa fa-github"></i> Github</h5>
                             <label id="githubLabel">
                                 <g:if test="${user.github == null}">
+                                    <g:set var="githubPlaceholder" value="${true}"/>
                                     <h5 id="githubValue">Click to add your github profile</h5>
                                 </g:if>
                                 <g:else>
+                                    <g:set var="githubPlaceholder" value="${false}"/>
                                     <h5 id="githubValue">${user.github}</h5>
                                 </g:else>
                             </label>
@@ -112,9 +124,11 @@
                             <h5><i class="fa fa-user"></i> About me</h5>
                             <label id="aboutMeLabel">
                                 <g:if test="${user.description == null}">
+                                    <g:set var="aboutMePlaceholder" value="${true}"/>
                                     <h5 id="aboutMeValue">Click to tell us about you</h5>
                                 </g:if>
                                 <g:else>
+                                    <g:set var="aboutMePlaceholder" value="${false}"/>
                                     <h5 id="aboutMeValue">${user.description}</h5>
                                 </g:else>
                             </label>
@@ -144,9 +158,13 @@
         <script>
             $(document).ready(function() {
 
-                function labelClick(label, labelValue, input) {
+                function labelClick(label, labelValue, input, setPlaceholder) {
                     label.hide();
-                    input.attr('placeholder', labelValue.text());
+                    if (setPlaceholder) {
+                        input.attr('placeholder', labelValue.text());
+                    } else {
+                        input.val(labelValue.text());
+                    }
                     input.show().focus();
                     return;
                 }
@@ -168,7 +186,7 @@
                 nameInput.hide();
 
                 nameLabel.click(function () {
-                    labelClick(nameLabel, nameValue, nameInput);
+                    labelClick(nameLabel, nameValue, nameInput, ${namePlaceholder});
                 });
 
                 nameInput.focusout(function() {
@@ -182,7 +200,7 @@
                 workInput.hide();
 
                 workLabel.click(function () {
-                    labelClick(workLabel, workValue, workInput);
+                    labelClick(workLabel, workValue, workInput, ${workPlaceholder});
                 });
 
                 workInput.focusout(function() {
@@ -196,7 +214,7 @@
                 schoolInput.hide();
 
                 schoolLabel.click(function () {
-                    labelClick(schoolLabel, schoolValue, schoolInput);
+                    labelClick(schoolLabel, schoolValue, schoolInput, ${schoolPlaceholder});
                 });
 
                 schoolInput.focusout(function() {
@@ -210,7 +228,7 @@
                 twitterInput.hide();
 
                 twitterLabel.click(function () {
-                    labelClick(twitterLabel, twitterValue, twitterInput);
+                    labelClick(twitterLabel, twitterValue, twitterInput, ${twitterPlaceholder});
                 });
 
                 twitterInput.focusout(function() {
@@ -224,7 +242,7 @@
                 linkedinInput.hide();
 
                 linkedinLabel.click(function () {
-                    labelClick(linkedinLabel, linkedinValue, linkedinInput);
+                    labelClick(linkedinLabel, linkedinValue, linkedinInput, ${linkedinPlaceholder});
                 });
 
                 linkedinInput.focusout(function() {
@@ -238,7 +256,7 @@
                 githubInput.hide();
 
                 githubLabel.click(function () {
-                    labelClick(githubLabel, githubValue, githubInput);
+                    labelClick(githubLabel, githubValue, githubInput, ${githubPlaceholder});
                 });
 
                 githubInput.focusout(function() {
@@ -252,7 +270,7 @@
                 aboutMeInput.hide();
 
                 aboutMeLabel.click(function () {
-                    labelClick(aboutMeLabel, aboutMeValue, aboutMeInput);
+                    labelClick(aboutMeLabel, aboutMeValue, aboutMeInput, ${aboutMePlaceholder});
                 });
 
                 aboutMeInput.focusout(function() {
