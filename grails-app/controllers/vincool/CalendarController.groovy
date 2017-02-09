@@ -4,8 +4,6 @@ import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
 import grails.web.mapping.LinkGenerator
 
-import org.joda.time.LocalDateTime
-
 @Secured(['permitAll'])
 class CalendarController {
 
