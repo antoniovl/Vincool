@@ -44,6 +44,23 @@ class EventController {
         respond events, model: [eventCount: eventCount]
     }
 
+    def resource(Long id) {
+
+        def event = Event.findById(id)
+        render([view: "resource", model: [event: event]])
+        /*if (roleUserService.currentUserAInstructor) {
+            def instructorEvents = Event.findAllByInstructor(springSecurityService.currentUser)
+            def event = Event.findById(id)
+            print("HOLA: " + instructorEvents)
+            if (instructorEvents.contains(event)) {
+                ownsEvent = true
+                print("WTF ---------- ")
+            }
+            return
+        }
+        redirect(controller: "resource", action: "create")*/
+    }
+
     @Secured(['permitAll'])
     def show(Long id) {
 
@@ -54,6 +71,7 @@ class EventController {
 
             if (event == null) {
                 redirect(controller: "calendar", action: "index")
+                return
             }
 
             render([view: "detail", model: [event: event, isEnrolled: false]])
@@ -62,6 +80,7 @@ class EventController {
 
             if (event == null) {
                 redirect(controller: "calendar", action: "index")
+                return
             }
 
             def isEnrolled = Enrollment.findByAttendeeAndEvent(springSecurityService.currentUser, event) != null
@@ -72,6 +91,15 @@ class EventController {
 
             if (event == null) {
                 redirect(action: "index")
+                return
+            }
+
+            def ownsEvent = true
+            if (roleUserService.currentUserAInstructor) {
+                def instructorEvents = Event.findAllByInstructor(springSecurityService.currentUser)
+                if (!instructorEvents.contains(event)) {
+                    ownsEvent = false
+                }
             }
 
             def enrollments = Enrollment.findAllByEvent(event)
@@ -92,7 +120,8 @@ class EventController {
 
             def eventDetails = [enrollments: enrollments,
                                 attendeesPictures: attendeesPictures,
-                                assistancePercentage: assistancePercentage]
+                                assistancePercentage: assistancePercentage,
+                                ownsEvent: ownsEvent]
             render([view: "show", model: [event: event, eventDetails: eventDetails]])
         }
 

@@ -26,6 +26,7 @@
                 <dl class="dl-horizontal">
                     <dt>Category:</dt> <dd>${event.eventCategory.category}</dd>
                     <dt>Type:</dt> <dd>${event.type}</dd>
+                    <dt>Instructor:</dt> <dd>${event.instructor}</dd>
                     <dt>Description:</dt> <dd>${event.description}</dd>
                 </dl>
             </div>
@@ -75,8 +76,8 @@
                     <div class="panel-heading">
                         <div class="panel-options">
                             <ul class="nav nav-tabs">
-                                <li class="active"><a href="#tab-1" data-toggle="tab">Enrollments</a></li>
-                                <li class=""><a href="#tab-2" data-toggle="tab">Resources</a></li>
+                                <li class="active"><a href="#tab-1" data-toggle="tab">Resources</a></li>
+                                <li class=""><a href="#tab-2" data-toggle="tab">Enrollments</a></li>
                             </ul>
                         </div>
                     </div>
@@ -84,7 +85,39 @@
                     <div class="panel-body">
 
                         <div class="tab-content">
+
                             <div class="tab-pane active" id="tab-1">
+
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>
+                                            Url
+                                            <g:if test="${eventDetails.ownsEvent}">
+                                                <g:link controller="event" action="resource" id="${event.id}" class="btn btn-sm button btn-outline btn-primary pull-right">
+                                                    <i class="fa fa-check"></i> Add a new resource
+                                                </g:link>
+                                            </g:if>
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    <g:each in="${event.resources}" var="resource">
+                                        <tr>
+                                            <td>${resource.name}</td>
+                                            <td>${resource.description}</td>
+                                            <td><a href="${resource.url}"> ${resource.url}</a></td>
+                                        </tr>
+                                    </g:each>
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="tab-pane" id="tab-2">
                                 <div class="feed-activity-list">
                                     <g:each in="${eventDetails.enrollments}" var="enrollment">
                                         <div class="feed-element">
@@ -110,35 +143,6 @@
                                 </div>
                             </div>
 
-                            <div class="tab-pane" id="tab-2">
-
-                                <table class="table table-striped">
-                                    <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Description</th>
-                                        <th>
-                                            Url
-                                            <g:link controller="resource" action="create" id="${event.id}" class="btn btn-sm button btn-outline btn-primary pull-right">
-                                                <i class="fa fa-check"></i> Add a new resource
-
-                                            </g:link>
-                                        </th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-
-                                        <g:each in="${event.resources}" var="resource">
-                                            <tr>
-                                                <td>${resource.name}</td>
-                                                <td>${resource.description}</td>
-                                                <td>${resource.url}</td>
-                                            </tr>
-                                        </g:each>
-
-                                    </tbody>
-                                </table>
-                            </div>
                         </div>
                     </div>
                 </div>
