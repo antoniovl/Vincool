@@ -159,3 +159,7 @@ grails:
             apiKey: '675626252898869'
             apiSecret: 'GMzalj3XZ3aWsqrVuSGyQX7D8Bg'
             cloudName: 'vincoolns'
+    controllers:
+        upload:
+            maxFileSize: 2097152
+            maxRequestSize: 2097152

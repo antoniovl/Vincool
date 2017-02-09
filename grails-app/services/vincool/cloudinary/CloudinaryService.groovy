@@ -20,18 +20,18 @@ class CloudinaryService {
     }
 
 
-    def upload(File file) {
-        Map result = Singleton.getCloudinary().uploader().upload(file, getCloudinaryOptions())
+    def upload(File file, Map options = [:]) {
+        Map result = Singleton.getCloudinary().uploader().upload(file, options << getCloudinaryOptions())
         return fillCloudinaryUploadResult(result)
     }
 
-    def upload(byte[] content) {
-        Map<String, String> result = Singleton.getCloudinary().uploader().upload(content, getCloudinaryOptions())
+    def upload(byte[] content, Map options = [:]) {
+        Map<String, String> result = Singleton.getCloudinary().uploader().upload(content, options << getCloudinaryOptions())
         return fillCloudinaryUploadResult(result)
     }
 
-    def delete(String imageId) {
-        return Singleton.getCloudinary().uploader().destroy(imageId, getCloudinaryOptions()).result == 'ok'
+    def delete(String imageId, Map options = [:]) {
+        return Singleton.getCloudinary().uploader().destroy(imageId, options << getCloudinaryOptions()).result == 'ok'
     }
 
     def fillCloudinaryUploadResult(Map<String, String> cloudinaryResult) {
@@ -50,7 +50,6 @@ class CloudinaryService {
                 createdAt: Date.parse('yyyy-MM-dd\'T\'HH:mm:ss', String.valueOf(cloudinaryResult.'created_at'))
         ) : null
     }
-
 
 
 }

@@ -63,6 +63,8 @@ dependencies {
     // Cloudinary
     compile 'com.cloudinary:cloudinary-http44:1.7.0'
     compile 'com.cloudinary:cloudinary-taglib:1.7.0'
+    compile 'commons-io:commons-io:2.5'
+
 }
 
 bootRun {

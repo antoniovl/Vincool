@@ -14,6 +14,7 @@
         <div class="row animated fadeInRight">
             <div class="col-md-12">
                 <div class="ibox float-e-margins">
+                    <g:form controller="profile" action="update" method="PUT" enctype="multipart/form-data">
 
                     <div class="col-md-3">
                         <img src="${session.profilePictureUrl}" class="img-circle circle-border" height="250px" width="250px" alt="profile">
@@ -26,8 +27,6 @@
                     </div>
 
                     <div class="col-md-9">
-
-                        <g:form controller="profile" action="update" method="PATCH" enctype="multipart/form-data">
 
                             <br>
                             <label id="nameLabel">
