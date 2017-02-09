@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="m-b-md">
-                    <a href="#" class="btn btn-white btn-xs pull-right">Edit project</a>
+                    <!--<a href="#" class="btn btn-white btn-xs pull-right">Update project description</a>-->
                     <h2>${event.eventCategory.subCategory}</h2>
                 </div>
                 <dl class="dl-horizontal">
