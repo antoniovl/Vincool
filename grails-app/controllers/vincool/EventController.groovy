@@ -8,8 +8,9 @@ class EventController {
 
     def springSecurityService
     def roleUserService
-    def assetResourceLocator
     static scaffold = Event
+
+    static allowedMethods = [index: "GET", show: "GET", resource: "GET", addResource: "POST"]
 
     final MAX_ATTENDEES_PICTURES = 10
 
@@ -48,7 +49,6 @@ class EventController {
     def show(Long id) {
 
         def event = Event.get(id)
-        def view = "detail"
 
         if (!springSecurityService.loggedIn) {
 
@@ -57,7 +57,7 @@ class EventController {
                 return
             }
 
-            render([view: "detail", model: [event: event, isEnrolled: false]])
+            render([view: "show", model: [event: event, isEnrolled: false]])
 
         } else if (roleUserService.currentUserAnAttendee) {
 
@@ -68,7 +68,7 @@ class EventController {
 
             def isEnrolled = Enrollment.findByAttendeeAndEvent(springSecurityService.currentUser, event) != null
 
-            render([view: "detail", model: [event: event, isEnrolled: isEnrolled]])
+            render([view: "show", model: [event: event, isEnrolled: isEnrolled]])
 
         } else {
 
@@ -105,7 +105,7 @@ class EventController {
                                 attendeesPictures: attendeesPictures,
                                 assistancePercentage: assistancePercentage,
                                 ownsEvent: ownsEvent]
-            render([view: "show", model: [event: event, eventDetails: eventDetails]])
+            render([view: "detail", model: [event: event, eventDetails: eventDetails]])
         }
 
     }
@@ -116,7 +116,7 @@ class EventController {
 
     def addResource(Resource resource) {
         resource.save(flush: true)
-        redirect(action: "show", id: resource.event.id)
+        redirect(action: "detail", id: resource.event.id)
     }
 
 }

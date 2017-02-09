@@ -1,172 +1,120 @@
 <g:applyLayout name="simple">
-
     <content tag="head">
-
+        <asset:link rel="stylesheet" type="text/css" href="jssocials/jssocials.css" />
+        <asset:link rel="stylesheet" type="text/css" href="jssocials/jssocials-theme-classic.css" />
+        <meta property="og:title" content="Nearsoft Apprentice ${event.office} '${event.eventCategory.subCategory}'">
+        <meta property="og:description" content="Join us this ${event.date} at ${event.time.toString('HH:mm')} for the ${event.type} class '${event.eventCategory.subCategory}' : ${event.description} ">
+        <meta property="og:url" content="${request.getRequestURL()}">
+        <meta property="og:image" content="https://nearsoft.com/admin/wp-content/themes/Nearsoftv1/img/nearsoft-symbol.png"/>
+        <meta property="og:type" content="website"/>
+        <meta name="twitter:title" content="Nearsoft Apprentice">
+        <meta name="twitter:description" content="Learn the basics of software development.">
+        <meta name="twitter:image" content="https://nearsoft.com/admin/wp-content/themes/Nearsoftv1/img/nearsoft-symbol.png">
+        <meta name="twitter:card" content="photo">
     </content>
-
     <content tag="boxTitle">
-        <h3>Event Detail</h3>
+        <h3>Session Detail</h3>
     </content>
-
     <content tag="boxContent">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="m-b-md">
-                    <!--<a href="#" class="btn btn-white btn-xs pull-right">Update project description</a>-->
-                    <h2>${event.eventCategory.subCategory}</h2>
-                </div>
-                <dl class="dl-horizontal">
-                    <dt>Status:</dt> <dd><span class="label label-primary">Active</span></dd>
-                </dl>
-            </div>
-        </div>
+        <div class="ibox product-detail">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="font-bold m-b-xs">${event.eventCategory.subCategory} - (${event.type} class)</h1>
+                    <hr/>
 
-        <div class="row">
-            <div class="col-lg-5">
-                <dl class="dl-horizontal">
-                    <dt>Category:</dt> <dd>${event.eventCategory.category}</dd>
-                    <dt>Type:</dt> <dd>${event.type}</dd>
-                    <dt>Instructor:</dt> <dd>${event.instructor}</dd>
-                    <dt>Description:</dt> <dd>${event.description}</dd>
-                </dl>
-            </div>
-            <div class="col-lg-7" id="cluster_info">
-                <dl class="dl-horizontal" >
+                    <div>
+                        <sec:ifAllGranted roles='ROLE_STUDENT'>
+                            <g:if test="${isEnrolled}">
+                                <g:set var="enrollButtonMessage"
+                                       value="${message(code: "default.disenroll.button.label", default: "Cancel enrollment")}"/>
+                                <g:set var="enrollButtonClass" value="${"btn pull-right btn-danger"}"/>
+                                <g:set var="enrollFormAction" value="${"disenroll"}"/>
+                            </g:if>
+                            <g:else>
+                                <g:set var="enrollButtonMessage"
+                                       value="${message(code: "default.enroll.button.label", default: "Enroll in this event")}"/>
+                                <g:set var="enrollButtonClass" value="${"btn pull-right btn-primary"}"/>
+                                <g:set var="enrollFormAction" value="${"enroll"}"/>
+                            </g:else>
 
-                    <dt>Location:</dt> <dd>${event.office}</dd>
-                    <dt>Date:</dt> <dd>${event.date} at ${event.time}</dd>
-                    <dt>Calendar Color:</dt> <dd>${event.eventCategory.color}</dd>
-                    <dt>Attendees:</dt>
-                    <dd class="project-people">
-                        <g:if test="${eventDetails.attendeesPictures.isEmpty()}">
-                            No attendees for the moment
-                        </g:if>
-                        <g:else>
-                            <g:each in="${eventDetails.attendeesPictures}" var="url" >
-                                <g:if test="${url == null}">
-                                    <asset:image src="default_user.svg" class="img-circle" />
-                                </g:if>
-                                <g:else>
-                                    <img alt="image" class="img-circle" src="${url}">
-                                </g:else>
-                            </g:each>
-                        </g:else>
-                    </dd>
-                </dl>
-            </div>
-        </div>
+                            <g:form name="enrollForm" controller="attendee" action="${enrollFormAction}"
+                                    id="${event.id}" method="POST">
+                                <g:submitButton class="${enrollButtonClass}" name="enrollButton" id="enrollButton"
+                                                value="${enrollButtonMessage}"/>
+                            </g:form>
+                        </sec:ifAllGranted>
 
-        <div class="row">
-            <div class="col-lg-12">
-                <dl class="dl-horizontal">
-                    <dt>Assistance Percentage:</dt>
-                    <dd>
-                        <div class="progress progress-striped active m-b-sm">
-                            <div style="width: ${eventDetails.assistancePercentage}%;" class="progress-bar"></div>
-                        </div>
-                        <small><strong>${eventDetails.assistancePercentage}%</strong> of the enrolled attendees assisted to this event.</small>
-                    </dd>
-                </dl>
-            </div>
-        </div>
-
-        <div class="row m-t-sm">
-            <div class="col-lg-12">
-                <div class="panel blank-panel">
-                    <div class="panel-heading">
-                        <div class="panel-options">
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a href="#tab-1" data-toggle="tab">Resources</a></li>
-                                <li class=""><a href="#tab-2" data-toggle="tab">Enrollments</a></li>
-                            </ul>
-                        </div>
+                        <sec:ifNotLoggedIn>
+                            <g:set var="enrollButtonMessage"
+                                   value="${message(code: "default.enroll.button.label", default: "Enroll in this event")}"/>
+                            <g:set var="enrollButtonClass" value="${"btn pull-right btn-primary"}"/>
+                            <g:set var="enrollFormAction" value="${"enroll"}"/>
+                            <g:form name="enrollForm" controller="attendee" action="${enrollFormAction}"
+                                    id="${event.id}" method="POST">
+                                <g:submitButton class="${enrollButtonClass}" name="enrollButton" id="enrollButton"
+                                                value="${enrollButtonMessage}"/>
+                            </g:form>
+                        </sec:ifNotLoggedIn>
+                        <h1 class="product-main-price">${event.date} at ${event.time}</h1>
                     </div>
 
-                    <div class="panel-body">
+                    <hr>
 
-                        <div class="tab-content">
+                    <h3><g:message code="default.session.description.label" default="Event description"/></h3>
 
-                            <div class="tab-pane active" id="tab-1">
+                    <div class="text-muted">
+                        ${event.description}
+                    </div>
 
-                                <table class="table table-striped">
-                                    <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Description</th>
-                                        <th>
-                                            Url
-                                            <g:if test="${eventDetails.ownsEvent}">
-                                                <g:link controller="event" action="resource" id="${event.id}" class="btn btn-sm button btn-outline btn-primary pull-right">
-                                                    <i class="fa fa-check"></i> Add a new resource
-                                                </g:link>
-                                            </g:if>
-                                        </th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
+                    <h3><g:message code="default.instructor.label" default="Instructor"/></h3>
 
-                                    <g:each in="${event.resources}" var="resource">
-                                        <tr>
-                                            <td>${resource.name}</td>
-                                            <td>${resource.description}</td>
-                                            <td><a href="${resource.url}"> ${resource.url}</a></td>
-                                        </tr>
-                                    </g:each>
+                    <div class="text-muted">
+                        ${event.instructor.name}
+                    </div>
 
-                                    </tbody>
-                                </table>
+                    <h3><g:message code="default.office.location.label" default="Location"/></h3>
 
-                            </div>
+                    <div class="text-muted">
+                        ${event.office.location}
+                    </div>
 
-                            <div class="tab-pane" id="tab-2">
+                    <sec:ifAnyGranted roles='ROLE_INSTRUCTOR,ROLE_ADMIN'>
 
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Profile Picture</th>
-                                            <th>Name</th>
-                                            <th>School</th>
-                                            <th>Assistance</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                        <g:each in="${eventDetails.enrollments}" var="enrollment">
-                                            <tr>
-                                                <td style="vertical-align:middle">
-                                                    <g:if test="${enrollment.attendee.profilePictureUrl == null}">
-                                                        <asset:image src="default_user.svg" class="img-circle" height="40px" width="40px" />
-                                                    </g:if>
-                                                    <g:else>
-                                                        <img alt="image" class="img-circle" height="40px" width="40px" src="${enrollment.attendee.profilePictureUrl}">
-                                                    </g:else>
-                                                </td>
-                                                <td style="vertical-align:middle"><strong>${enrollment.attendee.name}</strong></td>
-                                                <td style="vertical-align:middle"><strong>${enrollment.attendee.school}</strong></td>
-                                                <td style="vertical-align:middle">
-                                                    <g:if test="${enrollment.attendance}">
-                                                        <span class="label label-primary"><i class="fa fa-check"></i> Assisted</span>
-                                                    </g:if>
-                                                    <g:else>
-                                                        <span class="label label"><i class="fa fa-close"></i> Not Assisted</span>
-                                                    </g:else>
-                                                </td>
-                                            </tr>
-                                        </g:each>
-
-                                    </tbody>
-                                </table>
-
-                            </div>
-
+                        <h3><g:message code="default.eventCategory.label" default="Event Category"/></h3>
+                        <div class="text-muted">
+                            ${event.eventCategory.category}
                         </div>
+
+                        <h3><g:message code="default.batch.label" default="Batch"/></h3>
+                        <div class="text-muted">
+                            ${event.batch}
+                        </div>
+
+                    </sec:ifAnyGranted>
+
+                    <div class="text-right">
+                        <div class="btn-group">
+                            <button class="btn btn-white btn-sm"><i class="fa fa-star"></i> Add to wishlist</button>
+                            <button class="btn btn-white btn-sm"><i class="fa fa-envelope"></i> Contact with author
+                            </button>
+                        </div>
+                    </div>
+                    <div id="share">
+                        <asset:javascript src="plugins/jssocials/jssocials.min.js"/>
+                        <script>
+                            $("#share").jsSocials({
+                                shares: [ "facebook", "twitter", "linkedin", "googleplus"],
+                                text: "Nearsoft Apprentice: ${event.eventCategory.subCategory} ${event.description} ${event.time}",
+                                showCount: true,
+                                showLabel: false
+                            });
+                        </script>
                     </div>
                 </div>
             </div>
         </div>
+
     </content>
-
     <content tag="breadcrumbs">
     </content>
-
 </g:applyLayout>
