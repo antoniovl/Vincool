@@ -116,7 +116,7 @@ class EventController {
 
     def addResource(Resource resource) {
         resource.save(flush: true)
-        redirect(action: "detail", id: resource.event.id)
+        redirect(action: "show", id: resource.event.id)
     }
 
 }
