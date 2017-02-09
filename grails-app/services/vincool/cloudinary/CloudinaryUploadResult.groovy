@@ -1,6 +1,8 @@
 package vincool.cloudinary
 
+import groovy.transform.ToString
 
+@ToString(includeNames=true)
 class CloudinaryUploadResult {
 
     String publicId
@@ -16,22 +18,4 @@ class CloudinaryUploadResult {
     String url
     String secureUrl
 
-
-    @Override
-    public String toString() {
-        return "CloudinaryUploadResult{" +
-                "publicId='" + publicId + '\'' +
-                ", version=" + version +
-                ", signature='" + signature + '\'' +
-                ", width=" + width +
-                ", height=" + height +
-                ", format='" + format + '\'' +
-                ", resourceType='" + resourceType + '\'' +
-                ", createdAt=" + createdAt +
-                ", bytes=" + bytes +
-                ", type='" + type + '\'' +
-                ", url='" + url + '\'' +
-                ", secureUrl='" + secureUrl + '\'' +
-                '}';
-    }
 }
