@@ -44,23 +44,6 @@ class EventController {
         respond events, model: [eventCount: eventCount]
     }
 
-    def resource(Long id) {
-
-        def event = Event.findById(id)
-        render([view: "resource", model: [event: event]])
-        /*if (roleUserService.currentUserAInstructor) {
-            def instructorEvents = Event.findAllByInstructor(springSecurityService.currentUser)
-            def event = Event.findById(id)
-            print("HOLA: " + instructorEvents)
-            if (instructorEvents.contains(event)) {
-                ownsEvent = true
-                print("WTF ---------- ")
-            }
-            return
-        }
-        redirect(controller: "resource", action: "create")*/
-    }
-
     @Secured(['permitAll'])
     def show(Long id) {
 
@@ -125,6 +108,15 @@ class EventController {
             render([view: "show", model: [event: event, eventDetails: eventDetails]])
         }
 
+    }
+
+    def resource(Long id) {
+        render([view: "resource", model: [event: Event.findById(id)]])
+    }
+
+    def addResource(Resource resource) {
+        resource.save(flush: true)
+        redirect(action: "show", id: resource.event.id)
     }
 
 }

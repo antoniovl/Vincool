@@ -6,7 +6,7 @@
 
     <content tag="boxContent">
 
-        <g:form controller="resource" action="save"  class="form-horizontal">
+        <g:form controller="event" action="addResource"  class="form-horizontal">
 
             <div class="form-group">
                 <label class="col-sm-2 control-label">Event</label>
