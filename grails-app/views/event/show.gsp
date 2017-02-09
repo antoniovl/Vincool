@@ -1,28 +1,45 @@
 <g:applyLayout name="simple">
     <content tag="head">
-        <asset:link rel="stylesheet" type="text/css" href="jssocials/jssocials.css" />
-        <asset:link rel="stylesheet" type="text/css" href="jssocials/jssocials-theme-classic.css" />
+        <asset:link rel="stylesheet" type="text/css" href="jssocials/jssocials.css"/>
+        <asset:link rel="stylesheet" type="text/css" href="jssocials/jssocials-theme-classic.css"/>
         <meta property="og:title" content="Nearsoft Apprentice ${event.office} '${event.eventCategory.subCategory}'">
-        <meta property="og:description" content="Join us this ${event.date} at ${event.time.toString('HH:mm')} for the ${event.type} class '${event.eventCategory.subCategory}' : ${event.description} ">
+        <meta property="og:description"
+              content="Join us this ${event.date} at ${event.time.toString('HH:mm')} for the ${event.type} class '${event.eventCategory.subCategory}' : ${event.description} ">
         <meta property="og:url" content="${request.getRequestURL()}">
-        <meta property="og:image" content="https://nearsoft.com/admin/wp-content/themes/Nearsoftv1/img/nearsoft-symbol.png"/>
+        <meta property="og:image"
+              content="https://nearsoft.com/admin/wp-content/themes/Nearsoftv1/img/nearsoft-symbol.png"/>
         <meta property="og:type" content="website"/>
         <meta name="twitter:title" content="Nearsoft Apprentice">
         <meta name="twitter:description" content="Learn the basics of software development.">
-        <meta name="twitter:image" content="https://nearsoft.com/admin/wp-content/themes/Nearsoftv1/img/nearsoft-symbol.png">
+        <meta name="twitter:image"
+              content="https://nearsoft.com/admin/wp-content/themes/Nearsoftv1/img/nearsoft-symbol.png">
         <meta name="twitter:card" content="photo">
     </content>
     <content tag="boxTitle">
         <h3>Session Detail</h3>
     </content>
     <content tag="boxContent">
-        <div class="ibox product-detail">
-            <div class="row">
-                <div class="col-md-12">
-                    <h1 class="font-bold m-b-xs">${event.eventCategory.subCategory} - (${event.type} class)</h1>
-                    <hr/>
+        <section class="container features" style="margin-top: 0px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <div class="navy-line" style="margin: 20px auto 0;"></div>
 
-                    <div>
+                        <h1 class="font-bold m-b-xs">${event.eventCategory.subCategory} - <span
+                                class="navy">${event.type}</span></h1>
+                    </div>
+                </div>
+                <br/>
+
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 col-xs-12">
+                        <h1 style="margin: 10px 0px 5px; text-transform: uppercase;"
+                            class="product-main-price"><g:formatDate date="${event.date.toDate()}"/> - <g:formatDate
+                                date="${event.time.toDateTimeToday().toDate()}" type="time" style="SHORT"/></h1>
+                    </div>
+
+                    <div class="col-lg-6 col-md-12 col-xs-12">
+
                         <sec:ifAllGranted roles='ROLE_STUDENT'>
                             <g:if test="${isEnrolled}">
                                 <g:set var="enrollButtonMessage"
@@ -52,68 +69,81 @@
                             <g:form name="enrollForm" controller="attendee" action="${enrollFormAction}"
                                     id="${event.id}" method="POST">
                                 <g:submitButton class="${enrollButtonClass}" name="enrollButton" id="enrollButton"
-                                                value="${enrollButtonMessage}"/>
+                                                value="${enrollButtonMessage}" style="margin: 10px 0px 5px;"/>
                             </g:form>
                         </sec:ifNotLoggedIn>
-                        <h1 class="product-main-price">${event.date} at ${event.time}</h1>
-                    </div>
-
-                    <hr>
-
-                    <h3><g:message code="default.session.description.label" default="Event description"/></h3>
-
-                    <div class="text-muted">
-                        ${event.description}
-                    </div>
-
-                    <h3><g:message code="default.instructor.label" default="Instructor"/></h3>
-
-                    <div class="text-muted">
-                        ${event.instructor.name}
-                    </div>
-
-                    <h3><g:message code="default.office.location.label" default="Location"/></h3>
-
-                    <div class="text-muted">
-                        ${event.office.location}
-                    </div>
-
-                    <sec:ifAnyGranted roles='ROLE_INSTRUCTOR,ROLE_ADMIN'>
-
-                        <h3><g:message code="default.eventCategory.label" default="Event Category"/></h3>
-                        <div class="text-muted">
-                            ${event.eventCategory.category}
-                        </div>
-
-                        <h3><g:message code="default.batch.label" default="Batch"/></h3>
-                        <div class="text-muted">
-                            ${event.batch}
-                        </div>
-
-                    </sec:ifAnyGranted>
-
-                    <div class="text-right">
-                        <div class="btn-group">
-                            <button class="btn btn-white btn-sm"><i class="fa fa-star"></i> Add to wishlist</button>
-                            <button class="btn btn-white btn-sm"><i class="fa fa-envelope"></i> Contact with author
-                            </button>
-                        </div>
-                    </div>
-                    <div id="share">
-                        <asset:javascript src="plugins/jssocials/jssocials.min.js"/>
-                        <script>
-                            $("#share").jsSocials({
-                                shares: [ "facebook", "twitter", "linkedin", "googleplus"],
-                                text: "Nearsoft Apprentice: ${event.eventCategory.subCategory} ${event.description} ${event.time}",
-                                showCount: true,
-                                showLabel: false
-                            });
-                        </script>
                     </div>
                 </div>
-            </div>
-        </div>
 
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3><g:message code="default.session.description.label" default="Event description"/></h3>
+
+                        <div class="text-muted">
+                            ${event.description}
+                        </div>
+
+                        <h3><g:message code="default.instructor.label" default="Instructor"/></h3>
+
+                        <div class="text-muted">
+                            ${event.instructor.name}
+                        </div>
+
+                        <h3><g:message code="default.office.location.label" default="Location"/></h3>
+
+                        <div class="text-muted">
+                            ${event.office.location}
+                        </div>
+
+                        <sec:ifAnyGranted roles='ROLE_INSTRUCTOR,ROLE_ADMIN'>
+
+                            <h3><g:message code="default.eventCategory.label" default="Event Category"/></h3>
+
+                            <div class="text-muted">
+                                ${event.eventCategory.category}
+                            </div>
+
+                            <h3><g:message code="default.batch.label" default="Batch"/></h3>
+
+                            <div class="text-muted">
+                                ${event.batch}
+                            </div>
+
+                        </sec:ifAnyGranted>
+                    </div>
+                </div>
+                <br/>
+
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 col-xs-12">
+                        <div id="share">
+                            <asset:javascript src="plugins/jssocials/jssocials.min.js"/>
+                            <script>
+                                $("#share").jsSocials({
+                                    shares: ["facebook", "twitter", "linkedin", "googleplus"],
+                                    text: "Nearsoft Apprentice: ${event.eventCategory.subCategory} ${event.description} ${event.time}",
+                                    showCount: true,
+                                    showLabel: false
+                                });
+                            </script>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-6 col-md-12 col-xs-12">
+                        <div class="text-right">
+                            <div class="jssocials-shares">
+                                <a href="mailto:${event.instructor.email}" class="btn btn-w-m btn-default jssocials-shares"><i
+                                        class="fa fa-envelope"></i><g:message code="default.instructor.contact.label" default=" Contact with author"/>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
     </content>
     <content tag="breadcrumbs">
     </content>
