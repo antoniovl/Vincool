@@ -2,10 +2,9 @@
     <content tag="head">
         <asset:link rel="stylesheet" type="text/css" href="jssocials/jssocials.css"/>
         <asset:link rel="stylesheet" type="text/css" href="jssocials/jssocials-theme-classic.css"/>
-        <meta property="og:title"
-              content="Nearsoft Apprentice ${eventDetails.office} '${eventDetails.eventCategory.subCategory}'">
+        <meta property="og:title" content="Nearsoft Apprentice ${event.office} '${event.eventCategory.subCategory}'">
         <meta property="og:description"
-              content="Join us this ${eventDetails.date} at ${eventDetails.time.toString('HH:mm')} for the ${eventDetails.type} class '${eventDetails.eventCategory.subCategory}' : ${eventDetails.description} ">
+              content="Join us this ${event.date} at ${event.time.toString('HH:mm')} for the ${event.type} class '${event.eventCategory.subCategory}' : ${event.description} ">
         <meta property="og:url" content="${request.getRequestURL()}">
         <meta property="og:image"
               content="https://nearsoft.com/admin/wp-content/themes/Nearsoftv1/img/nearsoft-symbol.png"/>
@@ -20,68 +19,80 @@
         <h3>Session Detail</h3>
     </content>
     <content tag="boxContent">
-        <section id="features" class="container services">
-
-            <div class="ibox product-detail">
+        <section class="container features" style="margin-top: 0px;">
+            <div class="container">
                 <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="font-bold m-b-xs">${eventDetails.eventCategory.subCategory} - (${eventDetails.type})</h1>
-                        <hr/>
+                    <div class="col-lg-12 text-center">
+                        <div class="navy-line" style="margin: 20px auto 0;"></div>
 
-                        <div>
-                            <sec:ifAllGranted roles='ROLE_STUDENT'>
-                                <g:if test="${isEnrolled}">
-                                    <g:set var="enrollButtonMessage"
-                                           value="${message(code: "default.disenroll.button.label", default: "Cancel enrollment")}"/>
-                                    <g:set var="enrollButtonClass" value="${"btn pull-right btn-danger"}"/>
-                                    <g:set var="enrollFormAction" value="${"disenroll"}"/>
-                                </g:if>
-                                <g:else>
-                                    <g:set var="enrollButtonMessage"
-                                           value="${message(code: "default.enroll.button.label", default: "Enroll in this event")}"/>
-                                    <g:set var="enrollButtonClass" value="${"btn pull-right btn-primary"}"/>
-                                    <g:set var="enrollFormAction" value="${"enroll"}"/>
-                                </g:else>
+                        <h1 class="font-bold m-b-xs">${event.eventCategory.subCategory} - <span
+                                class="navy">${event.type}</span></h1>
+                    </div>
+                </div>
+                <br/>
 
-                                <g:form name="enrollForm" controller="attendee" action="${enrollFormAction}"
-                                        id="${eventDetails.id}" method="POST">
-                                    <g:submitButton class="${enrollButtonClass}" name="enrollButton" id="enrollButton"
-                                                    value="${enrollButtonMessage}"/>
-                                </g:form>
-                            </sec:ifAllGranted>
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 col-xs-12">
+                        <h1 style="margin: 10px 0px 5px; text-transform: uppercase;"
+                            class="product-main-price"><g:formatDate date="${event.date.toDate()}"/> - <g:formatDate
+                                date="${event.time.toDateTimeToday().toDate()}" type="time" style="SHORT"/></h1>
+                    </div>
 
-                            <sec:ifNotLoggedIn>
+                    <div class="col-lg-6 col-md-12 col-xs-12">
+
+                        <sec:ifAllGranted roles='ROLE_STUDENT'>
+                            <g:if test="${isEnrolled}">
+                                <g:set var="enrollButtonMessage"
+                                       value="${message(code: "default.disenroll.button.label", default: "Cancel enrollment")}"/>
+                                <g:set var="enrollButtonClass" value="${"btn pull-right btn-danger"}"/>
+                                <g:set var="enrollFormAction" value="${"disenroll"}"/>
+                            </g:if>
+                            <g:else>
                                 <g:set var="enrollButtonMessage"
                                        value="${message(code: "default.enroll.button.label", default: "Enroll in this event")}"/>
                                 <g:set var="enrollButtonClass" value="${"btn pull-right btn-primary"}"/>
                                 <g:set var="enrollFormAction" value="${"enroll"}"/>
-                                <g:form name="enrollForm" controller="attendee" action="${enrollFormAction}"
-                                        id="${eventDetails.id}" method="POST">
-                                    <g:submitButton class="${enrollButtonClass}" name="enrollButton" id="enrollButton"
-                                                    value="${enrollButtonMessage}"/>
-                                </g:form>
-                            </sec:ifNotLoggedIn>
-                            <h1 class="product-main-price">${eventDetails.date} at ${eventDetails.time}</h1>
-                        </div>
+                            </g:else>
 
-                        <hr>
+                            <g:form name="enrollForm" controller="attendee" action="${enrollFormAction}"
+                                    id="${event.id}" method="POST">
+                                <g:submitButton class="${enrollButtonClass}" name="enrollButton" id="enrollButton"
+                                                value="${enrollButtonMessage}"/>
+                            </g:form>
+                        </sec:ifAllGranted>
 
+                        <sec:ifNotLoggedIn>
+                            <g:set var="enrollButtonMessage"
+                                   value="${message(code: "default.enroll.button.label", default: "Enroll in this event")}"/>
+                            <g:set var="enrollButtonClass" value="${"btn pull-right btn-primary"}"/>
+                            <g:set var="enrollFormAction" value="${"enroll"}"/>
+                            <g:form name="enrollForm" controller="attendee" action="${enrollFormAction}"
+                                    id="${event.id}" method="POST">
+                                <g:submitButton class="${enrollButtonClass}" name="enrollButton" id="enrollButton"
+                                                value="${enrollButtonMessage}" style="margin: 10px 0px 5px;"/>
+                            </g:form>
+                        </sec:ifNotLoggedIn>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
                         <h3><g:message code="default.session.description.label" default="Event description"/></h3>
 
                         <div class="text-muted">
-                            ${eventDetails.description}
+                            ${event.description}
                         </div>
 
                         <h3><g:message code="default.instructor.label" default="Instructor"/></h3>
 
                         <div class="text-muted">
-                            ${eventDetails.instructor.name}
+                            ${event.instructor.name}
                         </div>
 
                         <h3><g:message code="default.office.location.label" default="Location"/></h3>
 
                         <div class="text-muted">
-                            ${eventDetails.office.location}
+                            ${event.office.location}
                         </div>
 
                         <sec:ifAnyGranted roles='ROLE_INSTRUCTOR,ROLE_ADMIN'>
@@ -89,39 +100,49 @@
                             <h3><g:message code="default.eventCategory.label" default="Event Category"/></h3>
 
                             <div class="text-muted">
-                                ${eventDetails.eventCategory.category}
+                                ${event.eventCategory.category}
                             </div>
 
                             <h3><g:message code="default.batch.label" default="Batch"/></h3>
 
                             <div class="text-muted">
-                                ${eventDetails.batch}
+                                ${event.batch}
                             </div>
 
                         </sec:ifAnyGranted>
+                    </div>
+                </div>
+                <br/>
 
-                        <div class="text-right">
-                            <a class="btn btn-w-m btn-default" href="mailto:${eventDetails.instructor.email}"><i
-                                    class="fa fa-envelope"></i> <g:message code="default.contact.label"
-                                                                           default="Contact the Instructor"/>
-                            </a>
-                        </div>
-
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 col-xs-12">
                         <div id="share">
                             <asset:javascript src="plugins/jssocials/jssocials.min.js"/>
                             <script>
                                 $("#share").jsSocials({
                                     shares: ["facebook", "twitter", "linkedin", "googleplus"],
-                                    text: "Nearsoft Apprentice: ${eventDetails.eventCategory.subCategory} ${eventDetails.description} ${eventDetails.time}",
+                                    text: "Nearsoft Apprentice: ${event.eventCategory.subCategory} ${event.description} ${event.time}",
                                     showCount: true,
                                     showLabel: false
                                 });
                             </script>
                         </div>
+
                     </div>
+
+                    <div class="col-lg-6 col-md-12 col-xs-12">
+                        <div class="text-right">
+                            <div class="jssocials-shares">
+                                <a href="mailto:${event.instructor.email}" class="btn btn-w-m btn-default jssocials-shares"><i
+                                        class="fa fa-envelope"></i><g:message code="default.instructor.contact.label" default=" Contact with author"/>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
-            <br/>
         </section>
     </content>
     <content tag="breadcrumbs">
