@@ -1,7 +1,9 @@
 package vincool
 
+import grails.io.IOUtils
 import grails.plugin.springsecurity.annotation.Secured
 import vincool.auth.SecUser
+import org.apache.commons.io.FilenameUtils;
 
 @Secured(['ROLE_ADMIN', 'ROLE_INSTRUCTOR', 'ROLE_STUDENT'])
 class ProfileController {
@@ -9,6 +11,7 @@ class ProfileController {
     static allowedMethods = [index: "GET", update: "PUT"]
     def springSecurityService
     def roleUserService
+    def cloudinaryService
 
     def index() {
 
@@ -29,6 +32,19 @@ class ProfileController {
     def update() {
 
         def user = springSecurityService.getCurrentUser()
+
+        def profilePicture = request.getPart("picture")
+
+        if (profilePicture) {
+            def fileName = FilenameUtils.getName(user.profilePictureUrl)
+            def publicId = FilenameUtils.removeExtension(fileName)
+
+            def data = IOUtils.copyToByteArray(profilePicture.getInputStream())
+            def uploadResult = cloudinaryService.update(publicId, data)
+
+            user.profilePictureUrl = uploadResult.url
+
+        }
 
         if (params.name) {
             user.name = params.name as String

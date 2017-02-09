@@ -38,7 +38,7 @@ class CalendarController {
             source[event.office.officeCode]
                     .add([id: event.id,
                           title: event.eventCategory.subCategory,
-                          start: event.date,
+                          start: event.date.toLocalDateTime(event.time),
                           allDay: false,
                           color: color,
                           url: grailsLinkGenerator.link(controller: "event", action: "show", id: event.id, absolute: true)])
