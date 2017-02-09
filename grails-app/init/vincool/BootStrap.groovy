@@ -9,6 +9,7 @@ import org.joda.time.LocalTime
 class BootStrap {
 
     def init = { servletContext ->
+
         environments {
             production {
                 ['ROLE_STUDENT', 'ROLE_INSTRUCTOR', 'ROLE_ADMIN'].each {
@@ -31,10 +32,10 @@ class BootStrap {
                         }
                     }
                 }
-                def attendee1 = new Attendee(username: "luisdaniel", password: "pass", email: "lalducin@nearsoft.com", firstName: "Luis Daniel", lastName: "Alducin", age: 22, school: "ESCOM", currentCompany: "Nearsoft").save()
-                def attendee2 = new Attendee(username: "erikueen", password: "pass", email: "ereyna@nearsoft.com", firstName: "Erick", lastName: "Reyna", age: 23, school: "UPVT", currentCompany: "Nearsoft").save()
-                new Attendee(username: "jlozano", password: "pass",  email: "jlozano@nearsoft.com", firstName: "Javier", lastName: "Lozano", age: 21, school: "UPIITA", currentCompany: "Nearsoft").save()
-                new Attendee(username: "aibarra", password: "pass", email: "aibarra@nearsoft.com", firstName: "Antonio", lastName:  "Ibarra", age: 19, school: "ESCOM", currentCompany: "Nearsoft").save()
+                def attendee1 = new Attendee(username: "luisdaniel", password: "pass", email: "lalducin@nearsoft.com", name: "Luis Daniel", firstName: "Luis Daniel", lastName: "Alducin", age: 22, school: "ESCOM", currentCompany: "Nearsoft").save()
+                def attendee2 = new Attendee(username: "erikueen", password: "pass", email: "ereyna@nearsoft.com", name: "Erick", firstName: "Erick", lastName: "Reyna", age: 23, school: "UPVT", currentCompany: "Nearsoft").save()
+                new Attendee(username: "jlozano", password: "pass",  email: "jlozano@nearsoft.com", name: "Javier", firstName: "Javier", lastName: "Lozano", age: 21, school: "UPIITA", currentCompany: "Nearsoft").save()
+                new Attendee(username: "aibarra", password: "pass", email: "aibarra@nearsoft.com", name: "Antonio", firstName: "Antonio", lastName:  "Ibarra", age: 19, school: "ESCOM", currentCompany: "Nearsoft").save()
 
                 def cdmx = new Office(officeCode: "CDMX", name: "Ciudad de México", location: "San Luis Potosí 196 int. 401 Col. Roma Norte Del. Cuauhtémoc Ciudad de México 06700", phoneNumber:  "+52 (55) 6388-6650").save()
                 def hmo = new Office(officeCode: "HMO", name: "Hermosillo, Sonora", location: "Blvd. Antonio Quiroga 21 Col. El Llano Hermosillo, Sonora, México 83210", phoneNumber:  "+52 (662) 216-7401").save()
