@@ -146,13 +146,17 @@
 
                 function labelClick(label, labelValue, input) {
                     label.hide();
-                    input.val(labelValue.text());
+                    input.attr('placeholder', labelValue.text());
                     input.show().focus();
                     return;
                 }
 
                 function inputFocusOut(label, labelValue, input) {
-                    labelValue.text(input.val());
+                    if (input.val() == '') {
+                        labelValue.text(input.attr('placeholder'));
+                    } else {
+                        labelValue.text(input.val());
+                    }
                     input.hide();
                     label.show();
                 }
