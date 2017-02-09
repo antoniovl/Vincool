@@ -115,32 +115,48 @@
 
                                     </tbody>
                                 </table>
+
                             </div>
 
                             <div class="tab-pane" id="tab-2">
-                                <div class="feed-activity-list">
-                                    <g:each in="${eventDetails.enrollments}" var="enrollment">
-                                        <div class="feed-element">
-                                            <a href="#" class="pull-left">
-                                                <g:if test="${enrollment.attendee.profilePictureUrl == null}">
-                                                    <asset:image src="default_user.svg" class="img-circle" />
-                                                </g:if>
-                                                <g:else>
-                                                    <img alt="image" class="img-circle" src="${enrollment.attendee.profilePictureUrl}">
-                                                </g:else>
-                                            </a>
-                                            <div class="body ">
-                                                <g:if test="${enrollment.attendance}">
-                                                    <span class="label label-primary pull-right"><i class="fa fa-check"></i> Assisted</span>
-                                                </g:if>
-                                                <g:else>
-                                                    <span class="label label pull-right"><i class="fa fa-close"></i> Not Assisted</span>
-                                                </g:else>
-                                                <strong>${enrollment.attendee.name}</strong> <br>
-                                            </div>
-                                        </div>
-                                    </g:each>
-                                </div>
+
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Profile Picture</th>
+                                            <th>Name</th>
+                                            <th>School</th>
+                                            <th>Assistance</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <g:each in="${eventDetails.enrollments}" var="enrollment">
+                                            <tr>
+                                                <td style="vertical-align:middle">
+                                                    <g:if test="${enrollment.attendee.profilePictureUrl == null}">
+                                                        <asset:image src="default_user.svg" class="img-circle" height="40px" width="40px" />
+                                                    </g:if>
+                                                    <g:else>
+                                                        <img alt="image" class="img-circle" height="40px" width="40px" src="${enrollment.attendee.profilePictureUrl}">
+                                                    </g:else>
+                                                </td>
+                                                <td style="vertical-align:middle"><strong>${enrollment.attendee.name}</strong></td>
+                                                <td style="vertical-align:middle"><strong>${enrollment.attendee.school}</strong></td>
+                                                <td style="vertical-align:middle">
+                                                    <g:if test="${enrollment.attendance}">
+                                                        <span class="label label-primary"><i class="fa fa-check"></i> Assisted</span>
+                                                    </g:if>
+                                                    <g:else>
+                                                        <span class="label label"><i class="fa fa-close"></i> Not Assisted</span>
+                                                    </g:else>
+                                                </td>
+                                            </tr>
+                                        </g:each>
+
+                                    </tbody>
+                                </table>
+
                             </div>
 
                         </div>
