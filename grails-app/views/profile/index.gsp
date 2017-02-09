@@ -1,7 +1,9 @@
 <g:applyLayout name="simple">
     <content tag="head">
-        <asset:javascript src="plugins/fullcalendar/moment.min.js"/>
+        <asset:stylesheet src="plugins/jasny/jasny-bootstrap.min.css"/>
         <asset:stylesheet href="plugins/fullcalendar/fullcalendar.css"/>
+        <asset:javascript src="plugins/fullcalendar/moment.min.js"/>
+        <asset:javascript src="plugins/jasny/jasny-bootstrap.min.js"/>
         <asset:javascript src="plugins/fullcalendar/fullcalendar.min.js"/>
         <asset:javascript src="plugins/fullcalendar/fullcalendar.print.css" media="print"/>
     </content>
@@ -12,14 +14,19 @@
         <div class="row animated fadeInRight">
             <div class="col-md-12">
                 <div class="ibox float-e-margins">
+                    <g:form controller="profile" action="update" method="PUT" enctype="multipart/form-data">
 
                     <div class="col-md-3">
                         <img src="${session.profilePictureUrl}" class="img-circle circle-border" height="250px" width="250px" alt="profile">
+                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                            <span class="btn btn-default btn-file"><span class="fileinput-new">Select file</span>
+                            <span class="fileinput-exists">Change</span><input type="file" name="picture"/></span>
+                            <span class="fileinput-filename"></span>
+                            <a href="#" class="close fileinput-exists" data-dismiss="fileinput" style="float: none">×</a>
+                        </div>
                     </div>
 
                     <div class="col-md-9">
-
-                        <g:form controller="profile" action="update" method="PUT">
 
                             <br>
                             <label id="nameLabel">
