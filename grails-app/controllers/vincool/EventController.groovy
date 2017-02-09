@@ -14,10 +14,10 @@ class EventController {
     final MAX_ATTENDEES_PICTURES = 10
 
     @Secured(['ROLE_ADMIN', 'ROLE_INSTRUCTOR', 'ROLE_STUDENT'])
-    def index() {
+    def index(Integer max) {
         def userDetails = session.userDetails
         def events, eventCount
-
+        params.max = Math.min(max ?: 10, 100)
         if (roleUserService.isCurrentUserAnAdmin()) {
             events = Event.list(params)
             eventCount = Event.count()
