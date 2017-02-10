@@ -57,7 +57,7 @@ class EventController {
                 return
             }
 
-            render([view: "show", model: [event: event, isEnrolled: false]])
+            render([view: "show2", model: [event: event, isEnrolled: false]])
 
         } else if (roleUserService.currentUserAnAttendee) {
 

@@ -22,25 +22,21 @@
         <br/>
         <br/>
         <br/>
+        <br/>
         <section class="container features" style="margin-top: 0px;">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-12 text-center" >
+                    <div class="col-lg-8 col-md-8 col-xs-12">
+                        <asset:image src="landing_page/img/clase.png"
+                                     style="width: 100%; height: 300px; object-fit: cover;"/>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-xs-12  text-center">
                         <div class="navy-line" style="margin: 20px auto 0;"></div>
-                        <h1 class="font-bold m-b-xs">${event.eventCategory.subCategory} - <span
-                                class="navy">${event.type}</span></h1>
-                    </div>
-                </div>
-                <br/>
 
-                <div class="row">
-                    <div class="col-lg-9 col-md-8 col-xs-12">
-                        <h1 style="margin: 10px 0px 5px; text-transform: uppercase;"
-                            class="product-main-price"><g:formatDate date="${event.date.toDate()}"/> - <g:formatDate
-                                date="${event.time.toDateTimeToday().toDate()}" type="time" style="SHORT"/></h1>
-                    </div>
+                        <h1 class="font-bold m-b-xs">${event.eventCategory.subCategory}</h1>
 
-                    <div class="col-lg-3 col-md-4 col-xs-12">
+                        <h1><span class="navy">${event.type}</span></h1>
                         <sec:ifAllGranted roles='ROLE_STUDENT'>
                             <g:if test="${isEnrolled}">
                                 <g:set var="enrollButtonMessage"
@@ -58,7 +54,8 @@
                             <g:form name="enrollForm" controller="attendee" action="${enrollFormAction}"
                                     id="${event.id}" method="POST">
                                 <g:submitButton class="${enrollButtonClass}" name="enrollButton" id="enrollButton"
-                                                value="${enrollButtonMessage}" style="margin: 10px 0px 5px; width: 100%;"/>
+                                                value="${enrollButtonMessage}"
+                                                style="margin: 10px 0px 5px; width: 100%;"/>
                             </g:form>
                         </sec:ifAllGranted>
 
@@ -70,10 +67,113 @@
                             <g:form name="enrollForm" controller="attendee" action="${enrollFormAction}"
                                     id="${event.id}" method="POST">
                                 <g:submitButton class="${enrollButtonClass}" name="enrollButton" id="enrollButton"
-                                                value="${enrollButtonMessage}" style="margin: 10px 0px 5px; width: 100%;"/>
+                                                value="${enrollButtonMessage}"
+                                                style="margin: 10px 0px 5px; width: 100%;"/>
                             </g:form>
                         </sec:ifNotLoggedIn>
                     </div>
+                </div>
+                <br/>
+
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 col-xs-12">
+                        <h3><g:message code="default.session.description.label" default="Event description"/></h3>
+
+                        <div class="text-muted">
+                            ${event.description}
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-xs-12">
+                        <div class="row">
+                            <div clas="col-lg-12">
+                                <h4><g:message code="default.instructor.label" default="Instructor"/></h4>
+
+                                <div class="team-member">
+                                    <img src="${event.instructor.profilePictureUrl}"
+                                         class="img-responsive img-circle img-small" alt=""/>
+                                    <h4><span class="navy">${event.instructor.name}</span></h4>
+
+                                    <p>${event.instructor.description}</p>
+                                    <ul class="list-inline social-icon">
+                                        <g:if test="${event.instructor.twitter}">
+                                            <li><a target="_blank"
+                                                   href="https://twitter.com/${event.instructor.twitter}"><i
+                                                        class="fa fa-twitter"></i></a>
+                                            </li>
+                                        </g:if>
+                                        <g:if test="${event.instructor.github}">
+                                            <li><a target="_blank"
+                                                   href="https://github.com/${event.instructor.github}"><i
+                                                        class="fa fa-github"></i></a>
+                                            </li>
+                                        </g:if>
+                                        <g:if test="${event.instructor.linkedin}">
+                                            <li><a target="_blank"
+                                                   href="https://www.linkedin.com/in/${event.instructor.linkedin}"><i
+                                                        class="fa fa-linkedin"></i></a>
+                                            </li>
+                                        </g:if>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div clas="col-lg-12">
+                                <h2 style="margin: 10px 0px 5px;"
+                                    class="product-main-price">Cuando?</h2>
+                                <p>
+                                    <g:formatDate
+                                            date="${event.date.toDate()}"/> - <g:formatDate
+                                            date="${event.time.toDateTimeToday().toDate()}" type="time" style="SHORT"/>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div clas="col-lg-12">
+                                <h4><g:message code="default.office.location.label" default="Location"/></h4>
+
+                                <div class="text-muted">
+                                    ${event.office.location}
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <sec:ifAnyGranted roles='ROLE_INSTRUCTOR,ROLE_ADMIN'>
+                            <div class="row">
+                                <div clas="col-lg-12">
+                                    <h3><g:message code="default.eventCategory.label" default="Event Category"/></h3>
+
+                                    <div class="text-muted">
+                                        ${event.eventCategory.category}
+                                    </div>
+
+                                    <h3><g:message code="default.batch.label" default="Batch"/></h3>
+
+                                    <div class="text-muted">
+                                        ${event.batch}
+                                    </div>
+                                </div>
+                            </div>
+
+                        </sec:ifAnyGranted>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-9 col-md-8 col-xs-12">
+                        <h1 style="margin: 10px 0px 5px; text-transform: uppercase;"
+                            class="product-main-price"><g:formatDate date="${event.date.toDate()}"/> - <g:formatDate
+                                date="${event.time.toDateTimeToday().toDate()}" type="time" style="SHORT"/></h1>
+                    </div>
+
                 </div>
 
                 <div class="row">
@@ -114,10 +214,12 @@
 
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-lg-12">
                         <iframe width="100%" height="250" frameborder="0" style="border:0"
-                                src="https://www.google.com/maps/embed/v1/place?q=${event.office.location}&key=AIzaSyDTheQkFI_mOE0ry4A4JnOqn0OSWV_cnPE" allowfullscreen></iframe>
+                                src="https://www.google.com/maps/embed/v1/place?q=${event.office.location}&key=AIzaSyDTheQkFI_mOE0ry4A4JnOqn0OSWV_cnPE"
+                                allowfullscreen></iframe>
                     </div>
                 </div>
 
@@ -127,13 +229,16 @@
                     <div class="col-lg-3 col-md-4 col-xs-12">
                         <div class="text-left">
                             <div class="jssocials-shares">
-                                <a href="mailto:${event.instructor.email}" class="btn btn-w-m btn-default jssocials-shares" style="width: 100%;"><i
-                                        class="fa fa-envelope"></i> <g:message code="default.instructor.contact.label" default=" Contact with author"/>
+                                <a href="mailto:${event.instructor.email}"
+                                   class="btn btn-w-m btn-default jssocials-shares" style="width: 100%;"><i
+                                        class="fa fa-envelope"></i> <g:message code="default.instructor.contact.label"
+                                                                               default=" Contact with author"/>
                                 </a>
                             </div>
                         </div>
 
                     </div>
+
                     <div class="col-lg-9 col-md-8 col-xs-12">
                         <div id="share" class="text-right">
                             <asset:javascript src="plugins/jssocials/jssocials.min.js"/>
@@ -148,8 +253,6 @@
                         </div>
 
                     </div>
-
-
 
                 </div>
             </div>
