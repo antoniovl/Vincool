@@ -16,7 +16,7 @@
               content="https://nearsoft.com/admin/wp-content/themes/Nearsoftv1/img/nearsoft-symbol.png"/>
         <meta property="og:type" content="website"/>
         <meta name="twitter:title" content="Nearsoft Apprentice">
-        <meta name="twitter:description" content="Learn the basics of software development.">
+        <meta name="twitter:description" content="Nearsoft Apprentice ${event.office} '${event.eventCategory.subCategory}'">
         <meta name="twitter:image"
               content="https://nearsoft.com/admin/wp-content/themes/Nearsoftv1/img/nearsoft-symbol.png">
         <meta name="twitter:card" content="photo">
