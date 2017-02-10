@@ -193,33 +193,37 @@
                     inputFocusOut(nameLabel, nameValue, nameInput);
                 });
 
-                var workInput = $('#workInput');
-                var workLabel = $('#workLabel');
-                var workValue = $('#workValue');
+                <sec:ifAllGranted roles='ROLE_STUDENT'>
 
-                workInput.hide();
+                    var workInput = $('#workInput');
+                    var workLabel = $('#workLabel');
+                    var workValue = $('#workValue');
 
-                workLabel.click(function () {
-                    labelClick(workLabel, workValue, workInput, ${workPlaceholder});
-                });
+                    workInput.hide();
 
-                workInput.focusout(function() {
-                    inputFocusOut(workLabel, workValue, workInput);
-                });
+                    workLabel.click(function () {
+                        labelClick(workLabel, workValue, workInput, ${workPlaceholder});
+                    });
 
-                var schoolInput = $('#schoolInput');
-                var schoolLabel = $('#schoolLabel');
-                var schoolValue = $('#schoolValue');
+                    workInput.focusout(function() {
+                        inputFocusOut(workLabel, workValue, workInput);
+                    });
 
-                schoolInput.hide();
+                    var schoolInput = $('#schoolInput');
+                    var schoolLabel = $('#schoolLabel');
+                    var schoolValue = $('#schoolValue');
 
-                schoolLabel.click(function () {
-                    labelClick(schoolLabel, schoolValue, schoolInput, ${schoolPlaceholder});
-                });
+                    schoolInput.hide();
 
-                schoolInput.focusout(function() {
-                    inputFocusOut(schoolLabel, schoolValue, schoolInput);
-                });
+                    schoolLabel.click(function () {
+                        labelClick(schoolLabel, schoolValue, schoolInput, ${schoolPlaceholder});
+                    });
+
+                    schoolInput.focusout(function() {
+                        inputFocusOut(schoolLabel, schoolValue, schoolInput);
+                    });
+
+                </sec:ifAllGranted>
 
                 var twitterInput = $('#twitterInput');
                 var twitterLabel = $('#twitterLabel');
