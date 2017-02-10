@@ -32,13 +32,13 @@
                 <br/>
 
                 <div class="row">
-                    <div class="col-lg-6 col-md-12 col-xs-12">
+                    <div class="col-lg-9 col-md-8 col-xs-12">
                         <h1 style="margin: 10px 0px 5px; text-transform: uppercase;"
                             class="product-main-price"><g:formatDate date="${event.date.toDate()}"/> - <g:formatDate
                                 date="${event.time.toDateTimeToday().toDate()}" type="time" style="SHORT"/></h1>
                     </div>
 
-                    <div class="col-lg-6 col-md-12 col-xs-12">
+                    <div class="col-lg-3 col-md-4 col-xs-12">
 
                         <sec:ifAllGranted roles='ROLE_STUDENT'>
                             <g:if test="${isEnrolled}">
@@ -57,7 +57,7 @@
                             <g:form name="enrollForm" controller="attendee" action="${enrollFormAction}"
                                     id="${event.id}" method="POST">
                                 <g:submitButton class="${enrollButtonClass}" name="enrollButton" id="enrollButton"
-                                                value="${enrollButtonMessage}"/>
+                                                value="${enrollButtonMessage}" style="margin: 10px 0px 5px; width: 100%;"/>
                             </g:form>
                         </sec:ifAllGranted>
 
@@ -69,7 +69,7 @@
                             <g:form name="enrollForm" controller="attendee" action="${enrollFormAction}"
                                     id="${event.id}" method="POST">
                                 <g:submitButton class="${enrollButtonClass}" name="enrollButton" id="enrollButton"
-                                                value="${enrollButtonMessage}" style="margin: 10px 0px 5px;"/>
+                                                value="${enrollButtonMessage}" style="margin: 10px 0px 5px; width: 100%;"/>
                             </g:form>
                         </sec:ifNotLoggedIn>
                     </div>
@@ -89,12 +89,6 @@
                             ${event.instructor.name}
                         </div>
 
-                        <h3><g:message code="default.office.location.label" default="Location"/></h3>
-
-                        <div class="text-muted">
-                            ${event.office.location}
-                        </div>
-
                         <sec:ifAnyGranted roles='ROLE_INSTRUCTOR,ROLE_ADMIN'>
 
                             <h3><g:message code="default.eventCategory.label" default="Event Category"/></h3>
@@ -110,13 +104,37 @@
                             </div>
 
                         </sec:ifAnyGranted>
+
+                        <h3><g:message code="default.office.location.label" default="Location"/></h3>
+
+                        <div class="text-muted">
+                            ${event.office.location}
+                        </div>
+
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <iframe width="100%" height="250" frameborder="0" style="border:0"
+                                src="https://www.google.com/maps/embed/v1/place?q=${event.office.location}&key=AIzaSyDTheQkFI_mOE0ry4A4JnOqn0OSWV_cnPE" allowfullscreen></iframe>
+                    </div>
+                </div>
+
                 <br/>
 
                 <div class="row">
-                    <div class="col-lg-6 col-md-12 col-xs-12">
-                        <div id="share">
+                    <div class="col-lg-3 col-md-4 col-xs-12">
+                        <div class="text-left">
+                            <div class="jssocials-shares">
+                                <a href="mailto:${event.instructor.email}" class="btn btn-w-m btn-default jssocials-shares" style="width: 100%;"><i
+                                        class="fa fa-envelope"></i> <g:message code="default.instructor.contact.label" default=" Contact with author"/>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-9 col-md-8 col-xs-12">
+                        <div id="share" class="text-right">
                             <asset:javascript src="plugins/jssocials/jssocials.min.js"/>
                             <script>
                                 $("#share").jsSocials({
@@ -130,16 +148,7 @@
 
                     </div>
 
-                    <div class="col-lg-6 col-md-12 col-xs-12">
-                        <div class="text-right">
-                            <div class="jssocials-shares">
-                                <a href="mailto:${event.instructor.email}" class="btn btn-w-m btn-default jssocials-shares"><i
-                                        class="fa fa-envelope"></i><g:message code="default.instructor.contact.label" default=" Contact with author"/>
-                                </a>
-                            </div>
-                        </div>
 
-                    </div>
 
                 </div>
             </div>

@@ -15,7 +15,7 @@
     <title>Nearsoft Apprentice</title>
 
     <!-- Bootstrap core CSS -->
-    <asset:link href="landing_page/css/bootstrap.min.css" rel="stylesheet"/>
+    <asset:link href="landing_page/css/bootstrap.css" rel="stylesheet"/>
 
     <!-- Animation CSS -->
     <asset:link href="landing_page/css/animate.min.css" rel="stylesheet"/>

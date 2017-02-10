@@ -293,6 +293,25 @@
                 </div>
             </div>
 
+            <div class="col-lg-4">
+                <div class="bubble">
+                    "El programa de Nearsoft Apprentice me permitió retomar los fundamentos de la programación y tomar conciencia de su importancia en las entrevistas técnicas. Además de que tuve la oportunidad de conocer gente muy experimentada en el desarrollo de software y conocer de viva voz los problemas a los que se enfrentan y como los resuelven."
+                </div>
+
+                <div class="comments-avatar">
+                    <a href="" class="pull-left">
+                        <asset:image alt="image" src="landing_page/img/avatar3.jpg"/>
+                    </a>
+
+                    <div class="media-body">
+                        <div class="commens-name">
+                            Dalia de  Leon
+                        </div>
+                        <small class="text-muted">Estudiante de ESCOM-IPN</small>
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
