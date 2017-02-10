@@ -40,9 +40,10 @@ class ProfileController {
             def publicId = FilenameUtils.removeExtension(fileName)
 
             def data = IOUtils.copyToByteArray(profilePicture.getInputStream())
-            def uploadResult = cloudinaryService.update(publicId, data)
-
-            user.profilePictureUrl = uploadResult.url
+            if(data && data.length>0) {
+                def uploadResult = cloudinaryService.update(publicId, data)
+                user.profilePictureUrl = uploadResult.url
+            }
 
         }
 
