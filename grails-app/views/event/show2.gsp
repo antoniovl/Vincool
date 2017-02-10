@@ -8,6 +8,7 @@
 
         <asset:link rel="stylesheet" type="text/css" href="jssocials/jssocials.css"/>
         <asset:link rel="stylesheet" type="text/css" href="jssocials/jssocials-theme-minima.css"/>
+        <meta property="og:locale" content="es_MX" />
         <meta property="og:title" content="Nearsoft Apprentice ${event.office} '${event.eventCategory.subCategory}'">
         <meta property="og:description"
               content="${shareText}">
