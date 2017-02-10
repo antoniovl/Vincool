@@ -6,6 +6,40 @@
 
 <body id="page-top">
 
+<div id="inSlider" class="carousel carousel-fade" data-ride="carousel">
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <div class="container">
+            </div>
+            <!-- Set background for slide in css -->
+            <div class="header-back one"></div>
+
+        </div>
+        <!--div class="item">
+            <div class="container">
+            </div>
+
+            <div class="header-back two"></div>
+        </div>
+        <div class="item">
+            <div class="container">
+            </div>
+
+            <div class="header-back tree"></div>
+        </div>
+        <div class="item">
+            <div class="container">
+            </div>
+            <div class="header-back four"></div>
+        </div>
+        <div class="item">
+            <div class="container">
+            </div>
+
+            <div class="header-back five"></div>
+        </div-->
+    </div>
+</div>
 <section class="features" id="program">
     <div class="container">
         <div class="row">
@@ -261,7 +295,7 @@
 
                 <div class="comments-avatar">
                     <a href="" class="pull-left">
-                        <asset:image alt="image" src="landing_page/img/avatar1.jpg"/>
+                        <asset:image alt="image" src="landing_page/img/test2.jpg"/>
                     </a>
 
                     <div class="media-body">
@@ -280,12 +314,12 @@
 
                 <div class="comments-avatar">
                     <a href="" class="pull-left">
-                        <asset:image alt="image" src="landing_page/img/avatar3.jpg"/>
+                        <asset:image alt="image" src="landing_page/img/test3.jpg"/>
                     </a>
 
                     <div class="media-body">
                         <div class="commens-name">
-                            Dalia de  Leon
+                            Dalia de  Felipe
                         </div>
                         <small class="text-muted">Estudiante de ESCOM-IPN</small>
 
@@ -300,12 +334,12 @@
 
                 <div class="comments-avatar">
                     <a href="" class="pull-left">
-                        <asset:image alt="image" src="landing_page/img/avatar3.jpg"/>
+                        <asset:image alt="image" src="landing_page/img/test1.jpg"/>
                     </a>
 
                     <div class="media-body">
                         <div class="commens-name">
-                            Dalia de  Leon
+                            Miguel Moreno
                         </div>
                         <small class="text-muted">Estudiante de ESCOM-IPN</small>
 

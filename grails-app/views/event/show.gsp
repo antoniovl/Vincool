@@ -19,12 +19,14 @@
         <h3>Session Detail</h3>
     </content>
     <content tag="boxContent">
+        <br/>
+        <br/>
+        <br/>
         <section class="container features" style="margin-top: 0px;">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-12 text-center">
+                    <div class="col-lg-12 text-center" >
                         <div class="navy-line" style="margin: 20px auto 0;"></div>
-
                         <h1 class="font-bold m-b-xs">${event.eventCategory.subCategory} - <span
                                 class="navy">${event.type}</span></h1>
                     </div>
@@ -39,7 +41,6 @@
                     </div>
 
                     <div class="col-lg-3 col-md-4 col-xs-12">
-
                         <sec:ifAllGranted roles='ROLE_STUDENT'>
                             <g:if test="${isEnrolled}">
                                 <g:set var="enrollButtonMessage"
