@@ -68,7 +68,7 @@ class EventController {
 
             def isEnrolled = Enrollment.findByAttendeeAndEvent(springSecurityService.currentUser, event) != null
 
-            render([view: "show", model: [event: event, isEnrolled: isEnrolled]])
+            render([view: "show2", model: [event: event, isEnrolled: isEnrolled]])
 
         } else {
 
@@ -116,7 +116,7 @@ class EventController {
 
     def addResource(Resource resource) {
         resource.save(flush: true)
-        redirect(action: "show", id: resource.event.id)
+        redirect(action: "detail", id: resource.event.id)
     }
 
 }
