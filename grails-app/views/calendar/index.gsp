@@ -6,7 +6,7 @@
         <asset:javascript src="plugins/fullcalendar/fullcalendar.print.css" media="print"/>
     </content>
     <content tag="boxTitle">
-        Our Calendar
+        <g:message code="calendar.title" default="Our Calendar" />
     </content>
     <content tag="boxContent">
         <br/>
@@ -15,10 +15,10 @@
                 <div class="col-lg-3">
                     <div class="ibox float-e-margins">
                         <div class="ibox-content">
-                            <h2>Our Calendar</h2> Select the office location you are insterested in: <br/>
-                            <br/><g:select name="office_selector" from="${offices}" optionKey="officeCode"
-                                           optionValue="name"/>
-                            <br/><br/> Click on each event to see details and enroll.
+                            <h2><g:message code="calendar.title" default="Our Calendar" /></h2>
+                            <g:message code="calendar.instructions.select" default="Select the office location you are insterested in:" /> <br/>
+                            <br/><g:select name="office_selector" from="${offices}" optionKey="officeCode" optionValue="name"/>
+                            <br/><br/> <g:message code="calendar.instructions.click" default="Click on each event to see details and enroll."/>
                         </div>
                     </div>
                 </div>
