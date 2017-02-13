@@ -68,6 +68,9 @@ dependencies {
     compile "org.flywaydb:flyway-core:4.1.0"
     compile 'org.grails.plugins:grails-flyway:latest.integration'
 
+    compile "org.grails.plugins:grails-java8"
+    compile "org.hibernate:hibernate-java8:5.1.2.Final"
+
 }
 
 bootRun {

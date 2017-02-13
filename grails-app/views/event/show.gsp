@@ -3,7 +3,7 @@
         <asset:link rel="stylesheet" type="text/css" href="jssocials/jssocials.css" />
         <asset:link rel="stylesheet" type="text/css" href="jssocials/jssocials-theme-classic.css" />
         <meta property="og:title" content="Nearsoft Apprentice ${eventDetails.office} '${eventDetails.eventCategory.subCategory}'">
-        <meta property="og:description" content="Join us this ${eventDetails.date} at ${eventDetails.time.toString('HH:mm')} for the ${eventDetails.type} class '${eventDetails.eventCategory.subCategory}' : ${eventDetails.description} ">
+        <meta property="og:description" content="Join us this ${eventDetails.date} at ${eventDetails.time.toString()} for the ${eventDetails.type} class '${eventDetails.eventCategory.subCategory}' : ${eventDetails.description} ">
         <meta property="og:url" content="${request.getRequestURL()}">
         <meta property="og:image" content="https://nearsoft.com/admin/wp-content/themes/Nearsoftv1/img/nearsoft-symbol.png"/>
         <meta property="og:type" content="website"/>

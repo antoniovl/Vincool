@@ -18,11 +18,11 @@ CREATE TABLE public.event_category
 
 CREATE TABLE public.office
 (
-  id           SERIAL                                              NOT NULL,
-  location     CHARACTER VARYING(255) COLLATE pg_catalog."default" NOT NULL,
-  name         CHARACTER VARYING(255) COLLATE pg_catalog."default" NOT NULL,
-  office_code  CHARACTER VARYING(255) COLLATE pg_catalog."default" NOT NULL,
-  phone_number CHARACTER VARYING(255) COLLATE pg_catalog."default" NOT NULL,
+  id           SERIAL                                               NOT NULL,
+  location     CHARACTER VARYING(1000) COLLATE pg_catalog."default" NOT NULL,
+  name         CHARACTER VARYING(255) COLLATE pg_catalog."default"  NOT NULL,
+  office_code  CHARACTER VARYING(255) COLLATE pg_catalog."default"  NOT NULL,
+  phone_number CHARACTER VARYING(255) COLLATE pg_catalog."default"  NOT NULL,
   CONSTRAINT office_pkey PRIMARY KEY (id),
   CONSTRAINT uk_awe1v1y6jxu7vcqmbc8xtvxyk UNIQUE (office_code)
 );
@@ -42,7 +42,7 @@ CREATE TABLE public.sec_user
   version             BIGINT                                              NOT NULL,
   account_expired     BOOLEAN                                             NOT NULL,
   account_locked      BOOLEAN                                             NOT NULL,
-  description         CHARACTER VARYING(255) COLLATE pg_catalog."default",
+  description         CHARACTER VARYING(2000) COLLATE pg_catalog."default",
   email               CHARACTER VARYING(255) COLLATE pg_catalog."default" NOT NULL,
   enabled             BOOLEAN                                             NOT NULL,
   first_name          CHARACTER VARYING(255) COLLATE pg_catalog."default",
@@ -53,7 +53,7 @@ CREATE TABLE public.sec_user
   name                CHARACTER VARYING(255) COLLATE pg_catalog."default",
   password            CHARACTER VARYING(255) COLLATE pg_catalog."default" NOT NULL,
   password_expired    BOOLEAN                                             NOT NULL,
-  profile_picture_url CHARACTER VARYING(255) COLLATE pg_catalog."default",
+  profile_picture_url CHARACTER VARYING(500) COLLATE pg_catalog."default",
   twitter             CHARACTER VARYING(255) COLLATE pg_catalog."default",
   username            CHARACTER VARYING(255) COLLATE pg_catalog."default" NOT NULL,
   class               CHARACTER VARYING(255) COLLATE pg_catalog."default" NOT NULL,
@@ -103,15 +103,15 @@ TABLESPACE pg_default;
 
 CREATE TABLE public.event
 (
-  id                SERIAL                                              NOT NULL,
-  batch_id          BIGINT                                              NOT NULL,
-  date              BYTEA                                               NOT NULL,
-  description       CHARACTER VARYING(255) COLLATE pg_catalog."default" NOT NULL,
-  event_category_id BIGINT                                              NOT NULL,
-  instructor_id     BIGINT                                              NOT NULL,
-  office_id         BIGINT                                              NOT NULL,
-  "time"            BYTEA                                               NOT NULL,
-  type              CHARACTER VARYING(255) COLLATE pg_catalog."default" NOT NULL,
+  id                SERIAL                                               NOT NULL,
+  batch_id          BIGINT                                               NOT NULL,
+  "date"            DATE                                                 NOT NULL,
+  description       CHARACTER VARYING(2000) COLLATE pg_catalog."default" NOT NULL,
+  event_category_id BIGINT                                               NOT NULL,
+  instructor_id     BIGINT                                               NOT NULL,
+  office_id         BIGINT                                               NOT NULL,
+  "time"            TIME                                                 NOT NULL,
+  type              CHARACTER VARYING(255) COLLATE pg_catalog."default"  NOT NULL,
   CONSTRAINT event_pkey PRIMARY KEY (id),
   CONSTRAINT fk2r1ga9jmnogse7kwpeji20xho FOREIGN KEY (office_id)
   REFERENCES public.office (id) MATCH SIMPLE
@@ -153,7 +153,7 @@ CREATE TABLE public.enrollment
 CREATE TABLE public.resource
 (
   id          SERIAL                                              NOT NULL,
-  description CHARACTER VARYING(255) COLLATE pg_catalog."default" NOT NULL,
+  description CHARACTER VARYING(500) COLLATE pg_catalog."default" NOT NULL,
   event_id    BIGINT                                              NOT NULL,
   name        CHARACTER VARYING(255) COLLATE pg_catalog."default" NOT NULL,
   url         CHARACTER VARYING(255) COLLATE pg_catalog."default" NOT NULL,
@@ -165,15 +165,13 @@ CREATE TABLE public.resource
 );
 
 CREATE SEQUENCE public.hibernate_sequence
-    INCREMENT 1
-    START 65
-    MINVALUE 1
-    MAXVALUE 9223372036854775807
-    CACHE 1;
+INCREMENT 1
+START 65
+MINVALUE 1
+MAXVALUE 9223372036854775807
+CACHE 1;
 
-
-
-INSERT INTO batch (id, edition, is_active) VALUES (26, '2017 / 1', true);
+INSERT INTO batch (id, edition, is_active) VALUES (26, '2017 / 1', TRUE);
 
 INSERT INTO sec_user (id, version, account_expired, account_locked, description, email, enabled, first_name, gender, github, last_name, linkedin, name, password, password_expired, profile_picture_url, twitter, username, class, age, current_company, school) VALUES (50, 0, false, false, NULL, 'igomez@nearsoft.com', true, 'Israel', 'male', NULL, 'Gómez', NULL, 'Israel Gómez', '$2a$10$f4Qqx117x9YPHtly5OIaa.X6fMZPyqe9vu1Zh67UeQH5sB0Lw178a', false, 'https://lh5.googleusercontent.com/-2cRyoN5Rgmo/AAAAAAAAAAI/AAAAAAAAAB0/jWKxVQPl5F8/photo.jpg', NULL, 'igomez@nearsoft.com', 'vincool.Instructor', NULL, NULL, NULL);
 INSERT INTO sec_user (id, version, account_expired, account_locked, description, email, enabled, first_name, gender, github, last_name, linkedin, name, password, password_expired, profile_picture_url, twitter, username, class, age, current_company, school) VALUES (53, 0, false, false, NULL, 'imarban22@gmail.com', true, 'Israel', 'male', NULL, 'Gómez Marbán', NULL, 'Israel Gómez Marbán', '$2a$10$4.UjBQdgiqhU4FvzQ5yrzu/5I/8kybQCcWv3UWAGVq1zGzI/IvqjK', false, 'https://lh6.googleusercontent.com/-VxhvbxLpfwY/AAAAAAAAAAI/AAAAAAAAKEA/RXs0l8ACBI8/photo.jpg', NULL, 'imarban22@gmail.com', 'vincool.Attendee', NULL, NULL, NULL);
@@ -188,6 +186,7 @@ INSERT INTO sec_role (id, version, authority) VALUES (2, 0, 'ROLE_INSTRUCTOR');
 INSERT INTO sec_role (id, version, authority) VALUES (3, 0, 'ROLE_ADMIN');
 
 INSERT INTO sec_user_sec_role (id, sec_role_id, sec_user_id) VALUES (52, 2, 50);
+INSERT INTO sec_user_sec_role (id, sec_role_id, sec_user_id) VALUES (66, 3, 50);
 INSERT INTO sec_user_sec_role (id, sec_role_id, sec_user_id) VALUES (8, 2, 6);
 INSERT INTO sec_user_sec_role (id, sec_role_id, sec_user_id) VALUES (9, 3, 6);
 INSERT INTO sec_user_sec_role (id, sec_role_id, sec_user_id) VALUES (12, 2, 10);
@@ -210,9 +209,6 @@ INSERT INTO event_category (id, category, color, sub_category) VALUES (24, 'APPR
 INSERT INTO event_category (id, category, color, sub_category) VALUES (25, 'APPRENTICE', '#e54800', 'Metodologias de Desarrollo de software');
 INSERT INTO event_category (id, category, color, sub_category) VALUES (14, 'APPRENTICE', '#e54800', 'Codigo Limpio y Git');
 
-SELECT pg_catalog.setval('hibernate_sequence', 66, true);
-
-
 INSERT INTO oauthid (id, version, access_token, provider, user_id) VALUES (7, 0, 'apimentel@nearsoft.com', 'google', 6);
 INSERT INTO oauthid (id, version, access_token, provider, user_id) VALUES (11, 0, 'laguilar@nearsoft.com', 'google', 10);
 INSERT INTO oauthid (id, version, access_token, provider, user_id) VALUES (51, 0, 'igomez@nearsoft.com', 'google', 50);
@@ -223,4 +219,27 @@ INSERT INTO oauthid (id, version, access_token, provider, user_id) VALUES (64, 0
 
 INSERT INTO office (id, location, name, office_code, phone_number) VALUES (27, 'San Luis Potosí 196 int. 401 Col. Roma Norte Del. Cuauhtémoc Mexico, D.F. 06700', 'Ciudad de Mexico', 'CDMX', '+52 (55) 6388-6650');
 
-INSERT INTO enrollment (id, attendance, attendee_id, event_id) VALUES (59, false, 56, 28);
+INSERT INTO event (id, batch_id, date, description, event_category_id, instructor_id, office_id, "time", type) VALUES (28, 26, '2017-02-24', 'Revisaremos los conceptos basicos de Codigo Limpio y el fujo de trabajo basico de Git', 14, 6, 27, '18:30', 'Teorica / Practica');
+INSERT INTO event (id, batch_id, date, description, event_category_id, instructor_id, office_id, "time", type) VALUES (29, 26, '2017-03-03', 'Revisaremos a grandes rasgos las caracteristicas principales que se usaran a lo largo del programa. Python, Java y Javascript', 15, 6, 27, '18:30', 'Practica');
+INSERT INTO event (id, batch_id, date, description, event_category_id, instructor_id, office_id, "time", type) VALUES (32, 26, '2017-03-10', 'Sets y Hashtables', 17, 6, 27, '18:30', 'Teorica');
+INSERT INTO event (id, batch_id, date, description, event_category_id, instructor_id, office_id, "time", type) VALUES (33, 26, '2017-03-17', 'Sets y Hashtables', 17, 6, 27, '18:30', 'Practica');
+INSERT INTO event (id, batch_id, date, description, event_category_id, instructor_id, office_id, "time", type) VALUES (34, 26, '2017-03-24', 'Arboles y Heaps', 18, 6, 27, '18:30', 'Teorica');
+INSERT INTO event (id, batch_id, date, description, event_category_id, instructor_id, office_id, "time", type) VALUES (35, 26, '2017-03-31', 'Trees y Heaps', 18, 6, 27, '18:30', 'Practica');
+INSERT INTO event (id, batch_id, date, description, event_category_id, instructor_id, office_id, "time", type) VALUES (36, 26, '2017-04-07', 'Algoritmos de ordenamiento y busqueda', 19, 6, 27, '18:30', 'Teorica');
+INSERT INTO event (id, batch_id, date, description, event_category_id, instructor_id, office_id, "time", type) VALUES (37, 26, '2017-04-14', 'Algoritmos de ordenamiento y busqueda', 19, 6, 27, '18:30', 'Practica');
+INSERT INTO event (id, batch_id, date, description, event_category_id, instructor_id, office_id, "time", type) VALUES (38, 26, '2017-04-21', 'Herencia, Polimorfismo, Abstraccion y Encapsulamiento. Clases, Interfaces y Clases abstractas.', 20, 6, 27, '18:30', 'Teorica');
+INSERT INTO event (id, batch_id, date, description, event_category_id, instructor_id, office_id, "time", type) VALUES (39, 26, '2017-04-28', 'Herencia, Polimorfismo, Abstraccion y Encapsulamiento. Clases, Interfaces y Clases abstractas.', 20, 6, 27, '18:30', 'Practica');
+INSERT INTO event (id, batch_id, date, description, event_category_id, instructor_id, office_id, "time", type) VALUES (40, 26, '2017-05-05', 'Que son? Patrones creacionales, estructurales y de comportamiento', 21, 6, 27, '18:30', 'Teorica');
+INSERT INTO event (id, batch_id, date, description, event_category_id, instructor_id, office_id, "time", type) VALUES (31, 26, '2017-05-12', 'Arreglos y Listas', 16, 10, 27, '18:30', 'Practica');
+INSERT INTO event (id, batch_id, date, description, event_category_id, instructor_id, office_id, "time", type) VALUES (41, 26, '2017-05-19', 'Que son? Patrones creacionales, estructurales y de comportamiento', 21, 6, 27, '18:30', 'Practica');
+INSERT INTO event (id, batch_id, date, description, event_category_id, instructor_id, office_id, "time", type) VALUES (42, 26, '2017-05-26', 'Single Responsibility Principle, Open Closed Principle, Liskov Substitution Principle, Interface Segregation Principle, Dependency Inversion Principle', 22, 6, 27, '18:30', 'Teorica');
+INSERT INTO event (id, batch_id, date, description, event_category_id, instructor_id, office_id, "time", type) VALUES (43, 26, '2017-06-02', 'Single Responsibility Principle, Open Closed Principle, Liskov Substitution Principle, Interface Segregation Principle, Dependency Inversion Principle', 22, 6, 27, '18:30', 'Practica');
+INSERT INTO event (id, batch_id, date, description, event_category_id, instructor_id, office_id, "time", type) VALUES (44, 26, '2017-06-09', 'Que es? Cuales es tu importancia? TDD', 23, 6, 27, '18:30', 'Teorica');
+INSERT INTO event (id, batch_id, date, description, event_category_id, instructor_id, office_id, "time", type) VALUES (45, 26, '2017-06-16', 'Que es? Cuales es tu importancia? TDD', 23, 6, 27, '18:30', 'Practica');
+INSERT INTO event (id, batch_id, date, description, event_category_id, instructor_id, office_id, "time", type) VALUES (46, 26, '2017-06-23', 'Bases de datos, SQL y No SQL', 24, 6, 27, '18:30', 'Teorica');
+INSERT INTO event (id, batch_id, date, description, event_category_id, instructor_id, office_id, "time", type) VALUES (47, 26, '2017-06-30', 'Bases de datos, SQL y No SQL', 24, 6, 27, '18:30', 'Practica');
+INSERT INTO event (id, batch_id, date, description, event_category_id, instructor_id, office_id, "time", type) VALUES (48, 26, '2017-07-07', 'SCRUM', 25, 6, 27, '18:30', 'Teorica');
+INSERT INTO event (id, batch_id, date, description, event_category_id, instructor_id, office_id, "time", type) VALUES (49, 26, '2017-07-14', 'SCRUM', 25, 6, 27, '18:30', 'Practica');
+INSERT INTO event (id, batch_id, date, description, event_category_id, instructor_id, office_id, "time", type) VALUES (30, 26, '2017-07-21', 'Arreglos y Listas', 16, 10, 27, '18:30', 'Teorica');
+
+SELECT pg_catalog.setval('hibernate_sequence', 67, TRUE);
