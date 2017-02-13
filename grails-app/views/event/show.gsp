@@ -1,28 +1,42 @@
 <g:applyLayout name="simple">
     <content tag="head">
-        <asset:link rel="stylesheet" type="text/css" href="jssocials/jssocials.css" />
-        <asset:link rel="stylesheet" type="text/css" href="jssocials/jssocials-theme-classic.css" />
-        <meta property="og:title" content="Nearsoft Apprentice ${eventDetails.office} '${eventDetails.eventCategory.subCategory}'">
-        <meta property="og:description" content="Join us this ${eventDetails.date} at ${eventDetails.time.toString()} for the ${eventDetails.type} class '${eventDetails.eventCategory.subCategory}' : ${eventDetails.description} ">
+        <asset:link rel="stylesheet" type="text/css" href="jssocials/jssocials.css"/>
+        <asset:link rel="stylesheet" type="text/css" href="jssocials/jssocials-theme-classic.css"/>
+        <meta property="og:title" content="Nearsoft Apprentice ${event.office} '${event.eventCategory.subCategory}'">
+        <meta property="og:description"
+              content="Join us this ${event.date} at ${event.time.toString('HH:mm')} for the ${event.type} class '${event.eventCategory.subCategory}' : ${event.description} ">
         <meta property="og:url" content="${request.getRequestURL()}">
-        <meta property="og:image" content="https://nearsoft.com/admin/wp-content/themes/Nearsoftv1/img/nearsoft-symbol.png"/>
+        <meta property="og:image"
+              content="https://nearsoft.com/admin/wp-content/themes/Nearsoftv1/img/nearsoft-symbol.png"/>
         <meta property="og:type" content="website"/>
         <meta name="twitter:title" content="Nearsoft Apprentice">
         <meta name="twitter:description" content="Learn the basics of software development.">
-        <meta name="twitter:image" content="https://nearsoft.com/admin/wp-content/themes/Nearsoftv1/img/nearsoft-symbol.png">
+        <meta name="twitter:image"
+              content="https://nearsoft.com/admin/wp-content/themes/Nearsoftv1/img/nearsoft-symbol.png">
         <meta name="twitter:card" content="photo">
     </content>
     <content tag="boxTitle">
         <h3>Session Detail</h3>
     </content>
     <content tag="boxContent">
-        <div class="ibox product-detail">
-            <div class="row">
-                <div class="col-md-12">
-                    <h1 class="font-bold m-b-xs">${eventDetails.eventCategory.subCategory} - (${eventDetails.type} class)</h1>
-                    <hr/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <section class="container features" style="margin-top: 0px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 col-xs-12">
+                        <asset:image src="landing_page/img/clase.png"
+                                     style="width: 100%; height: 300px; object-fit: cover;"/>
+                    </div>
 
-                    <div>
+                    <div class="col-lg-4 col-md-4 col-xs-12  text-center">
+                        <div class="navy-line" style="margin: 20px auto 0;"></div>
+
+                        <h1 class="font-bold m-b-xs">${event.eventCategory.subCategory}</h1>
+
+                        <h1><span class="navy">${event.type}</span></h1>
                         <sec:ifAllGranted roles='ROLE_STUDENT'>
                             <g:if test="${isEnrolled}">
                                 <g:set var="enrollButtonMessage"
@@ -38,9 +52,10 @@
                             </g:else>
 
                             <g:form name="enrollForm" controller="attendee" action="${enrollFormAction}"
-                                    id="${eventDetails.id}" method="POST">
+                                    id="${event.id}" method="POST">
                                 <g:submitButton class="${enrollButtonClass}" name="enrollButton" id="enrollButton"
-                                                value="${enrollButtonMessage}"/>
+                                                value="${enrollButtonMessage}"
+                                                style="margin: 10px 0px 5px; width: 100%;"/>
                             </g:form>
                         </sec:ifAllGranted>
 
@@ -50,70 +65,198 @@
                             <g:set var="enrollButtonClass" value="${"btn pull-right btn-primary"}"/>
                             <g:set var="enrollFormAction" value="${"enroll"}"/>
                             <g:form name="enrollForm" controller="attendee" action="${enrollFormAction}"
-                                    id="${eventDetails.id}" method="POST">
+                                    id="${event.id}" method="POST">
                                 <g:submitButton class="${enrollButtonClass}" name="enrollButton" id="enrollButton"
-                                                value="${enrollButtonMessage}"/>
+                                                value="${enrollButtonMessage}"
+                                                style="margin: 10px 0px 5px; width: 100%;"/>
                             </g:form>
                         </sec:ifNotLoggedIn>
-                        <h1 class="product-main-price">${eventDetails.date} at ${eventDetails.time}</h1>
-                    </div>
-
-                    <hr>
-
-                    <h3><g:message code="default.session.description.label" default="Event description"/></h3>
-
-                    <div class="text-muted">
-                        ${eventDetails.description}
-                    </div>
-
-                    <h3><g:message code="default.instructor.label" default="Instructor"/></h3>
-
-                    <div class="text-muted">
-                        ${eventDetails.instructor.name}
-                    </div>
-
-                    <h3><g:message code="default.office.location.label" default="Location"/></h3>
-
-                    <div class="text-muted">
-                        ${eventDetails.office.location}
-                    </div>
-
-                    <sec:ifAnyGranted roles='ROLE_INSTRUCTOR,ROLE_ADMIN'>
-
-                        <h3><g:message code="default.eventCategory.label" default="Event Category"/></h3>
-                        <div class="text-muted">
-                            ${eventDetails.eventCategory.category}
-                        </div>
-
-                        <h3><g:message code="default.batch.label" default="Batch"/></h3>
-                        <div class="text-muted">
-                            ${eventDetails.batch}
-                        </div>
-
-                    </sec:ifAnyGranted>
-
-                    <div class="text-right">
-                        <div class="btn-group">
-                            <button class="btn btn-white btn-sm"><i class="fa fa-star"></i> Add to wishlist</button>
-                            <button class="btn btn-white btn-sm"><i class="fa fa-envelope"></i> Contact with author
-                            </button>
-                        </div>
-                    </div>
-                    <div id="share">
-                        <asset:javascript src="plugins/jssocials/jssocials.min.js"/>
-                        <script>
-                            $("#share").jsSocials({
-                                shares: [ "facebook", "twitter", "linkedin", "googleplus"],
-                                text: "Nearsoft Apprentice: ${eventDetails.eventCategory.subCategory} ${eventDetails.description} ${eventDetails.time}",
-                                showCount: true,
-                                showLabel: false
-                            });
-                        </script>
                     </div>
                 </div>
-            </div>
-        </div>
+                <br/>
 
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 col-xs-12">
+                        <h3><g:message code="default.session.description.label" default="Event description"/></h3>
+
+                        <div class="text-muted">
+                            ${event.description}
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-xs-12">
+                        <div class="row">
+                            <div clas="col-lg-12">
+                                <h4><g:message code="default.instructor.label" default="Instructor"/></h4>
+
+                                <div class="team-member">
+                                    <img src="${event.instructor.profilePictureUrl}"
+                                         class="img-responsive img-circle img-small" alt=""/>
+                                    <h4><span class="navy">${event.instructor.name}</span></h4>
+
+                                    <p>${event.instructor.description}</p>
+                                    <ul class="list-inline social-icon">
+                                        <g:if test="${event.instructor.twitter}">
+                                            <li><a target="_blank"
+                                                   href="https://twitter.com/${event.instructor.twitter}"><i
+                                                        class="fa fa-twitter"></i></a>
+                                            </li>
+                                        </g:if>
+                                        <g:if test="${event.instructor.github}">
+                                            <li><a target="_blank"
+                                                   href="https://github.com/${event.instructor.github}"><i
+                                                        class="fa fa-github"></i></a>
+                                            </li>
+                                        </g:if>
+                                        <g:if test="${event.instructor.linkedin}">
+                                            <li><a target="_blank"
+                                                   href="https://www.linkedin.com/in/${event.instructor.linkedin}"><i
+                                                        class="fa fa-linkedin"></i></a>
+                                            </li>
+                                        </g:if>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div clas="col-lg-12">
+                                <h2 style="margin: 10px 0px 5px;"
+                                    class="product-main-price">Cuando?</h2>
+                                <p>
+                                    <g:formatDate
+                                            date="${event.date.toDate()}"/> - <g:formatDate
+                                            date="${event.time.toDateTimeToday().toDate()}" type="time" style="SHORT"/>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div clas="col-lg-12">
+                                <h4><g:message code="default.office.location.label" default="Location"/></h4>
+
+                                <div class="text-muted">
+                                    ${event.office.location}
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <sec:ifAnyGranted roles='ROLE_INSTRUCTOR,ROLE_ADMIN'>
+                            <div class="row">
+                                <div clas="col-lg-12">
+                                    <h3><g:message code="default.eventCategory.label" default="Event Category"/></h3>
+
+                                    <div class="text-muted">
+                                        ${event.eventCategory.category}
+                                    </div>
+
+                                    <h3><g:message code="default.batch.label" default="Batch"/></h3>
+
+                                    <div class="text-muted">
+                                        ${event.batch}
+                                    </div>
+                                </div>
+                            </div>
+
+                        </sec:ifAnyGranted>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-9 col-md-8 col-xs-12">
+                        <h1 style="margin: 10px 0px 5px; text-transform: uppercase;"
+                            class="product-main-price"><g:formatDate date="${event.date.toDate()}"/> - <g:formatDate
+                                date="${event.time.toDateTimeToday().toDate()}" type="time" style="SHORT"/></h1>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3><g:message code="default.session.description.label" default="Event description"/></h3>
+
+                        <div class="text-muted">
+                            ${event.description}
+                        </div>
+
+                        <h3><g:message code="default.instructor.label" default="Instructor"/></h3>
+
+                        <div class="text-muted">
+                            ${event.instructor.name}
+                        </div>
+
+                        <sec:ifAnyGranted roles='ROLE_INSTRUCTOR,ROLE_ADMIN'>
+
+                            <h3><g:message code="default.eventCategory.label" default="Event Category"/></h3>
+
+                            <div class="text-muted">
+                                ${event.eventCategory.category}
+                            </div>
+
+                            <h3><g:message code="default.batch.label" default="Batch"/></h3>
+
+                            <div class="text-muted">
+                                ${event.batch}
+                            </div>
+
+                        </sec:ifAnyGranted>
+
+                        <h3><g:message code="default.office.location.label" default="Location"/></h3>
+
+                        <div class="text-muted">
+                            ${event.office.location}
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <iframe width="100%" height="250" frameborder="0" style="border:0"
+                                src="https://www.google.com/maps/embed/v1/place?q=${event.office.location}&key=AIzaSyDTheQkFI_mOE0ry4A4JnOqn0OSWV_cnPE"
+                                allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <br/>
+
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-xs-12">
+                        <div class="text-left">
+                            <div class="jssocials-shares">
+                                <a href="mailto:${event.instructor.email}"
+                                   class="btn btn-w-m btn-default jssocials-shares" style="width: 100%;"><i
+                                        class="fa fa-envelope"></i> <g:message code="default.instructor.contact.label"
+                                                                               default=" Contact with author"/>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-9 col-md-8 col-xs-12">
+                        <div id="share" class="text-right">
+                            <asset:javascript src="plugins/jssocials/jssocials.min.js"/>
+                            <script>
+                                $("#share").jsSocials({
+                                    shares: ["facebook", "twitter", "linkedin", "googleplus"],
+                                    text: "Nearsoft Apprentice: ${event.eventCategory.subCategory} ${event.description} ${event.time}",
+                                    showCount: true,
+                                    showLabel: false
+                                });
+                            </script>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
     </content>
     <content tag="breadcrumbs">
     </content>

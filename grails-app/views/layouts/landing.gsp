@@ -15,7 +15,7 @@
     <title>Nearsoft Apprentice</title>
 
     <!-- Bootstrap core CSS -->
-    <asset:link href="landing_page/css/bootstrap.min.css" rel="stylesheet"/>
+    <asset:link href="landing_page/css/bootstrap.css" rel="stylesheet"/>
 
     <!-- Animation CSS -->
     <asset:link href="landing_page/css/animate.min.css" rel="stylesheet"/>
@@ -55,7 +55,7 @@
 
 <body id="page-top">
 <div class="navbar-wrapper">
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-default navbar-fixed-top navbar-scroll" role="navigation">
         <div class="container">
             <div class="navbar-header page-scroll">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
@@ -82,40 +82,6 @@
     </nav>
 </div>
 
-<div id="inSlider" class="carousel carousel-fade" data-ride="carousel">
-    <div class="carousel-inner" role="listbox">
-        <div class="item active">
-            <div class="container">
-            </div>
-            <!-- Set background for slide in css -->
-            <div class="header-back one"></div>
-
-        </div>
-        <!--div class="item">
-            <div class="container">
-            </div>
-
-            <div class="header-back two"></div>
-        </div>
-        <div class="item">
-            <div class="container">
-            </div>
-
-            <div class="header-back tree"></div>
-        </div>
-        <div class="item">
-            <div class="container">
-            </div>
-            <div class="header-back four"></div>
-        </div>
-        <div class="item">
-            <div class="container">
-            </div>
-
-            <div class="header-back five"></div>
-        </div-->
-    </div>
-</div>
 
 
 <g:layoutBody/>
@@ -193,7 +159,6 @@
 </section>
 
 <asset:javascript src="landing_page/js/classie.js"/>
-<asset:javascript src="landing_page/js/cbpAnimatedHeader.js"/>
 <asset:javascript src="landing_page/js/wow.min.js"/>
 <asset:javascript src="landing_page/js/inspinia.js"/>
 </body>

@@ -10,6 +10,10 @@ class EventController {
     def roleUserService
     static scaffold = Event
 
+    static allowedMethods = [index: "GET", show: "GET", resource: "GET", addResource: "POST"]
+
+    final MAX_ATTENDEES_PICTURES = 10
+
     @Secured(['ROLE_ADMIN', 'ROLE_INSTRUCTOR', 'ROLE_STUDENT'])
     def index(Integer max) {
         def userDetails = session.userDetails
@@ -45,31 +49,74 @@ class EventController {
     def show(Long id) {
 
         def event = Event.get(id)
-        def isEnrolled = false
 
         if (!springSecurityService.loggedIn) {
 
             if (event == null) {
                 redirect(controller: "calendar", action: "index")
+                return
             }
+
+            render([view: "show2", model: [event: event, isEnrolled: false]])
 
         } else if (roleUserService.currentUserAnAttendee) {
 
             if (event == null) {
                 redirect(controller: "calendar", action: "index")
+                return
             }
 
-            isEnrolled = Enrollment.findByAttendeeAndEvent(springSecurityService.currentUser, event) != null
+            def isEnrolled = Enrollment.findByAttendeeAndEvent(springSecurityService.currentUser, event) != null
+
+            render([view: "show2", model: [event: event, isEnrolled: isEnrolled]])
 
         } else {
 
             if (event == null) {
                 redirect(action: "index")
+                return
             }
 
+            def ownsEvent = true
+            if (roleUserService.currentUserAInstructor) {
+                def instructorEvents = Event.findAllByInstructor(springSecurityService.currentUser)
+                if (!instructorEvents.contains(event)) {
+                    ownsEvent = false
+                }
+            }
+
+            def enrollments = Enrollment.findAllByEvent(event)
+            def attendeesPictures = enrollments.take(MAX_ATTENDEES_PICTURES).collect { it.attendee.profilePictureUrl }
+
+            def assistance = 0
+
+            for (enrollment in enrollments) {
+                if(enrollment.attendance) {
+                    assistance++
+                }
+            }
+
+            def assistancePercentage = 0
+            if (!enrollments.isEmpty()){
+                assistancePercentage = ((assistance / enrollments.size()) * 100).intValue()
+            }
+
+            def eventDetails = [enrollments: enrollments,
+                                attendeesPictures: attendeesPictures,
+                                assistancePercentage: assistancePercentage,
+                                ownsEvent: ownsEvent]
+            render([view: "detail", model: [event: event, eventDetails: eventDetails]])
         }
 
-        [eventDetails: event, isEnrolled: isEnrolled]
+    }
+
+    def resource(Long id) {
+        render([view: "resource", model: [event: Event.findById(id)]])
+    }
+
+    def addResource(Resource resource) {
+        resource.save(flush: true)
+        redirect(action: "show", id: resource.event.id)
     }
 
 }
