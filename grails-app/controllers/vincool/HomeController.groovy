@@ -1,5 +1,7 @@
 package vincool
 
+import java.time.LocalDate
+
 class HomeController {
     def roleUserService
 
@@ -12,7 +14,7 @@ class HomeController {
             forward controller: "event"
         } else {
             render(view: "landing_esp", model: [instructors: Instructor.findAllByNameIsNotNull(), nextClasses: Event.createCriteria().list {
-                ge('date', new Date().clearTime())
+                ge('date', LocalDate.now())
                 batch {
                     eq('isActive', true)
                 }

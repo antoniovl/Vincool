@@ -3,25 +3,13 @@ package vincool
 import vincool.auth.SecRole
 import vincool.auth.SecUser
 import vincool.auth.SecUserSecRole
-import org.joda.time.LocalDate
-import org.joda.time.LocalTime
+import java.time.LocalDate
+import java.time.LocalTime
 
 class BootStrap {
 
     def init = { servletContext ->
-
         environments {
-            production {
-                ['ROLE_STUDENT', 'ROLE_INSTRUCTOR', 'ROLE_ADMIN'].each {
-                    if (! SecRole.findByAuthority(it)){
-                        def secRole = new SecRole(it).save()
-                        if(it == 'ROLE_ADMIN') {
-                            def secUser = new SecUser(username: "PedroAdmin", password: "12345abcd", email: "eladmin@gmail.com").save()
-                            SecUserSecRole.create(secUser, secRole)
-                        }
-                    }
-                }
-            }
             development {
                 ['ROLE_STUDENT', 'ROLE_INSTRUCTOR', 'ROLE_ADMIN'].each {
                     if (! SecRole.findByAuthority(it)){
@@ -32,10 +20,10 @@ class BootStrap {
                         }
                     }
                 }
-                def attendee1 = new Attendee(username: "luisdaniel", password: "pass", email: "lalducin@nearsoft.com", name: "Luis Daniel", firstName: "Luis Daniel", lastName: "Alducin", age: 22, school: "ESCOM", currentCompany: "Nearsoft").save()
-                def attendee2 = new Attendee(username: "erikueen", password: "pass", email: "ereyna@nearsoft.com", name: "Erick", firstName: "Erick", lastName: "Reyna", age: 23, school: "UPVT", currentCompany: "Nearsoft").save()
-                new Attendee(username: "jlozano", password: "pass",  email: "jlozano@nearsoft.com", name: "Javier", firstName: "Javier", lastName: "Lozano", age: 21, school: "UPIITA", currentCompany: "Nearsoft").save()
-                new Attendee(username: "aibarra", password: "pass", email: "aibarra@nearsoft.com", name: "Antonio", firstName: "Antonio", lastName:  "Ibarra", age: 19, school: "ESCOM", currentCompany: "Nearsoft").save()
+                def attendee1 = new Attendee(username: "luisdaniel", password: "pass", email: "lalducin@nearsoft.com", firstName: "Luis Daniel", lastName: "Alducin", age: 22, school: "ESCOM", currentCompany: "Nearsoft").save()
+                def attendee2 = new Attendee(username: "erikueen", password: "pass", email: "ereyna@nearsoft.com", firstName: "Erick", lastName: "Reyna", age: 23, school: "UPVT", currentCompany: "Nearsoft").save()
+                new Attendee(username: "jlozano", password: "pass",  email: "jlozano@nearsoft.com", firstName: "Javier", lastName: "Lozano", age: 21, school: "UPIITA", currentCompany: "Nearsoft").save()
+                new Attendee(username: "aibarra", password: "pass", email: "aibarra@nearsoft.com", firstName: "Antonio", lastName:  "Ibarra", age: 19, school: "ESCOM", currentCompany: "Nearsoft").save()
 
                 def cdmx = new Office(officeCode: "CDMX", name: "Ciudad de México", location: "San Luis Potosí 196 int. 401 Col. Roma Norte Del. Cuauhtémoc Ciudad de México 06700", phoneNumber:  "+52 (55) 6388-6650").save()
                 def hmo = new Office(officeCode: "HMO", name: "Hermosillo, Sonora", location: "Blvd. Antonio Quiroga 21 Col. El Llano Hermosillo, Sonora, México 83210", phoneNumber:  "+52 (662) 216-7401").save()
@@ -53,12 +41,12 @@ class BootStrap {
                 new Event(type: "Theoretical", date: LocalDate.parse("2016-11-24"), time: LocalTime.now(), instructor: instructor1, office: cdmx, eventCategory: eventCategory3, description: "Single Responsibility Principle", batch: apprenticeCDMX_2016B).save()
 
                 def apprenticeCDMX_2017A = new Batch(edition: "Apprentice CDMX 2017 A", isActive: true).save()
-                new Event(type: "Practical", date: LocalDate.parse("2017-01-7"), time: LocalTime.now(), instructor: instructor1, office: cdmx, eventCategory: eventCategory1, description: "VCS and Python, Java, Javascript", batch: apprenticeCDMX_2017A).save()
+                new Event(type: "Practical", date: LocalDate.parse("2017-01-07"), time: LocalTime.now(), instructor: instructor1, office: cdmx, eventCategory: eventCategory1, description: "VCS and Python, Java, Javascript", batch: apprenticeCDMX_2017A).save()
                 new Event(type: "Practical", date: LocalDate.parse("2017-01-14"), time: LocalTime.now(), instructor: instructor1, office: cdmx, eventCategory: eventCategory2, description: "Arrays and Lists", batch: apprenticeCDMX_2017A).save()
                 new Event(type: "Theoretical", date: LocalDate.parse("2017-01-21"), time: LocalTime.now(), instructor: instructor1, office: cdmx, eventCategory: eventCategory4, description: "Sets and Hash Tables", batch: apprenticeCDMX_2017A).save()
 
                 def apprenticeHMO_2017A = new Batch(edition: "Apprentice HMO 2017 A", isActive: true).save()
-                new Event(type: "Practical", date: LocalDate.parse("2017-01-5"), time: LocalTime.now(), instructor: instructor1, office: hmo, eventCategory: eventCategory1, description: "VCS and Python, Java, Javascript", batch: apprenticeHMO_2017A).save()
+                new Event(type: "Practical", date: LocalDate.parse("2017-01-05"), time: LocalTime.now(), instructor: instructor1, office: hmo, eventCategory: eventCategory1, description: "VCS and Python, Java, Javascript", batch: apprenticeHMO_2017A).save()
                 new Event(type: "Practical", date: LocalDate.parse("2017-01-12"), time: LocalTime.now(), instructor: instructor1, office: hmo, eventCategory: eventCategory2, description: "Arrays and Lists", batch: apprenticeHMO_2017A).save()
                 new Event(type: "Theoretical", date: LocalDate.parse("2017-01-19"), time: LocalTime.now(), instructor: instructor1, office: hmo, eventCategory: eventCategory4, description: "Sets and Hash Tables", batch: apprenticeHMO_2017A).save()
 
