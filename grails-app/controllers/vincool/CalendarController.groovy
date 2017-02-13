@@ -4,7 +4,9 @@ import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
 import grails.web.mapping.LinkGenerator
 
+import java.text.SimpleDateFormat
 import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 @Secured(['permitAll'])
 class CalendarController {
@@ -32,7 +34,6 @@ class CalendarController {
                 eventsEnrolledMap[enrollment.event] = enrollment.attendee;
             }
         }
-
         def color
         events.each{ event ->
             color = event.eventCategory.color
@@ -40,7 +41,7 @@ class CalendarController {
             source[event.office.officeCode]
                     .add([id: event.id,
                           title: event.eventCategory.subCategory,
-                          start: LocalDateTime.of(event.date, event.time),
+                          start: LocalDateTime.of(event.date, event.time).format(DateTimeFormatter.ISO_LOCAL_DATE_TIME),
                           allDay: false,
                           color: color,
                           url: grailsLinkGenerator.link(controller: "event", action: "show", id: event.id, absolute: true)])
