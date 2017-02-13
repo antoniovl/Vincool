@@ -32,12 +32,12 @@
                 <div>
                     <asset:image src="nearsoft.png" alt="laptop"/>
                 </div>
-                <h3>Welcome to Nearsoft Apprentice</h3>
-                <p>Learn the basics of software development from some of the best engineers of Nearsoft.</p>
-                <p>Singin to start learning.</p>
+                <h3><g:message code='login.apprentice.label' default="Welcome to Nearsoft Apprentice"/></h3>
+                <p><g:message code='login.apprentice.message' default="Learn the basics of software development from some of the best engineers of Nearsoft."/></p>
+                <p><g:message code='login.apprentice.sigin' default="Singin to start learning."/></p>
                 <form class="m-t" role="form">
                     <div class="">
-                        <oauth2:connect provider="google" id="google-connect-link" class="btn btn-block btn-social btn-google" ><span class="fa fa-google"></span>Sign in with Google</oauth2:connect>
+                        <oauth2:connect provider="google" id="google-connect-link" class="btn btn-block btn-social btn-google" ><span class="fa fa-google"></span><g:message code='login.apprentice.sigin.google' default="Sign in with Google"/></oauth2:connect>
                     </div>
                 </form>
                 <br/>
@@ -52,7 +52,7 @@
                 <a class="btn btn-block btn-social btn-twitter">
                     <span class="fa fa-twitter"></span> Sign in with Twitter
                 </a-->
-                <p class="m-t"><small>Nearsoft were the magic begins &copy; 2014</small></p>
+                <p class="m-t"><small>Nearsoft were the magic begins &copy; 2017</small></p>
             </div>
         </div>
 

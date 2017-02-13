@@ -169,3 +169,9 @@ grails:
         upload:
             maxFileSize: 2097152
             maxRequestSize: 2097152
+
+
+flyway:
+    enabled: true
+    locations: db/migration/
+    baselineOnMigrate: true

@@ -1,12 +1,16 @@
 package vincool
 
-import org.joda.time.LocalDate
-import org.joda.time.LocalTime
+import grails.databinding.BindingFormat
+
+import java.time.LocalDate
+import java.time.LocalTime
 
 class Event {
 
     String type
+    @BindingFormat("yyyy-MM-dd")
     LocalDate date
+    @BindingFormat("HH:mm")
     LocalTime time
     Instructor instructor
     Office office
@@ -28,7 +32,9 @@ class Event {
         version false
     }
 
-    String toString(){
+    String toString() {
         description
     }
+
+
 }

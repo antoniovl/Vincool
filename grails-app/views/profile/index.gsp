@@ -8,7 +8,7 @@
         <asset:javascript src="plugins/fullcalendar/fullcalendar.print.css" media="print"/>
     </content>
     <content tag="boxTitle">
-        Profile
+        <g:message code="profile.label" />
     </content>
     <content tag="boxContent">
         <div class="row animated fadeInRight">
@@ -19,8 +19,8 @@
                     <div class="col-md-3">
                         <img src="${session.profilePictureUrl}" class="img-circle circle-border" height="250px" width="250px" alt="profile">
                         <div class="fileinput fileinput-new" data-provides="fileinput">
-                            <span class="btn btn-default btn-file"><span class="fileinput-new">Select file</span>
-                            <span class="fileinput-exists">Change</span><input type="file" name="picture"/></span>
+                            <span class="btn btn-default btn-file"><span class="fileinput-new"><g:message code="select.file" default="Select file" /></span>
+                            <span class="fileinput-exists"><g:message code="change" /></span><input type="file" name="picture"/></span>
                             <span class="fileinput-filename"></span>
                             <a href="#" class="close fileinput-exists" data-dismiss="fileinput" style="float: none">×</a>
                         </div>
@@ -32,7 +32,7 @@
                             <label id="nameLabel">
                                 <g:if test="${session.name == null}">
                                     <g:set var="namePlaceholder" value="${true}"/>
-                                    <h3 id="nameValue"><strong>Click to add your name</strong></h3>
+                                    <h3 id="nameValue"><strong><g:message code="click.to.add.your" args="${ [message(code:"name.label")] }" /></strong></h3>
                                 </g:if>
                                 <g:else>
                                     <g:set var="namePlaceholder" value="${false}"/>
@@ -44,11 +44,11 @@
 
                             <sec:ifAllGranted roles='ROLE_STUDENT'>
                                 <p>
-                                <h5><i class="fa fa-briefcase"></i> Work</h5>
+                                <h5><i class="fa fa-briefcase"></i> <g:message code="work.title" /></h5>
                                 <label id="workLabel">
                                     <g:if test="${user.currentCompany == null}">
                                         <g:set var="workPlaceholder" value="${true}"/>
-                                        <h5 id="workValue">Click to add a company</h5>
+                                        <h5 id="workValue"><g:message code="click.to.add.a" args="${ [message(code:"company.label")] }" /></h5>
                                     </g:if>
                                     <g:else>
                                         <g:set var="workPlaceholder" value="${false}"/>
@@ -59,11 +59,11 @@
                                 <g:textField id="workInput" name="currentCompany" class="form-control"/>
 
                                 <p>
-                                <h5><i class="fa fa-graduation-cap"></i> School</h5>
+                                <h5><i class="fa fa-graduation-cap"></i> <g:message code="school.title" /></h5>
                                 <label id="schoolLabel">
                                     <g:if test="${user.school == null}">
                                         <g:set var="schoolPlaceholder" value="${true}"/>
-                                        <h5 id="schoolValue">Click to add a school</h5>
+                                        <h5 id="schoolValue"><g:message code="click.to.add.a" args="${ [message(code:"school.label")] }" /></h5>
                                     </g:if>
                                     <g:else>
                                         <g:set var="schoolPlaceholder" value="${false}"/>
@@ -80,7 +80,7 @@
                             <label id="twitterLabel">
                                 <g:if test="${user.twitter == null}">
                                     <g:set var="twitterPlaceholder" value="${true}"/>
-                                    <h5 id="twitterValue">Click to add your twitter profile</h5>
+                                    <h5 id="twitterValue"><g:message code="click.to.add.your" args="${ ['twitter'] }" /></h5>
                                 </g:if>
                                 <g:else>
                                     <g:set var="twitterPlaceholder" value="${false}"/>
@@ -95,7 +95,7 @@
                             <label id="linkedinLabel">
                                 <g:if test="${user.linkedin == null}">
                                     <g:set var="linkedinPlaceholder" value="${true}"/>
-                                    <h5 id="linkedinValue">Click to add your linkedin profile</h5>
+                                    <h5 id="linkedinValue"><g:message code="click.to.add.your" args="${ ['linkedin'] }" /></h5>
                                 </g:if>
                                 <g:else>
                                     <g:set var="linkedinPlaceholder" value="${false}"/>
@@ -110,7 +110,7 @@
                             <label id="githubLabel">
                                 <g:if test="${user.github == null}">
                                     <g:set var="githubPlaceholder" value="${true}"/>
-                                    <h5 id="githubValue">Click to add your github profile</h5>
+                                    <h5 id="githubValue"><g:message code="click.to.add.your" args="${ ['github'] }" /></h5>
                                 </g:if>
                                 <g:else>
                                     <g:set var="githubPlaceholder" value="${false}"/>
@@ -121,11 +121,11 @@
                             <g:textField id="githubInput" name="github" class="form-control"/>
 
                             <p>
-                            <h5><i class="fa fa-user"></i> About me</h5>
+                            <h5><i class="fa fa-user"></i> <g:message code="about.me.title" /></h5>
                             <label id="aboutMeLabel">
                                 <g:if test="${user.description == null}">
                                     <g:set var="aboutMePlaceholder" value="${true}"/>
-                                    <h5 id="aboutMeValue">Click to tell us about you</h5>
+                                    <h5 id="aboutMeValue"><g:message code="click.to.tell.us.about.you" /></h5>
                                 </g:if>
                                 <g:else>
                                     <g:set var="aboutMePlaceholder" value="${false}"/>
@@ -140,10 +140,10 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <g:link controller="home" class="btn btn-white btn-outline">
-                                            Cancel
+                                            <g:message code="button.cancel" />
                                         </g:link>
                                         <button type="submit" name="submit" value="Update info" class="btn btn-primary btn-outline">
-                                            <i class="fa fa-user"></i> Update info
+                                            <i class="fa fa-user"></i> <g:message code="button.update" args="${ [message(code:"profile.label")] }" />
                                         </button>
                                     </div>
                                 </div>
