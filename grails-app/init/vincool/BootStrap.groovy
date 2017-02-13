@@ -36,7 +36,7 @@ class BootStrap {
                 def eventCategory4 = new EventCategory(category: EventCategory.Category.APPRENTICE, subCategory: "Data Structures and Big O Notation II", color: "orange").save()
 
                 def apprenticeCDMX_2016B = new Batch(edition: "Apprentice CDMX 2016 B", isActive: false).save()
-                def event1 = new Event(type: "Practical", date: LocalDate.parse("2016-11-10"), time: LocalTime.now(), instructor: instructor1, office: cdmx, eventCategory: eventCategory1,  description: "VCS and C, C++, Java", batch: apprenticeCDMX_2016B).save(failOnError: true)
+                def event1 = new Event(type: "Practical", date: LocalDate.parse("2016-11-10"), time: LocalTime.now(), instructor: instructor1, office: cdmx, eventCategory: eventCategory1,  description: "VCS and C, C++, Java", batch: apprenticeCDMX_2016B).save()
                 new Event(type: "Practical", date: LocalDate.parse("2016-11-17"), time: LocalTime.now(), instructor: instructor1, office: cdmx, eventCategory: eventCategory2, description: "Arrays, lists and sets", batch: apprenticeCDMX_2016B).save()
                 new Event(type: "Theoretical", date: LocalDate.parse("2016-11-24"), time: LocalTime.now(), instructor: instructor1, office: cdmx, eventCategory: eventCategory3, description: "Single Responsibility Principle", batch: apprenticeCDMX_2016B).save()
 
