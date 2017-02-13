@@ -1,8 +1,8 @@
 <g:applyLayout name="simple">
     <content tag="head">
-        <g:set var="eventDate" value="${g.formatDate(date: event.date.toDate())}"/>
+        <g:set var="eventDate" value="${g.formatDate(date: event.date)}"/>
         <g:set var="eventTime"
-               value="${g.formatDate(date: event.time.toDateTimeToday().toDate(), type: 'time', style: 'SHORT')}"/>
+               value="${g.formatDate(date: event.time, type: 'time', style: 'SHORT')}"/>
         <g:set var="shareText"
                value="NS Apprentice: Asiste a la clase ${event.eventCategory.subCategory} este ${eventDate} a las ${eventTime}"/>
 
@@ -125,8 +125,8 @@
 
                         <p>
                             <g:formatDate
-                                    date="${event.date.toDate()}"/> - <g:formatDate
-                                    date="${event.time.toDateTimeToday().toDate()}" type="time" style="SHORT"/>
+                                    date="${event.date}"/> - <g:formatDate
+                                    date="${event.time}" type="time" style="SHORT"/>
                         </p>
                         <h4><g:message code="default.office.location.label" default="Location"/></h4>
 
