@@ -4,7 +4,7 @@
         <asset:link rel="stylesheet" type="text/css" href="jssocials/jssocials-theme-classic.css"/>
         <meta property="og:title" content="Nearsoft Apprentice ${event.office} '${event.eventCategory.subCategory}'">
         <meta property="og:description"
-              content="Join us this ${event.date} at ${event.time.toString('HH:mm')} for the ${event.type} class '${event.eventCategory.subCategory}' : ${event.description} ">
+              content="Join us this ${event.date} at ${event.time.toString} for the ${event.type} class '${event.eventCategory.subCategory}' : ${event.description} ">
         <meta property="og:url" content="${request.getRequestURL()}">
         <meta property="og:image"
               content="https://nearsoft.com/admin/wp-content/themes/Nearsoftv1/img/nearsoft-symbol.png"/>
