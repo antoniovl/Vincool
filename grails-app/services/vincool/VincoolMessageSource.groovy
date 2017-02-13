@@ -13,8 +13,8 @@ class VincoolMessageSource extends PluginAwareResourceBundleMessageSource {
     @Override
     protected String resolveCodeWithoutArguments(String code, Locale locale) {
         String message = super.resolveCodeWithoutArguments(code, locale);
-        if(! message){
-            println code
+        if (!message) {
+            println code + "::" + locale
         }
         return message
     }
@@ -22,8 +22,8 @@ class VincoolMessageSource extends PluginAwareResourceBundleMessageSource {
     @Override
     protected MessageFormat resolveCode(String code, Locale locale) {
         def message = super.resolveCode(code, locale);
-        if(! message){
-            println code
+        if (!message) {
+            println code + "::" + locale
         }
         return message
     }
