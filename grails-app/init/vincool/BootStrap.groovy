@@ -3,8 +3,8 @@ package vincool
 import vincool.auth.SecRole
 import vincool.auth.SecUser
 import vincool.auth.SecUserSecRole
-import org.joda.time.LocalDate
-import org.joda.time.LocalTime
+import java.time.LocalDate
+import java.time.LocalTime
 
 class BootStrap {
 
@@ -41,12 +41,12 @@ class BootStrap {
                 new Event(type: "Theoretical", date: LocalDate.parse("2016-11-24"), time: LocalTime.now(), instructor: instructor1, office: cdmx, eventCategory: eventCategory3, description: "Single Responsibility Principle", batch: apprenticeCDMX_2016B).save()
 
                 def apprenticeCDMX_2017A = new Batch(edition: "Apprentice CDMX 2017 A", isActive: true).save()
-                new Event(type: "Practical", date: LocalDate.parse("2017-01-7"), time: LocalTime.now(), instructor: instructor1, office: cdmx, eventCategory: eventCategory1, description: "VCS and Python, Java, Javascript", batch: apprenticeCDMX_2017A).save()
+                new Event(type: "Practical", date: LocalDate.parse("2017-01-07"), time: LocalTime.now(), instructor: instructor1, office: cdmx, eventCategory: eventCategory1, description: "VCS and Python, Java, Javascript", batch: apprenticeCDMX_2017A).save()
                 new Event(type: "Practical", date: LocalDate.parse("2017-01-14"), time: LocalTime.now(), instructor: instructor1, office: cdmx, eventCategory: eventCategory2, description: "Arrays and Lists", batch: apprenticeCDMX_2017A).save()
                 new Event(type: "Theoretical", date: LocalDate.parse("2017-01-21"), time: LocalTime.now(), instructor: instructor1, office: cdmx, eventCategory: eventCategory4, description: "Sets and Hash Tables", batch: apprenticeCDMX_2017A).save()
 
                 def apprenticeHMO_2017A = new Batch(edition: "Apprentice HMO 2017 A", isActive: true).save()
-                new Event(type: "Practical", date: LocalDate.parse("2017-01-5"), time: LocalTime.now(), instructor: instructor1, office: hmo, eventCategory: eventCategory1, description: "VCS and Python, Java, Javascript", batch: apprenticeHMO_2017A).save()
+                new Event(type: "Practical", date: LocalDate.parse("2017-01-05"), time: LocalTime.now(), instructor: instructor1, office: hmo, eventCategory: eventCategory1, description: "VCS and Python, Java, Javascript", batch: apprenticeHMO_2017A).save()
                 new Event(type: "Practical", date: LocalDate.parse("2017-01-12"), time: LocalTime.now(), instructor: instructor1, office: hmo, eventCategory: eventCategory2, description: "Arrays and Lists", batch: apprenticeHMO_2017A).save()
                 new Event(type: "Theoretical", date: LocalDate.parse("2017-01-19"), time: LocalTime.now(), instructor: instructor1, office: hmo, eventCategory: eventCategory4, description: "Sets and Hash Tables", batch: apprenticeHMO_2017A).save()
 
