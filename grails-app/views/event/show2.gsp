@@ -8,7 +8,7 @@
 
         <asset:link rel="stylesheet" type="text/css" href="jssocials/jssocials.css"/>
         <asset:link rel="stylesheet" type="text/css" href="jssocials/jssocials-theme-minima.css"/>
-        <meta property="og:locale" content="es_MX" />
+        <meta property="og:locale" content="es_MX"/>
         <meta property="og:title" content="Nearsoft Apprentice ${event.office} '${event.eventCategory.subCategory}'">
         <meta property="og:description"
               content="${shareText}">
@@ -17,19 +17,19 @@
               content="https://nearsoft.com/admin/wp-content/themes/Nearsoftv1/img/nearsoft-symbol.png"/>
         <meta property="og:type" content="website"/>
         <meta name="twitter:title" content="Nearsoft Apprentice">
-        <meta name="twitter:description" content="Nearsoft Apprentice ${event.office} '${event.eventCategory.subCategory}'">
+        <meta name="twitter:description"
+              content="Nearsoft Apprentice ${event.office} '${event.eventCategory.subCategory}'">
         <meta name="twitter:image"
               content="https://nearsoft.com/admin/wp-content/themes/Nearsoftv1/img/nearsoft-symbol.png">
         <meta name="twitter:card" content="photo">
     </content>
     <content tag="boxTitle">
-        <h3>Session Detail</h3>
+        <h3><g:message code="event.detail.label" default="Event Detail"/></h3>
     </content>
     <content tag="boxContent">
-        <br/>
-        <br/>
-        <br/>
-        <br/>
+        <sec:ifNotLoggedIn>
+            <br/><br/><br/><br/><br/>
+        </sec:ifNotLoggedIn>
         <section class="container features" style="margin-top: 0px;">
             <div class="container">
                 <div class="row">
@@ -40,6 +40,7 @@
 
                     <div class="col-lg-4 col-md-4 col-xs-12  text-center">
                         <br/><br/>
+
                         <div class="navy-line" style="margin: 20px auto 0;"></div>
 
                         <h1 class="font-bold m-b-xs">${event.eventCategory.subCategory}</h1>
@@ -79,6 +80,18 @@
                                                 style="margin: 10px 0px 5px; width: 100%;"/>
                             </g:form>
                         </sec:ifNotLoggedIn>
+                        <div id="share" class="text-left">
+
+                            <asset:javascript src="plugins/jssocials/jssocials.min.js"/>
+                            <script>
+                                $("#share").jsSocials({
+                                    text: "${shareText}",
+                                    showLabel: false,
+                                    shares: ["twitter", "facebook", "linkedin", "pinterest", "stumbleupon", "whatsapp", "email", "telegram", "line"]
+
+                                });
+                            </script>
+                        </div>
                     </div>
                 </div>
                 <br/>
@@ -150,7 +163,33 @@
 
                     </div>
                 </div>
+                <sec:ifLoggedIn>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1><g:message code="resource.label" default="Resources"/></h1>
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th><g:message code="resource.name.label" default="Name"/></th>
+                                    <th><g:message code="resource.description.label" default="Description"/></th>
+                                    <th><g:message code="resource.url.label" default="URL"/></th>
+                                </tr>
+                                </thead>
+                                <tbody>
 
+                                <g:each in="${event.resources}" var="resource">
+                                    <tr>
+                                        <td>${resource.name}</td>
+                                        <td>${resource.description}</td>
+                                        <td><a target="_blank" href="${resource.url}">${resource.url}</a></td>
+                                    </tr>
+                                </g:each>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </sec:ifLoggedIn>
                 <div class="row">
                     <div class="col-lg-12">
                         <iframe width="100%" height="250" frameborder="0" style="border:0"
@@ -163,17 +202,6 @@
                     <div class="col-lg-12">
                         <div class="text-left">
                             <div class="jssocials-shares">
-                                <div id="share" class="text-left">
-
-                                <asset:javascript src="plugins/jssocials/jssocials.min.js"/>
-                                <script>
-                                    $("#share").jsSocials({
-                                        text: "${shareText}",
-                                        shares: ["twitter", "facebook", "googleplus", "linkedin", "pinterest", "stumbleupon", "whatsapp", "email", "telegram", "line"]
-
-                                    });
-                                </script>
-                            </div>
 
                             </div>
                         </div>

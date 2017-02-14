@@ -7,6 +7,6 @@ import grails.plugin.springsecurity.annotation.Secured
 class ProgramController {
 
     def index() {
-        render(view: "index", model: [nextClasses: Event.findAllByBatch(Batch.findByIsActive(true))])
+        render(view: "index", model: [nextClasses: Event.findAllByBatch(Batch.findByIsActive(true), [ sort: "date", order: "asc"])])
     }
 }
