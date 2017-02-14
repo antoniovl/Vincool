@@ -20,11 +20,11 @@
                     </g:if>
                 </g:each>
                 <td>
+                    <g:link method="GET" resource="${bean}" class="btn btn-outline btn-default btn-sm">
+                        <i class="fa fa-eye"></i>
+                        <g:message code="default.button.view.label" default="View"/>
+                    </g:link>
                     <sec:ifAnyGranted roles='ROLE_ADMIN,ROLE_INSTRUCTOR'>
-                        <g:link method="GET" resource="${bean}" class="btn btn-outline btn-default btn-sm">
-                            <i class="fa fa-eye"></i>
-                            <g:message code="default.button.view.label" default="View"/>
-                        </g:link>
                         <g:link action="edit" resource="${bean}" class="btn btn-outline btn-primary btn-sm">
                             <i class="fa fa-pencil-square"></i>
                             <g:message code="default.button.edit.label" default="Edit"/>
