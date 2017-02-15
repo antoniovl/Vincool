@@ -34,7 +34,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-md-8 col-xs-12">
-                        <asset:image src="landing_page/img/clase.jpg"
+                        <img src="${event.pictureUrl}"
                                      style="width: 100%; height: 300px; object-fit: cover;"/>
                     </div>
 
