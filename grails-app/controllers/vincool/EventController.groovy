@@ -140,7 +140,7 @@ class EventController {
 
         if (picture) {
             def fileName = FilenameUtils.getName(event.pictureUrl)
-            def publicId = FilenameUtils.removeExtension(fileName)
+            def publicId = FilenameUtils.removeExtension(fileName) ?: "a"
 
             def data = IOUtils.copyToByteArray(picture.getInputStream())
             if (data && data.length > 0) {
@@ -151,6 +151,7 @@ class EventController {
         }
 
         event.validate()
+
         if (event.hasErrors()) {
             transactionStatus.setRollbackOnly()
             respond event.errors, view: 'edit'

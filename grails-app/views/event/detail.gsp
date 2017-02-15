@@ -12,7 +12,6 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="m-b-md">
-                    <!--<a href="#" class="btn btn-white btn-xs pull-right">Update project description</a>-->
                     <h2>${event.eventCategory.subCategory}</h2>
                 </div>
                 <dl class="dl-horizontal">
@@ -28,6 +27,15 @@
                     <dt>Type:</dt> <dd>${event.type}</dd>
                     <dt>Instructor:</dt> <dd>${event.instructor}</dd>
                     <dt>Description:</dt> <dd>${event.description}</dd>
+                    <dt>Picture Url:</dt> <dd>
+                        <g:if test="${event.pictureUrl}">
+                            <a href="${event.pictureUrl}" target="_blank"><g:message
+                                code="event.pictureUrl.image"/></a>
+                        </g:if>
+                        <g:else>
+                            No image
+                        </g:else>
+                </dd>
                 </dl>
             </div>
             <div class="col-lg-7" id="cluster_info">

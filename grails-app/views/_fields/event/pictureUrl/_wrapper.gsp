@@ -10,8 +10,11 @@
     <label class="col-sm-2 control-label">${message(code: propTitle, default: grails.util.GrailsNameUtils.getNaturalName(property))}</label>
 
     <div class="col-sm-10">
-        ${value}----
         <div class="fileinput fileinput-new" data-provides="fileinput">
+            <g:if test="${value}">
+                <a href="${value}" class="btn btn-primary btn-outline" target="_blank"><g:message
+                        code="event.pictureUrl.image"/></a>
+            </g:if>
             <span class="btn btn-default btn-file"><span class="fileinput-new"><g:message code="select.file"
                                                                                           default="Select file"/></span>
                 <span class="fileinput-exists"><g:message code="change"/></span><input type="file" name="picture"/>

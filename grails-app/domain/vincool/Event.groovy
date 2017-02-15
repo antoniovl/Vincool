@@ -27,6 +27,7 @@ class Event {
         time()
         type()
         office()
+        pictureUrl nullable: true
     }
 
     static mapping = {
