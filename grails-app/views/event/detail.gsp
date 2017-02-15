@@ -33,7 +33,7 @@
                                 code="event.pictureUrl.image"/></a>
                         </g:if>
                         <g:else>
-                            No image
+                            <g:message code="event.pictureUrl.empty"/>
                         </g:else>
                 </dd>
                 </dl>
