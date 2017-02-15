@@ -1,13 +1,20 @@
 package vincool
 
+import grails.io.IOUtils
 import grails.plugin.springsecurity.annotation.Secured
-import vincool.auth.SecUser
+import grails.transaction.Transactional
+import org.apache.commons.io.FilenameUtils
+import org.springframework.http.ResponseEntity
+
+
+import static org.springframework.http.HttpStatus.OK
 
 @Secured(['ROLE_ADMIN', 'ROLE_INSTRUCTOR'])
 class EventController {
 
     def springSecurityService
     def roleUserService
+    def cloudinaryService
     static scaffold = Event
 
     static allowedMethods = [index: "GET", show: "GET", resource: "GET", addResource: "POST"]
@@ -91,20 +98,20 @@ class EventController {
             def assistance = 0
 
             for (enrollment in enrollments) {
-                if(enrollment.attendance) {
+                if (enrollment.attendance) {
                     assistance++
                 }
             }
 
             def assistancePercentage = 0
-            if (!enrollments.isEmpty()){
+            if (!enrollments.isEmpty()) {
                 assistancePercentage = ((assistance / enrollments.size()) * 100).intValue()
             }
 
-            def eventDetails = [enrollments: enrollments,
-                                attendeesPictures: attendeesPictures,
+            def eventDetails = [enrollments         : enrollments,
+                                attendeesPictures   : attendeesPictures,
                                 assistancePercentage: assistancePercentage,
-                                ownsEvent: ownsEvent]
+                                ownsEvent           : ownsEvent]
             render([view: "detail", model: [event: event, eventDetails: eventDetails]])
         }
 
@@ -117,6 +124,48 @@ class EventController {
     def addResource(Resource resource) {
         resource.save(flush: true)
         redirect(action: "show", id: resource.event.id)
+    }
+
+    @Secured(['ROLE_ADMIN', 'ROLE_INSTRUCTOR'])
+    @Transactional
+    def update(Event event) {
+
+        if (event == null) {
+            transactionStatus.setRollbackOnly()
+            ResponseEntity.notFound()
+            return
+        }
+
+        def picture = request.getPart("picture")
+
+        if (picture) {
+            def fileName = FilenameUtils.getName(event.pictureUrl)
+            def publicId = FilenameUtils.removeExtension(fileName)
+
+            def data = IOUtils.copyToByteArray(picture.getInputStream())
+            if (data && data.length > 0) {
+                def uploadResult = cloudinaryService.update(publicId, data)
+                event.pictureUrl = uploadResult.url
+            }
+
+        }
+
+        event.validate()
+        if (event.hasErrors()) {
+            transactionStatus.setRollbackOnly()
+            respond event.errors, view: 'edit'
+            return
+        }
+
+        event.save(flush: true)
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.updated.message', args: [message(code: event, default: Event), event.id])
+                redirect event
+            }
+            '*' { respond event, [status: OK] }
+        }
     }
 
 }

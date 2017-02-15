@@ -15,6 +15,7 @@ class Event {
     Instructor instructor
     Office office
     String description
+    String pictureUrl
 
     static hasMany = [resources: Resource, enrollments: Enrollment]
     static belongsTo = [batch: Batch, eventCategory: EventCategory]
