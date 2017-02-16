@@ -13,14 +13,23 @@
         <meta property="og:description"
               content="${shareText}">
         <meta property="og:url" content="${request.getRequestURL()}">
-        <meta property="og:image"
-              content="https://nearsoft.com/admin/wp-content/themes/Nearsoftv1/img/nearsoft-symbol.png"/>
         <meta property="og:type" content="website"/>
         <meta name="twitter:title" content="Nearsoft Apprentice">
         <meta name="twitter:description"
               content="Nearsoft Apprentice ${event.office} '${event.eventCategory.subCategory}'">
-        <meta name="twitter:image"
-              content="https://nearsoft.com/admin/wp-content/themes/Nearsoftv1/img/nearsoft-symbol.png">
+        <g:if test="${event.pictureUrl}">
+            <meta name="twitter:image"
+                  content="${event.pictureUrl}">
+            <meta property="og:image"
+                  content="${event.pictureUrl}"/>
+        </g:if>
+        <g:else>
+            <meta name="twitter:image"
+                  content="https://nearsoft.com/admin/wp-content/themes/Nearsoftv1/img/nearsoft-symbol.png">
+            <meta property="og:image"
+                  content="https://nearsoft.com/admin/wp-content/themes/Nearsoftv1/img/nearsoft-symbol.png"/>
+        </g:else>
+
         <meta name="twitter:card" content="photo">
     </content>
     <content tag="boxTitle">
@@ -34,8 +43,14 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-md-8 col-xs-12">
-                        <asset:image src="landing_page/img/clase.jpg"
-                                     style="width: 100%; height: 300px; object-fit: cover;"/>
+                        <g:if test="${event.pictureUrl}">
+                            <img src="${event.pictureUrl}"
+                                 style="width: 100%; height: 300px; object-fit: cover;"/>
+                        </g:if>
+                        <g:else>
+                            <asset:image src="landing_page/img/charis.jpg"
+                                         style="width: 100%; height: 300px; object-fit: cover;"/>
+                        </g:else>
                     </div>
 
                     <div class="col-lg-4 col-md-4 col-xs-12  text-center">
