@@ -47,11 +47,11 @@
                     <div class="col-lg-8 col-md-8 col-xs-12">
                         <g:if test="${event.pictureUrl}">
                             <img src="${event.pictureUrl}"
-                                 style="width: 100%; height: 300px; object-fit: cover;"/>
+                                 style="width: 100%; height: 300px; object-fit: cover; border-radius: 25px;"/>
                         </g:if>
                         <g:else>
                             <asset:image src="landing_page/img/charis.jpg"
-                                         style="width: 100%; height: 300px; object-fit: cover;"/>
+                                         style="width: 100%; height: 300px; object-fit: cover; border-radius: 25px;"/>
                         </g:else>
                     </div>
 
