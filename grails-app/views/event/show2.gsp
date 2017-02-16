@@ -25,9 +25,9 @@
         </g:if>
         <g:else>
             <meta name="twitter:image"
-                  content="https://nearsoft.com/admin/wp-content/themes/Nearsoftv1/img/nearsoft-symbol.png">
+                  content="/assets/landing_page/img/chairs.jpg">
             <meta property="og:image"
-                  content="https://nearsoft.com/admin/wp-content/themes/Nearsoftv1/img/nearsoft-symbol.png"/>
+                  content="/assets/landing_page/img/chairs.jpg"/>
         </g:else>
 
         <meta name="twitter:card" content="photo">
@@ -48,7 +48,7 @@
                                  style="width: 100%; height: 300px; object-fit: cover; border-radius: 25px;"/>
                         </g:if>
                         <g:else>
-                            <asset:image src="landing_page/img/charis.jpg"
+                            <asset:image src="landing_page/img/chairs.jpg"
                                          style="width: 100%; height: 300px; object-fit: cover; border-radius: 25px;"/>
                         </g:else>
                     </div>
