@@ -35,7 +35,7 @@ class CloudinaryService {
     }
 
     def update(String imageId, byte[] content) {
-        delete(imageId)
+        //delete(imageId)
         return upload(content)
     }
 
