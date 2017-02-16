@@ -1,0 +1,1 @@
+alter table sec_user add COLUMN is_public boolean;

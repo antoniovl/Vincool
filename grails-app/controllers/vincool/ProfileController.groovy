@@ -25,7 +25,6 @@ class ProfileController {
         } else {
             user = SecUser.findById(userId)
         }
-
         [user: user]
     }
 
@@ -67,6 +66,9 @@ class ProfileController {
             user.description = params.description as String
         }
 
+        if(roleUserService.isCurrentUserAInstructor()){
+            user.isPublic = params.isPublic == 'on'
+        }
         if (roleUserService.isCurrentUserAnAttendee()) {
 
             if (params.school) {
@@ -79,7 +81,7 @@ class ProfileController {
 
         }
 
-        user.save(flush: true)
+        user.save(flush: true, failOnError: true)
         redirect(action: "index")
     }
 
