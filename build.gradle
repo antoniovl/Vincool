@@ -65,8 +65,12 @@ dependencies {
     // Cloudinary
     compile('com.cloudinary:cloudinary-http44:1.7.0'){
         exclude group: 'org.apache.httpcomponents', module: 'httpclient'
+        exclude group: 'org.apache.httpcomponents', module: 'httpcore'
     }
+    compile "org.apache.httpcomponents:httpcore:4.4"
     compile "org.apache.httpcomponents:httpclient:4.4"
+
+
     compile 'com.cloudinary:cloudinary-taglib:1.7.0'
     compile 'commons-io:commons-io:2.5'
     //Flyway
