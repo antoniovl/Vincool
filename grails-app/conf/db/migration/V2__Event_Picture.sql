@@ -1,0 +1,1 @@
+ALTER TABLE event ADD COLUMN picture_url VARCHAR(500) NULL
