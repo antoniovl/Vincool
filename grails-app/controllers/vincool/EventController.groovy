@@ -125,7 +125,7 @@ class EventController {
         resource.save(flush: true)
         redirect(action: "show", id: resource.event.id)
     }
-/*
+
     @Secured(['ROLE_ADMIN', 'ROLE_INSTRUCTOR'])
     @Transactional
     def update(Event event) {
@@ -168,6 +168,5 @@ class EventController {
             '*' { respond event, [status: OK] }
         }
     }
-*/
 }
 
