@@ -4,6 +4,8 @@ import vincool.auth.SecUser
 
 class Instructor extends SecUser{
 
+    Boolean isPublic
+
     static constraints = {
 
     }
