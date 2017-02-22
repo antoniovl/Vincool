@@ -66,9 +66,11 @@ dependencies {
     compile('com.cloudinary:cloudinary-http44:1.7.0'){
         exclude group: 'org.apache.httpcomponents', module: 'httpclient'
         exclude group: 'org.apache.httpcomponents', module: 'httpcore'
+        exclude group: 'org.apache.httpcomponents', module: 'httpmime'
     }
     compile "org.apache.httpcomponents:httpcore:4.4"
     compile "org.apache.httpcomponents:httpclient:4.4"
+    compile "org.apache.httpcomponents:httpmime:4.4"
 
 
     compile 'com.cloudinary:cloudinary-taglib:1.7.0'
