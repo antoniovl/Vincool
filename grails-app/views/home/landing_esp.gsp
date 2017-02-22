@@ -54,10 +54,10 @@
             <div class="col-lg-5 col-lg-offset-1 features-text">
                 <small>NS Apprentice</small>
 
-                <h2>Quien?</h2>
+                <h2>¿Quién?</h2>
                 <i class="fa fa-user big-icon pull-right"></i>
 
-                <p>Nearsoft Apprentice es un programa dirigido a cualquier persona que tenga deseos de aprender desde estudiantes hasta profesionistas de otras areas que deseen adentrarse en el mundo del desarrollo de software.</p>
+                <p>Nearsoft Apprentice es un programa dirigido a cualquier persona que tenga deseos de aprender, desde estudiantes hasta profesionistas de otras áreas que deseen adentrarse en el mundo del desarrollo de software.</p>
             </div>
 
             <div class="col-lg-5 features-text">
@@ -66,7 +66,7 @@
                 <h2>Requisitos</h2>
                 <i class="fa fa-laptop big-icon pull-right"></i>
 
-                <p>Debes de registrarte en nuestra plataforma a las clases que desees asistir, necesitaras una computadora para las sesiones practicas. Te recomendamos ampliamente asistir a ambas clases teoricas y practicas.</p>
+                <p>Debes de registrarte en nuestra plataforma a las clases que desees asistir, necesitarás una computadora para las sesiones prácticas. Te recomendamos ampliamente asistir a ambas clases, ' teóricas y prácticas.</p>
             </div>
         </div>
 
@@ -77,16 +77,16 @@
                 <h2>Clase Abierta</h2>
                 <i class="fa fa-dollar big-icon pull-right"></i>
 
-                <p>Las clases no tienen ningun costo, puedes asistir a todas las que quieras. Estaran dividias en teoricas y practicas.</p>
+                <p>Las clases no tienen ningún costo, puedes asistir a todas las que quieras. Estarán dividias en teóricas y prácticas.</p>
             </div>
 
             <div class="col-lg-5 features-text">
                 <small>NS Apprentice</small>
 
-                <h2>Cuando?</h2>
+                <h2>¿Cuándo?</h2>
                 <i class="fa fa-calendar big-icon pull-right"></i>
 
-                <p>Habra una clase semanal de aproximadamente 3 horas, primero se revisaran los temas teoricos y la siguiente se realizara la practicar.</p>
+                <p>Habrá una clase semanal de aproximadamente 3 horas, primero se revisarán los temas teóricos y la siguiente se realizará la sesión prática.</p>
             </div>
         </div>
     </div>
@@ -106,9 +106,9 @@
             <div class="col-lg-3 features-text wow fadeInLeft">
                 <small>NS Apprentice</small>
 
-                <h2>Clases Teoricas</h2>
+                <h2>Clases Teóricas</h2>
 
-                <p>Asiste a nuestras sesiones teoricas para conocer los conceptos y definiciones usadas en las ciencias de la computacion.</p>
+                <p>Asiste a nuestras sesiones teóricas para conocer los conceptos y definiciones usadas en las Ciencias de la Computación.</p>
 
             </div>
 
@@ -119,9 +119,9 @@
             <div class="col-lg-3 features-text text-right wow fadeInRight">
                 <small>NS Apprentice</small>
 
-                <h2>Clases Practicas</h2>
+                <h2>Clases Prácticas</h2>
 
-                <p>Asiste a nuestras sesiones practicas para ver aplicados los temas teoricos en codigo y ejemplos reales.</p>
+                <p>Asiste a nuestras sesiones prácticas para ver aplicados los temas teóricos en código y ejemplos reales.</p>
             </div>
         </div>
     </div>
@@ -144,15 +144,15 @@
 
                 <h2>Ciencia de la Computacion</h2>
 
-                <p>Aprende de estructuras de datos, algoritmos y notacion Big O.</p>
+                <p>Aprende de estructuras de datos, algoritmos y notación Big O.</p>
             </div>
 
             <div class="m-t-lg">
                 <i class="fa fa-bar-chart features-icon"></i>
 
-                <h2>Metodos Agiles</h2>
+                <h2>Métodos Ágiles</h2>
 
-                <p>Conoce las metodologias agiles usadas en la industria.</p>
+                <p>Conoce las metodologías ágiles usadas en la industria.</p>
             </div>
         </div>
 
@@ -170,7 +170,7 @@
 
                 <h2>Diseño de Software</h2>
 
-                <p>Descubre las buenas practicas del desarrollo de software, patrones de diseño, Pruebas unitarias, SOLID</p>
+                <p>Descubre las buenas prácticas del desarrollo de software, patrones de diseño, pruebas unitarias.</p>
             </div>
         </div>
     </div>
@@ -223,9 +223,9 @@
             <div class="col-lg-12 text-center">
                 <div class="navy-line"></div>
 
-                <h1>Proximas clases</h1>
+                <h1>Próximas clases</h1>
 
-                <p>Estas son las clases que tendremos en las proximas dos semanas. Para conocer todo el calendario visita</p>
+                <p>Estas son las clases que tendremos en las próximas dos semanas. Para conocer todo el calendario visita</p>
                 <g:link controller="calendar" class="btn btn-primary">Calendario</g:link>
             </div>
         </div>
@@ -245,7 +245,7 @@
 
                                 <p>${it.description}
                                 </p>
-                                <g:link controller="event" action="show" id="${it.id}" class="btn btn-xs btn-primary">Mas informacion</g:link>
+                                <g:link controller="event" action="show" id="${it.id}" class="btn btn-xs btn-primary">Más información</g:link>
                                 <span class="vertical-date"><g:formatDate date="${it.date}"/></span>
                             </div>
                         </div>
@@ -290,7 +290,7 @@
 
             <div class="col-lg-4">
                 <div class="bubble">
-                    "A mi me sirvio bastante para mejorar mi manera de trabajar y sobre todo reforzar temas donde me tambaleo bastante."
+                    "A mí me sirvio bastante para mejorar mi manera de trabajar y sobre todo reforzar temas donde me tambaleo bastante."
                 </div>
 
                 <div class="comments-avatar">
@@ -300,7 +300,7 @@
 
                     <div class="media-body">
                         <div class="commens-name">
-                            Martin Manriquez Leon
+                            Martín Manriquez León
                         </div>
                         <small class="text-muted">Estudiante de UPIICSA-IPN</small>
                     </div>
@@ -309,7 +309,7 @@
 
             <div class="col-lg-4">
                 <div class="bubble">
-                    "Gracias a Nearsoft Apprentice tuve la oportunidad de entrar en contacto con tecnologías de las que sólo había escuchado hablar pero nunca había utilizado en el ambiente académico, también tuve la oportunidad de reflexionar acerca de mis prácticas de programación y conocer mediante que estándares se trabaja actualmente en el mundo real."
+                    "Gracias a Nearsoft Apprentice tuve la oportunidad de entrar en contacto con tecnologías de las que solo había escuchado hablar pero nunca había utilizado en el ambiente académico, también tuve la oportunidad de reflexionar acerca de mis prácticas de programación y conocer mediante qué estándares se trabaja actualmente en el mundo real."
                 </div>
 
                 <div class="comments-avatar">
@@ -329,7 +329,7 @@
 
             <div class="col-lg-4">
                 <div class="bubble">
-                    "El programa de Nearsoft Apprentice me permitió retomar los fundamentos de la programación y tomar conciencia de su importancia en las entrevistas técnicas. Además de que tuve la oportunidad de conocer gente muy experimentada en el desarrollo de software y conocer de viva voz los problemas a los que se enfrentan y como los resuelven."
+                    "El programa de Nearsoft Apprentice me permitió retomar los fundamentos de la programación y tomar conciencia de su importancia en las entrevistas técnicas. Además de que tuve la oportunidad de conocer gente muy experimentada en el desarrollo de software y conocer de viva voz los problemas a los que se enfrentan y cómo los resuelven."
                 </div>
 
                 <div class="comments-avatar">
