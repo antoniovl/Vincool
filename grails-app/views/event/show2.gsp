@@ -25,9 +25,9 @@
         </g:if>
         <g:else>
             <meta name="twitter:image"
-                  content="/assets/landing_page/img/plantilla.jpg">
+                  content="/assets/landing_page/img/plantilla.png">
             <meta property="og:image"
-                  content="/assets/landing_page/img/plantilla.jpg"/>
+                  content="/assets/landing_page/img/plantilla.png"/>
         </g:else>
 
         <meta name="twitter:card" content="photo">
@@ -48,7 +48,7 @@
                                  style="width: 100%; height: 300px; object-fit: cover; border-radius: 25px;"/>
                         </g:if>
                         <g:else>
-                            <asset:image src="landing_page/img/plantilla.jpg"
+                            <asset:image src="landing_page/img/plantilla.png"
                                          style="width: 100%; height: 300px; object-fit: cover; border-radius: 25px;"/>
                         </g:else>
                     </div>
