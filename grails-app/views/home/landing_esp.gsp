@@ -66,7 +66,7 @@
                 <h2>Requisitos</h2>
                 <i class="fa fa-laptop big-icon pull-right"></i>
 
-                <p>Debes de registrarte en nuestra plataforma a las clases que desees asistir, necesitarás una computadora para las sesiones prácticas. Te recomendamos ampliamente asistir a ambas clases, ' teóricas y prácticas.</p>
+                <p>Debes registrarte en nuestra plataforma a las clases que desees asistir, necesitarás una computadora para las sesiones prácticas. Te recomendamos ampliamente asistir a ambas clases, teóricas y prácticas.</p>
             </div>
         </div>
 
@@ -86,7 +86,7 @@
                 <h2>¿Cuándo?</h2>
                 <i class="fa fa-calendar big-icon pull-right"></i>
 
-                <p>Habrá una clase semanal de aproximadamente 3 horas, primero se revisarán los temas teóricos y la siguiente se realizará la sesión prática.</p>
+                <p>Habrá una clase semanal de aproximadamente 3 horas, primero se revisarán los temas teóricos y posteriormente se realizará la sesión prática.</p>
             </div>
         </div>
     </div>
