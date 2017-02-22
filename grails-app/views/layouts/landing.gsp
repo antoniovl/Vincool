@@ -94,7 +94,7 @@
             <div class="col-lg-12 text-center">
                 <div class="navy-line"></div>
 
-                <h1>Contactanos</h1>
+                <h1>Contáctanos</h1>
             </div>
         </div>
 
@@ -112,7 +112,7 @@
 
             <div class="col-lg-3">
                 <address>
-                    <strong><span class="navy">Ciudad de Mexico</span></strong><br/>
+                    <strong><span class="navy">Ciudad de México</span></strong><br/>
                     San Luis Potosí 196 int. 401<br/>
                     Col. Roma Norte<br/>
                     Del. Cuauhtémoc<br/>
@@ -135,10 +135,10 @@
 
         <div class="row">
             <div class="col-lg-12 text-center">
-                <a href="mailto:test@email.com" class="btn btn-primary">Envianos un correo</a>
+                <a href="mailto:test@email.com" class="btn btn-primary">Envíanos un correo</a>
 
                 <p class="m-t-sm">
-                    O siguenos en nuestras redes sociales
+                    O síguenos en nuestras redes sociales
                 </p>
                 <ul class="list-inline social-icon">
                     <li><a href="https://twitter.com/nearsoftjobs"><i class="fa fa-twitter"></i></a>
@@ -152,7 +152,7 @@
 
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 text-center m-t-lg m-b-lg">
-                <p><strong>&copy; 2015 Nearsoft Inc.</strong><br/></p>
+                <p><strong>&copy; 2017 Nearsoft Inc.</strong><br/></p>
             </div>
         </div>
     </div>
