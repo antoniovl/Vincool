@@ -49,7 +49,7 @@
                         </g:if>
                         <g:else>
                             <asset:image src="landing_page/img/plantilla.png"
-                                         style="width: 100%; height: 300px; object-fit: cover; border-radius: 25px;"/>
+                                         style="width: 100%; object-fit: cover; border-radius: 25px;"/>
                         </g:else>
                     </div>
 
