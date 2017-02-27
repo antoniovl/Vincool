@@ -52,7 +52,7 @@
                 <a class="btn btn-block btn-social btn-twitter">
                     <span class="fa fa-twitter"></span> Sign in with Twitter
                 </a-->
-                <p class="m-t"><small>Nearsoft were the magic begins &copy; 2017</small></p>
+                <p class="m-t"><small>Nearsoft where the magic begins &copy; 2017</small></p>
             </div>
         </div>
 
