@@ -4,7 +4,7 @@
         <g:set var="eventTime"
                value="${g.formatDate(date: event.time, type: 'time', style: 'SHORT')}"/>
         <g:set var="shareText"
-               value="NS Apprentice: Asiste a la clase ${event.eventCategory.subCategory} este ${eventDate} a las ${eventTime}"/>
+               value=" Asiste a la clase ${event.eventCategory.subCategory} este ${eventDate} a las ${eventTime} #NSCommunity"/>
 
         <asset:link rel="stylesheet" type="text/css" href="jssocials/jssocials.css"/>
         <asset:link rel="stylesheet" type="text/css" href="jssocials/jssocials-theme-minima.css"/>
@@ -54,7 +54,7 @@
                     </div>
 
                     <div class="col-lg-4 col-md-4 col-xs-12  text-center">
-                        <br/><br/>
+                        <br/><br/><br/>
 
                         <div class="navy-line" style="margin: 20px auto 0;"></div>
 
@@ -107,6 +107,7 @@
                                 });
                             </script>
                         </div>
+                        <div class="navy-line" style="margin: 20px auto 0;"></div>
                     </div>
                 </div>
                 <br/>
@@ -148,6 +149,7 @@
                                    href="mailto:${event.instructor.email}"><i class="fa fa-envelope"></i></a>
                             </li>
                         </ul>
+                        <br/>
                         <h4 style="margin: 10px 0px 5px;"
                             class="product-main-price"><g:message code="default.when.label" default="When?"/></h4>
 
@@ -156,12 +158,14 @@
                                     date="${event.date}"/> - <g:formatDate
                                     date="${event.time}" type="time" style="SHORT"/>
                         </p>
+                        <br/>
                         <h4><g:message code="default.office.location.label" default="Location"/></h4>
 
                         <p>
                             ${event.office.location}
                         </p>
 
+                        <br/>
                         <sec:ifAnyGranted roles='ROLE_INSTRUCTOR,ROLE_ADMIN'>
                             <h3><g:message code="default.eventCategory.label" default="Event Category"/></h3>
 
