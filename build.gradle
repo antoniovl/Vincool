@@ -63,14 +63,14 @@ dependencies {
     compile 'org.grails.plugins:spring-security-oauth2-google:1.1.+'
     compile group: 'org.springframework.social', name: 'spring-social-google', version: '1.0.0.RC1'
     // Cloudinary
-    compile('com.cloudinary:cloudinary-http44:1.7.0'){
+    compile('com.cloudinary:cloudinary-http43:1.7.0'){
         exclude group: 'org.apache.httpcomponents', module: 'httpclient'
         exclude group: 'org.apache.httpcomponents', module: 'httpcore'
         exclude group: 'org.apache.httpcomponents', module: 'httpmime'
     }
-    compile "org.apache.httpcomponents:httpcore:4.4"
-    compile "org.apache.httpcomponents:httpclient:4.4"
-    compile "org.apache.httpcomponents:httpmime:4.4"
+    compile "org.apache.httpcomponents:httpcore:4.3"
+    compile "org.apache.httpcomponents:httpclient:4.3"
+    compile "org.apache.httpcomponents:httpmime:4.3"
 
 
     compile 'com.cloudinary:cloudinary-taglib:1.7.0'
