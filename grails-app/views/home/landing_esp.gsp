@@ -15,6 +15,8 @@
           content="${request.getRequestURL()}assets/landing_page/img/plantilla.png">
     <meta property="og:image"
           content="${request.getRequestURL()}assets/landing_page/img/plantilla.png"/>
+    <meta name="twitter:card" content="photo">
+
 </head>
 
 <body id="page-top">
