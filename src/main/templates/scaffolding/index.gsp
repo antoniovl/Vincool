@@ -1,19 +1,21 @@
 <g:applyLayout name="simple">
-    <g:set var="entityName" value="\${message(code: '${propertyName}.label', default: '${className}')}" />
+    <g:set var="entityName" value="\${message(code: '${propertyName}.label', default: '${className}')}"/>
 
     <content tag="boxTitle">
         <h5><g:message code="default.list.label" args="[entityName]"/></h5>
+        <sec:ifAnyGranted roles='ROLE_ADMIN,ROLE_INSTRUCTOR'>
+            <div class="ibox-tools">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-plus"></i>
+                </a>
 
-        <div class="ibox-tools">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                <i class="fa fa-plus"></i>
-            </a>
-            <ul class="dropdown-menu dropdown-user">
-                <li><g:link class="create" action="create"><g:message code="default.new.label"
-                                                                      args="[entityName]"/></g:link>
-                </li>
-            </ul>
-        </div>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><g:link class="create" action="create"><g:message code="default.new.label"
+                                                                          args="[entityName]"/></g:link>
+                    </li>
+                </ul>
+            </div>
+        </sec:ifAnyGranted>
     </content>
     <content tag="boxContent">
         <div id="list-${propertyName}" class="content scaffold-list" role="main">

@@ -7,7 +7,7 @@ class HomeController {
 
     def index() {
         if (roleUserService.isCurrentUserAnAttendee()) {
-            forward controller: "event"
+            forward controller: "program"
         } else if (roleUserService.isCurrentUserAInstructor()) {
             forward controller: "event"
         } else if (roleUserService.isCurrentUserAnAdmin()) {
