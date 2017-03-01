@@ -118,7 +118,7 @@
                     </li>
                     <li class="controller">
                         <g:link controller="event" action="index"><i class="fa fa-book"></i><span
-                                class="nav-label">Mis Eventos</span></g:link>
+                                class="nav-label">Mis Clases</span></g:link>
                     </li>
                 </sec:ifAllGranted>
 
