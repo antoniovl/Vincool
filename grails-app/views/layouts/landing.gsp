@@ -135,7 +135,7 @@
 
         <div class="row">
             <div class="col-lg-12 text-center">
-                <a href="mailto:test@email.com" class="btn btn-primary">Envíanos un correo</a>
+                <a href="mailto:jobs@nearsoft.com" class="btn btn-primary">Envíanos un correo</a>
 
                 <p class="m-t-sm">
                     O síguenos en nuestras redes sociales
