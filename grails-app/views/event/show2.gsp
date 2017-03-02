@@ -118,7 +118,7 @@
                                        default="Event description"/></h4>
 
                         <p>
-                            ${event.description}
+                            ${raw(event.description)}
                         </p>
                     </div>
 
