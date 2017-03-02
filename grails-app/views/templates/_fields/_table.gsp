@@ -38,7 +38,20 @@
                             <g:link controller="attendance" action="enroll" id="${bean.id}"
                                     class="btn btn-outline btn-success btn-sm">
                                 <i class="fa fa-plus-square"></i>
-                                <g:message code="event.button.enroll.label" default="Enroll"/></g:link>
+                                <g:message code="event.button.enroll.label" default="Enroll"/>
+                            </g:link>
+                            <g:link controller="notification" action="create" id="${bean.id}" params="[type: bean.class.simpleName]"
+                                    class="btn btn-outline btn-success btn-sm">
+                                <i class="fa fa-plus-square"></i>
+                                <g:message code="event.button.notification.label" default="Notification"/>
+                            </g:link>
+                        </g:if>
+                        <g:if test="${bean instanceof vincool.Attendee}">
+                            <g:link controller="notification" action="create" id="${bean.id}" params="[type: bean.class.simpleName]"
+                                    class="btn btn-outline btn-success btn-sm">
+                                <i class="fa fa-plus-square"></i>
+                                <g:message code="event.button.notification.label" default="Notification"/>
+                            </g:link>
                         </g:if>
                     </sec:ifAnyGranted>
                 </td>

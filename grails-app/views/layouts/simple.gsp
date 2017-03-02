@@ -33,15 +33,15 @@
                         <ul class="dropdown-menu dropdown-messages">
                         </ul>
                     </li>
-                    <li class="dropdown">
+                    <li class="dropdown" >
                         <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                             <i class="fa fa-bell"></i>  <span class="label label-primary">0</span>
                         </a>
-                        <ul class="dropdown-menu dropdown-alerts">
 
+                        <ul class="dropdown-menu dropdown-alerts" id="notification-dropdown">
                         </ul>
-                    </li>
 
+                    </li>
 
                     <li>
                         <g:link controller="logout"><i class="fa fa-sign-out"></i>Logout</g:link>
@@ -93,5 +93,31 @@
 <sec:ifNotLoggedIn>
         <g:pageProperty name="page.boxContent"/>
 </sec:ifNotLoggedIn>
+
+<script>
+    setInterval(function(){
+        $.getJSON("${g.createLink(controller:'notification',action:'pull')}", function(data) {
+            $("#notification-dropdown").html("");
+            $.each(data, function(index, element) {
+                $("#notification-dropdown").append(
+                        '<li class="divider"> </li>' +
+                        '<li>' +
+                        '<a href="">' +
+                        '<div>' +
+                        '<i class="fa fa-bell fa-fw"></i>' + element.message +
+                        '</div>' +
+                        '</a>' +
+                        '</li>' +
+                        '<li class="divider"> </li>'
+                );
+            });
+        }).error(function(jqXHR, textStatus, errorThrown) {
+            console.log("error " + textStatus);
+            console.log("incoming Text " + jqXHR.responseText);
+            console.log("error Text " + jqXHR);
+        });
+    }, 5000);
+
+</script>
 </body>
 </html>

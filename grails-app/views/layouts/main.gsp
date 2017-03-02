@@ -106,6 +106,11 @@
                                 class="nav-label">Mis sesiones</span></g:link>
                     </li>
 
+                    <li class="controller">
+                        <g:link controller="notification" action="get"><i class="fa fa-book"></i><span
+                                class="nav-label">Notificaciones</span></g:link>
+                    </li>
+
                 </sec:ifAllGranted>
                 <sec:ifAllGranted roles='ROLE_STUDENT'>
                     <li class="controller">
@@ -119,6 +124,10 @@
                     <li class="controller">
                         <g:link controller="event" action="index"><i class="fa fa-book"></i><span
                                 class="nav-label">Mis Eventos</span></g:link>
+                    </li>
+                    <li class="controller">
+                        <g:link controller="notification" action="get"><i class="fa fa-book"></i><span
+                                class="nav-label">Notificaciones</span></g:link>
                     </li>
                 </sec:ifAllGranted>
 
