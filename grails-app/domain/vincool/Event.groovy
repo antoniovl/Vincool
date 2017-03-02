@@ -28,6 +28,7 @@ class Event {
         type()
         office()
         pictureUrl nullable: true, display: false
+        description widget: 'textarea'
     }
 
     static mapping = {
