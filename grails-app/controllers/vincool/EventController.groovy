@@ -85,7 +85,7 @@ class EventController {
             }
 
             def ownsEvent = true
-            if (roleUserService.currentUserAInstructor) {
+            if (roleUserService.currentUserAInstructor && !roleUserService.currentUserAnAdmin) {
                 def instructorEvents = Event.findAllByInstructor(springSecurityService.currentUser)
                 if (!instructorEvents.contains(event)) {
                     ownsEvent = false
